@@ -57,5 +57,15 @@ do
   done
 done
 
+cat << EOS >> ${home}/snippets/yaml.snip
+snippet AWSTemplateFormatVersion
+  AWSTemplateFormatVersion: "2010-09-09"
+  Description: A sample template
+  Resources:
+    MyEC2Instance: # inline comment
+      Type: "AWS::EC2::Instance"
+      ...
+EOS
+
 # refact
 sed -i -e "s/ $//g" ${home}/snippets/*.snip

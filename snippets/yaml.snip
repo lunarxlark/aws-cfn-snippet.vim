@@ -6775,3 +6775,10 @@ snippet AWS::CloudFormation::WaitCondition-waitcondition
     Timeout: String
 
 
+snippet AWSTemplateFormatVersion
+  AWSTemplateFormatVersion: "2010-09-09"
+  Description: A sample template
+  Resources:
+    MyEC2Instance: # inline comment
+      Type: "AWS::EC2::Instance"
+      ...
