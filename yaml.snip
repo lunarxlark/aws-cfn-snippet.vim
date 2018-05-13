@@ -1,0 +1,2647 @@
+snippet  AWS::ApiGateway::Account
+  Type: "AWS::ApiGateway::Account"
+  Properties: 
+    CloudWatchRoleArn: String
+
+
+snippet  AWS::ApiGateway::ApiKey
+  Type: "AWS::ApiGateway::ApiKey"
+  Properties: 
+    CustomerId: String
+    Description: String
+    Enabled: Boolean
+    GenerateDistinctId: Boolean
+    Name: String
+    StageKeys:
+      - StageKey
+      - ...
+
+
+snippet  AWS::ApiGateway::Authorizer
+  Type: "AWS::ApiGateway::Authorizer"
+  Properties:
+    AuthType: String
+    AuthorizerCredentials: String
+    AuthorizerResultTtlInSeconds: Integer
+    AuthorizerUri: String
+    IdentitySource: String
+    IdentityValidationExpression: String
+    Name: String
+    ProviderARNs:
+      - String
+    RestApiId: String
+    Type: String
+
+
+snippet  AWS::ApiGateway::BasePathMapping
+  Type: "AWS::ApiGateway::BasePathMapping"
+  Properties:
+    BasePath: String
+    DomainName: String
+    RestApiId: String
+    Stage: String
+
+
+snippet  AWS::ApiGateway::ClientCertificate
+  Type: "AWS::ApiGateway::ClientCertificate"
+  Properties:
+    Description: String
+
+
+snippet  AWS::ApiGateway::Deployment
+  Type: "AWS::ApiGateway::Deployment"
+  Properties:
+    Description: String
+    RestApiId: String
+    StageDescription
+    StageName: String
+
+
+snippet  AWS::ApiGateway::DocumentationPart
+  Type: "AWS::ApiGateway::DocumentationPart"
+  Properties:
+    Location: 
+      *Location*
+    Properties: String
+    RestApiId: String
+
+
+snippet  AWS::ApiGateway::DocumentationVersion
+  Type: "AWS::ApiGateway::DocumentationVersion"
+  Properties:
+    Description: String
+    DocumentationVersion: String
+    RestApiId: String
+
+
+snippet  AWS::ApiGateway::DomainName
+  Type: "AWS::ApiGateway::DomainName"
+  Properties: 
+    CertificateArn: String
+    DomainName: String
+    EndpointConfiguration: 
+      *EndpointConfiguration*
+    RegionalCertificateArn: String
+
+
+snippet  AWS::ApiGateway::GatewayResponse
+  Type: "AWS::ApiGateway::GatewayResponse"
+  Properties:
+    ResponseParameters: 
+      String: String
+    ResponseTemplates: 
+      String: String
+    ResponseType: String
+    RestApiId: String
+    StatusCode: String
+
+
+snippet  AWS::ApiGateway::Method
+  Type: "AWS::ApiGateway::Method"
+  Properties:
+    ApiKeyRequired: Boolean
+    AuthorizationType: String
+    AuthorizerId: String
+    HttpMethod: String
+    Integration:
+      Integration
+    MethodResponses:
+      - MethodResponse
+    OperationName: String
+    RequestModels:
+      String: String
+    RequestParameters:
+      String: Boolean
+    RequestValidatorId: String
+    ResourceId: String
+    RestApiId: String
+
+
+snippet  AWS::ApiGateway::Model
+  Type: "AWS::ApiGateway::Model"
+  Properties:
+    ContentType: String
+    Description: String
+    Name: String
+    RestApiId: String
+    Schema: JSON object
+
+
+snippet  AWS::ApiGateway::RequestValidator
+  Type: "AWS::ApiGateway::RequestValidator"
+  Properties:
+    Name: String
+    RestApiId: String
+    ValidateRequestBody: Boolean
+    ValidateRequestParameters: Boolean
+
+
+snippet  AWS::ApiGateway::Resource
+  Type: "AWS::ApiGateway::Resource"
+  Properties:
+    ParentId: String
+    PathPart: String
+    RestApiId: String
+
+
+snippet  AWS::ApiGateway::RestApi
+  Type: "AWS::ApiGateway::RestApi"
+  Properties:
+    ApiKeySourceType: String
+    BinaryMediaTypes:
+      - String
+    Body: JSON object
+    BodyS3Location:
+      *S3Location*
+    CloneFrom: String
+    Description: String
+    EndpointConfiguration
+    FailOnWarnings: Boolean
+    MinimumCompressionSize: Integer
+    Name: String
+    Parameters:
+      String: String
+
+
+snippet  AWS::ApiGateway::Stage
+  Type: "AWS::ApiGateway::Stage"
+  Properties:
+    CacheClusterEnabled: Boolean
+    CacheClusterSize: String
+    ClientCertificateId: String
+    DeploymentId: String
+    Description: String
+    DocumentationVersion: String
+    MethodSettings:
+      - *MethodSetting*
+    RestApiId: String
+    StageName: String
+    Variables:
+      String: String
+
+
+snippet  AWS::ApiGateway::UsagePlanKey
+  Type: "AWS::ApiGateway::UsagePlanKey"
+  Properties:
+    KeyId: String
+    KeyType: String
+    UsagePlanId: String
+
+
+snippet  AWS::ApiGateway::UsagePlan
+  Type: "AWS::ApiGateway::UsagePlan"
+  Properties:
+    ApiStages: 
+    - ApiStage
+    Description: String
+    Quota
+    Throttle
+    UsagePlanName: String
+
+
+snippet  AWS::ApiGateway::VpcLink
+  Type: "AWS::ApiGateway::VpcLink"
+  Properties:
+    Description: String
+    Name: String
+    TargetArns:
+      - String
+
+
+snippet  AWS::ApplicationAutoScaling::ScalableTarget
+  Type: "AWS::ApplicationAutoScaling::ScalableTarget"
+  Properties:
+    MaxCapacity: Integer
+    MinCapacity: Integer
+    ResourceId: String
+    RoleARN: String
+    ScalableDimension: String
+    ScheduledActions: 
+      - *ScheduledAction*
+    ServiceNamespace: String
+
+
+snippet  AWS::ApplicationAutoScaling::ScalingPolicy
+  Type : "AWS::ApplicationAutoScaling::ScalingPolicy"
+  Properties: 
+    PolicyName: String
+    PolicyType: String
+    ResourceId: String
+    ScalableDimension: String
+    ScalingTargetId: String
+    ServiceNamespace: String
+    StepScalingPolicyConfiguration: 
+      *StepScalingPolicyConfiguration*
+    TargetTrackingScalingPolicyConfiguration: 
+      *TargetTrackingScalingPolicyConfiguration*
+
+
+snippet  AWS::AutoScaling::LifecycleHook
+  Type: "AWS::AutoScaling::LifecycleHook"
+  Properties:
+    AutoScalingGroupName: String
+    DefaultResult: String
+    HeartbeatTimeout: Integer
+    LifecycleHookName: String
+    LifecycleTransition: String
+    NotificationMetadata: String
+    NotificationTargetARN: String
+    RoleARN: String
+
+
+snippet  AWS::AutoScaling::ScheduledAction
+  Type: AWS::AutoScaling::ScheduledAction
+  Properties:
+    AutoScalingGroupName: String
+    DesiredCapacity: Integer
+    EndTime: Time stamp
+    MaxSize: Integer
+    MinSize: Integer
+    Recurrence: String
+    StartTime: Time stamp
+
+
+snippet  AWS::Athena::NamedQuery
+  Type: "AWS::Athena::NamedQuery"
+  Properties:
+    Description: String
+    QueryString: String
+    Database: String
+    Name: String
+
+
+snippet  AWS::CloudFormation::Authentication
+  Type: "AWS::CloudFormation::Authentication"
+  String:
+    accessKeyId: String
+    buckets:
+      - String
+    password: String
+    secretKey: String
+    type: String
+    uris:
+      - String
+    username: String
+    roleName: String
+
+
+snippet  AWS::Batch::ComputeEnvironment
+  Type: "AWS::Batch::ComputeEnvironment"
+  Properties:
+    Type: String
+    ServiceRole: String
+    ComputeEnvironmentName: String
+    ComputeResources: 
+      *ComputeResources*
+    State: String
+
+
+snippet  AWS::Batch::JobDefinition
+  Type: "AWS::Batch::JobDefinition"
+  Properties:
+    Type: String
+    Parameters: Json object
+    ContainerProperties: 
+      *ContainerProperties*
+    JobDefinitionName: String
+    RetryStrategy: 
+      *RetryStrategy*
+
+
+snippet  AWS::Batch::JobQueue
+  Type: "AWS::Batch::JobQueue"
+  Properties:
+    ComputeEnvironmentOrder: 
+      - *ComputeEnvironmentOrder* 
+    Priority: Integer
+    State: String
+    JobQueueName: String
+
+
+snippet  AWS::ElasticBeanstalk::ConfigurationTemplate
+  Type: "AWS::ElasticBeanstalk::ConfigurationTemplate"
+  Properties:
+    ApplicationName: String
+    Description: String
+    EnvironmentId: String
+    OptionSettings:
+      - *ConfigurationOptionSetting*
+    PlatformArn: String
+    SolutionStackName: String
+    SourceConfiguration:
+      *SourceConfiguration*
+
+
+snippet  AWS::CertificateManager::Certificate
+  Type: "AWS::CertificateManager::Certificate"
+  Properties: 
+    DomainName: String
+    DomainValidationOptions:
+      - DomainValidationOptions
+    SubjectAlternativeNames:
+      - String
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::CloudFormation::CustomResource
+  Type: "Custom::String"
+  Version: "1.0"
+  Properties:
+    ServiceToken: String
+      ... provider-defined properties ...
+
+
+snippet  AWS::Cloud9::EnvironmentEC2
+  Type: "AWS::Cloud9::EnvironmentEC2"
+  Properties:
+    Repositories: 
+      - *Repository*
+    OwnerArn: String
+    Description: String
+    AutomaticStopTimeMinutes: Integer
+    InstanceType: String
+    Name: String
+    SubnetId: String
+
+
+snippet  AWS::CloudFormation::Interface
+  Metadata:
+    AWS::CloudFormation::Interface:
+      ParameterGroups:
+        - ParameterGroup
+      ParameterLabels:
+        ParameterLabel
+
+
+snippet  AWS::CloudFront::CloudFrontOriginAccessIdentity
+  Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
+  Properties:
+    CloudFrontOriginAccessIdentityConfig: CloudFrontOriginAccessIdentityConfig
+
+
+snippet  AWS::CloudFront::StreamingDistribution
+  Type: "AWS::CloudFront::StreamingDistribution"
+  Properties:
+    StreamingDistributionConfig: StreamingDistributionConfig
+    Tags: 
+      - *Tag*
+
+
+snippet  AWS::CloudTrail::Trail
+  Type: "AWS::CloudTrail::Trail"
+  Properties:
+    CloudWatchLogsLogGroupArn: String
+    CloudWatchLogsRoleArn: String
+    EnableLogFileValidation: Boolean
+    EventSelectors:
+      - *EventSelector*
+    IncludeGlobalServiceEvents: Boolean
+    IsLogging: Boolean
+    IsMultiRegionTrail: Boolean
+    KMSKeyId: String
+    S3BucketName: String
+    S3KeyPrefix: String
+    SnsTopicName: String
+    Tags:
+      - *Resource Tag*
+    TrailName: String
+
+
+snippet  AWS::CodeBuild::Project
+  Type: "AWS::CodeBuild::Project"
+  Properties: 
+    Artifacts:
+      *Artifacts*
+    BadgeEnabled: Boolean
+    Cache: 
+      *ProjectCache*
+    Description: String
+    EncryptionKey: String
+    Environment:
+      *Environment*
+    Name: String
+    ServiceRole: String
+    Source:
+      *Source*
+    Tags:
+      - Resource Tag
+    TimeoutInMinutes: Integer
+    Triggers
+    VpcConfig: 
+      *VpcConfig*
+
+
+snippet  AWS::CodeCommit::Repository
+  Type: "AWS::CodeCommit::Repository"
+  Properties: 
+    RepositoryDescription: String
+    RepositoryName: String
+    Triggers:
+    - Trigger
+
+
+snippet  AWS::CodeDeploy::Application
+  Type: "AWS::CodeDeploy::Application"
+  Properties:
+    ApplicationName: String	    
+    ComputePlatform: String
+
+
+snippet  AWS::CodeDeploy::DeploymentConfig
+  Type: "AWS::CodeDeploy::DeploymentConfig"
+  Properties:
+    DeploymentConfigName: String
+    MinimumHealthyHosts:
+      MinimumHealthyHosts
+
+
+snippet  AWS::CodeDeploy::DeploymentGroup
+  Type: "AWS::CodeDeploy::DeploymentGroup"
+  Properties:
+    AlarmConfiguration:
+      *AlarmConfiguration*
+    ApplicationName: String
+    AutoRollbackConfiguration: 
+      *AutoRollbackConfiguration*
+    AutoScalingGroups:
+      - String
+    Deployment:
+      *Deployment*
+    DeploymentConfigName: String
+    DeploymentGroupName: String
+    DeploymentStyle: 
+      *DeploymentStyle*
+    Ec2TagFilters:
+      - *Ec2TagFilters*
+    LoadBalancerInfo: 
+      *LoadBalancerInfo*
+    OnPremisesInstanceTagFilters:
+      - *OnPremisesInstanceTagFilters*
+    ServiceRoleArn: String
+    TriggerConfigurations:
+      - *TriggerConfig*
+
+
+snippet  AWS CodePipeline CustomActionType ConfigurationProperties
+  Description: String
+  Key: Boolean
+  Name: String
+  Queryable: Boolean
+  Required: Boolean
+  Secret: Boolean
+  Type: String
+
+
+snippet  AWS::CodePipeline::CustomActionType
+  Type: "AWS::CodePipeline::CustomActionType"
+  Properties:
+    Category: String,
+    ConfigurationProperties:
+      - ConfigurationProperties
+    InputArtifactDetails:
+      ArtifactDetails
+    OutputArtifactDetails:
+      ArtifactDetails
+    Provider: String
+    Settings:
+      Settings
+    Version: String
+
+
+snippet  AWS CodePipeline CustomActionType Settings
+  EntityUrlTemplate: String
+  ExecutionUrlTemplate: String
+  RevisionUrlTemplate: String
+  ThirdPartyConfigurationUrl: String
+
+
+snippet  AWS::CodePipeline::Pipeline
+  Type: "AWS::CodePipeline::Pipeline"
+  Properties:
+    ArtifactStore:
+      ArtifactStore
+    DisableInboundStageTransitions:
+      - DisableInboundStageTransitions
+    Name: String
+    RestartExecutionOnUpdate: Boolean
+    RoleArn: String
+    Stages:
+      - Stages
+
+
+snippet  AWS::Cognito::IdentityPool
+  Type: "AWS::Cognito::IdentityPool"
+  Properties:
+    IdentityPoolName: String
+    AllowUnauthenticatedIdentities: Boolean
+    DeveloperProviderName: String
+    SupportedLoginProviders: 
+      String: String
+    CognitoIdentityProviders: 
+      - *CognitoIdentityProvider*
+    SamlProviderARNs: 
+      - String
+    OpenIdConnectProviderARNs: 
+      - String
+    CognitoStreams: 
+      - CognitoStreams
+    PushSync: 
+      - PushSync
+    CognitoEvents: 
+      String: String
+
+
+snippet  AWS::Cognito::IdentityPoolRoleAttachment
+  Type: "AWS::Cognito::IdentityPoolRoleAttachment"
+  Properties:
+    IdentityPoolId: String
+    RoleMappings: 
+      String to RoleMapping object map
+    Roles: 
+      String:String
+
+
+snippet  AWS::Cognito::UserPoolClient
+  Type: "AWS::Cognito::UserPoolClient"
+  Properties:
+      ClientName: String,
+      ExplicitAuthFlows: 
+        - String
+      GenerateSecret: Boolean
+      ReadAttributes: 
+        - String
+      RefreshTokenValidity: Integer
+      UserPoolId: String
+      WriteAttributes: 
+        - String
+
+
+snippet  AWS::Cognito::UserPoolGroup
+  Type: "AWS::Cognito::UserPoolGroup"
+  Properties:
+    Description: String
+    GroupName: String
+    Precedence: Number
+    RoleArn: String
+    UserPoolId: String
+
+
+snippet  AWS::Cognito::UserPool
+  Type: "AWS::Cognito::UserPool"
+  Properties:
+    AdminCreateUserConfig: 
+      AdminCreateUserConfig
+    AliasAttributes: 
+      - String
+    AutoVerifiedAttributes: 
+      - String
+    DeviceConfiguration: 
+      DeviceConfiguration
+    EmailConfiguration: 
+      EmailConfiguration
+    EmailVerificationMessage: String
+    EmailVerificationSubject: String
+    LambdaConfig: 
+      LambdaConfig
+    MfaConfiguration: String
+    Policies: 
+      Policies
+    UserPoolName: String
+    Schema: 
+      - *SchemaAttribute*
+    SmsAuthenticationMessage: String
+    SmsConfiguration: 
+      SmsConfiguration
+    SmsVerificationMessage: String
+    UserPoolTags: 
+      String: String
+
+
+snippet  AWS::Cognito::UserPoolUser
+  Type: "AWS::Cognito::UserPoolUser"
+  Properties:
+    DesiredDeliveryMediums: 
+      - String
+    ForceAliasCreation: Boolean
+    UserAttributes: 
+      - AttributeType
+    MessageAction: String
+    Username: String
+    UserPoolId: String
+    ValidationData: 
+      - AttributeType
+
+
+snippet  AWS::Cognito::UserPoolUserToGroupAttachment
+  Type: "AWS::Cognito::UserPoolUserToGroupAttachment"
+  Properties:
+    GroupName: String
+    Username: String
+    UserPoolId: String
+
+
+snippet  AWS::Config::ConfigRule
+  Type: "AWS::Config::ConfigRule"
+  Properties:
+    ConfigRuleName: String
+    Description: String
+    InputParameters:
+      ParameterName : Value
+    MaximumExecutionFrequency: String
+    Scope:
+      Scope
+    Source:
+      Source
+
+
+snippet  AWS::Config::ConfigurationRecorder
+  Type: "AWS::Config::ConfigurationRecorder"
+  Properties:
+    Name: String
+    RecordingGroup:
+      Recording group
+    RoleARN: String
+
+
+snippet  AWS::Config::DeliveryChannel
+  Type: "AWS::Config::DeliveryChannel"
+  Properties:
+    ConfigSnapshotDeliveryProperties:
+      Config snapshot delivery properties
+    Name: String
+    S3BucketName: String
+    S3KeyPrefix: String
+    SnsTopicARN: String
+
+
+snippet  AWS::DataPipeline::Pipeline
+  Type: "AWS::DataPipeline::Pipeline"
+  Properties:
+    Activate: Boolean
+    Description: String
+    Name: String
+    ParameterObjects:
+      - Parameter object
+    ParameterValues:
+      - Parameter value
+    PipelineObjects:
+      - Pipeline object
+    PipelineTags:
+      - Pipeline tag
+
+
+snippet  AWS::DAX::Cluster
+  Type: "AWS::DAX::Cluster"
+  Properties:
+        AvailabilityZones:  String, ... ]
+        ClusterName: String
+        Description: String
+        IAMRoleARN: String
+        NodeType: String
+        NotificationTopicARN: String
+        ParameterGroupName: String
+        PreferredMaintenanceWindow: String
+        ReplicationFactor: Integer
+        SecurityGroupIds:  String, ... ]
+        SubnetGroupName: String
+        Tags: { String:String, ... }
+
+
+snippet  AWS::DAX::ParameterGroup
+  Type: "AWS::DAX::ParameterGroup"
+  Properties:
+        ParameterGroupName: String
+        Description: String
+        ParameterNameValues: { String:String, ... }
+
+
+snippet  AWS::DAX::SubnetGroup
+  Type: "AWS::DAX::SubnetGroup"
+  Properties:
+        SubnetGroupName: String
+        Description: String
+        SubnetIds:  String, ... ]
+
+
+snippet  AWS::DirectoryService::MicrosoftAD
+  Type: "AWS::DirectoryService::MicrosoftAD"
+  Properties:
+    CreateAlias: Boolean
+    EnableSso: Boolean
+    Name: String
+    Password: String
+    ShortName: String
+    VpcSettings:
+      VpcSettings
+
+
+snippet  AWS::DirectoryService::SimpleAD
+  Type: "AWS::DirectoryService::SimpleAD"
+  Properties:
+    CreateAlias: Boolean
+    Description: String
+    EnableSso: Boolean
+    Name: String
+    Password: String
+    ShortName: String
+    Size: String
+    VpcSettings:
+      VpcSettings
+
+
+snippet  AWS::DMS::Certificate
+  Type: "AWS::DMS::Certificate"
+  Properties:
+    CertificateIdentifier: String
+    CertificatePem: String
+    CertificateWallet: String
+
+
+snippet  AWS::DMS::Endpoint
+  Type: "AWS::DMS::Endpoint"
+  Properties:
+    CertificateArn: String
+    DatabaseName: String
+    DynamoDbSettings:
+      DynamoDbSettings
+    EndpointIdentifier: String
+    EndpointType: String
+    EngineName: String
+    ExtraConnectionAttributes: String
+    KmsKeyId: String
+    MongoDbSettings: 
+      MongoDbSettings
+    Password: String
+    Port: Integer
+    S3Settings:
+      S3Settings
+    ServerName: String
+    SslMode: String
+    Tags:
+      - Resource Tag
+    Username: String
+
+
+snippet  AWS::DMS::EventSubscription
+  Type: "AWS::DMS::EventSubscription"
+  Properties: 
+    Enabled: Boolean
+    EventCategories: 
+      - String
+    SnsTopicArn: String
+    SourceIds:
+      - String
+    SourceType: String
+    SubscriptionName: 
+      - String
+    Tags: 
+      - Resource Tag
+
+
+snippet  AWS::DMS::ReplicationInstance
+  Type: "AWS::DMS::ReplicationInstance"
+  Properties:
+    AllocatedStorage: Integer
+    AutoMinorVersionUpgrade: Boolean
+    AvailabilityZone: String
+    EngineVersion: String
+    KmsKeyId: String
+    MultiAZ: Boolean
+    PreferredMaintenanceWindow: String
+    PubliclyAccessible: Boolean
+    ReplicationInstanceClass: String
+    ReplicationInstanceIdentifier: String
+    ReplicationSubnetGroupIdentifier: String
+    Tags: 
+      - Resource Tag
+    VpcSecurityGroupIds:
+      - String
+
+
+snippet  AWS::DMS::ReplicationSubnetGroup
+  Type: "AWS::DMS::ReplicationSubnetGroup"
+  Properties: 
+    ReplicationSubnetGroupIdentifier: String
+    ReplicationSubnetGroupDescription: String
+    SubnetIds:
+      - String
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::DMS::ReplicationTask
+  Type: "AWS::DMS::ReplicationTask"
+  Properties:
+    CdcStartTime: Timestamp
+    MigrationType: String
+    ReplicationInstanceArn: String
+    ReplicationTaskIdentifier: String
+    ReplicationTaskSettings: String
+    SourceEndpointArn: String
+    TableMappings: String
+    Tags: 
+      - Resource Tag
+    TargetEndpointArn: String
+
+
+snippet  AWS::DynamoDB::Table
+  Type: "AWS::DynamoDB::Table"
+  Properties:
+    AttributeDefinitions:
+      - AttributeDefinition
+    GlobalSecondaryIndexes:
+      - GlobalSecondaryIndexes
+    KeySchema:
+      - KeySchema
+    LocalSecondaryIndexes:
+      - LocalSecondaryIndexes
+    ProvisionedThroughput:
+      ProvisionedThroughput
+    SSESpecification:
+      SSESpecification
+    StreamSpecification:
+      StreamSpecification
+    TableName: String
+    Tags: 
+      - Resource Tag
+    TimeToLiveSpecification: 
+      TimeToLiveSpecification
+
+
+snippet  AWS::EC2::CustomerGateway
+  Type: "AWS::EC2::CustomerGateway"
+  Properties:
+    BgpAsn: Number
+    IpAddress: String
+    Tags:
+      Resource Tag
+    Type: String
+
+
+snippet  AWS::EC2::DHCPOptions
+  Type: "AWS::EC2::DHCPOptions"
+  Properties:
+    DomainName: String
+    DomainNameServers:
+      - String
+    NetbiosNameServers:
+      - String
+    NetbiosNodeType: Number
+    NtpServers:
+      - String
+    Tags:
+      -Resource Tag
+
+
+snippet  AWS::EC2::EgressOnlyInternetGateway
+  Type: "AWS::EC2::EgressOnlyInternetGateway"
+  Properties: 
+    VpcId: String
+
+
+snippet  AWS::EC2::FlowLog
+  Type: "AWS::EC2::FlowLog"
+  Properties:
+    DeliverLogsPermissionArn : String
+    LogGroupName : String
+    ResourceId : String
+    ResourceType : String
+    TrafficType : String
+
+
+snippet  AWS::EC2::Host
+  Type: "AWS::EC2::Host"
+  Properties: 
+    AutoPlacement: String
+    AvailabilityZone: String
+    InstanceType: String
+
+
+snippet  AWS::EC2::InternetGateway
+  Type: "AWS::EC2::InternetGateway"
+  Properties: 
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::EC2::NatGateway
+  Type: "AWS::EC2::NatGateway"
+  Properties: 
+    AllocationId: String
+    SubnetId: String
+    Tags: 
+      - Resource Tag
+
+
+snippet  AWS::EC2::NetworkAclEntry
+  Type: "AWS::EC2::NetworkAclEntry"
+  Properties: 
+    CidrBlock: String
+    Egress: Boolean
+    Icmp:
+      EC2 ICMP
+    Ipv6CidrBlock: String 
+    NetworkAclId: String
+    PortRange:
+      EC2 PortRange
+    Protocol: Integer
+    RuleAction : String
+    RuleNumber : Integer
+
+
+snippet  AWS::EC2::NetworkAcl
+  Type: "AWS::EC2::NetworkAcl"
+  Properties:
+    Tags:
+      - Resource Tag
+    VpcId: String
+
+
+snippet  AWS::EC2::NetworkInterfaceAttachment
+  Type: "AWS::EC2::NetworkInterfaceAttachment"
+  Properties: 
+    DeleteOnTermination: Boolean
+    DeviceIndex: String
+    InstanceId: String
+    NetworkInterfaceId: String
+
+
+snippet  AWS::EC2::NetworkInterface
+  Type: "AWS::EC2::NetworkInterface"
+  Properties: 
+    Description: String
+    GroupSet:
+      - String
+    Ipv6AddressCount: Integer
+    Ipv6Addresses:
+      - Ipv6Address
+    PrivateIpAddress: String
+    PrivateIpAddresses:
+      - PrivateIpAddressSpecification
+    SecondaryPrivateIpAddressCount: Integer
+    SourceDestCheck: Boolean
+    SubnetId: String
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::EC2::NetworkInterfacePermission
+  Type: "AWS::EC2::NetworkInterfacePermission"
+  Properties:
+    AwsAccountId: String
+    NetworkInterfaceId: String
+    Permission: String
+
+
+snippet  AWS::EC2::PlacementGroup
+  Type: "AWS::EC2::PlacementGroup"
+  Properties: 
+    Strategy: String
+
+
+snippet  AWS::EC2::Route
+  Type: "AWS::EC2::Route"
+  Properties: 
+    DestinationCidrBlock: String
+    DestinationIpv6CidrBlock: String
+    EgressOnlyInternetGatewayId: String
+    GatewayId: String
+    InstanceId: String
+    NatGatewayId: String
+    NetworkInterfaceId: String
+    RouteTableId: String
+    VpcPeeringConnectionId: String
+
+
+snippet  AWS::EC2::RouteTable
+  Type: "AWS::EC2::RouteTable"
+  Properties: 
+    VpcId: String
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::EC2::SecurityGroupEgress
+  Type: "AWS::EC2::SecurityGroupEgress"
+  Properties:
+    CidrIp: String
+    CidrIpv6: String
+    Description: String
+    DestinationPrefixListId: String
+    DestinationSecurityGroupId:  String
+    FromPort: Integer
+    GroupId: String
+    IpProtocol: String
+    ToPort: Integer
+
+
+snippet  AWS::EC2::SpotFleet
+  Type: "AWS::EC2::SpotFleet"
+  Properties: 
+    SpotFleetRequestConfigData:
+      SpotFleetRequestConfigData
+
+
+snippet  AWS::EC2::SubnetCidrBlock
+  Type: "AWS::EC2::SubnetCidrBlock"
+  Properties: 
+    Ipv6CidrBlock: String
+    SubnetId: String
+
+
+snippet  AWS::EC2::Subnet
+  Type: "AWS::EC2::Subnet"
+  Properties:
+    AssignIpv6AddressOnCreation: Boolean
+    AvailabilityZone: String
+    CidrBlock: String
+    Ipv6CidrBlock: String
+    MapPublicIpOnLaunch: Boolean
+    Tags:
+      - Resource Tag
+    VpcId: String
+
+
+snippet  AWS::EC2::SubnetNetworkAclAssociation
+  Type: "AWS::EC2::SubnetNetworkAclAssociation"
+  Properties:
+    SubnetId: String
+    NetworkAclId: String
+
+
+snippet  AWS::EC2::SubnetRouteTableAssociation
+  Type: "AWS::EC2::SubnetRouteTableAssociation"
+  Properties: 
+    RouteTableId: String
+    SubnetId: String
+
+
+snippet  AWS::EC2::VPCCidrBlock
+  Type: "AWS::EC2::VPCCidrBlock"
+  Properties: 
+    AmazonProvidedIpv6CidrBlock: Boolean
+    CidrBlock: String
+    VpcId: String
+
+
+snippet  AWS::EC2::VPCDHCPOptionsAssociation
+  Type: "AWS::EC2::VPCDHCPOptionsAssociation"
+  Properties: 
+    DhcpOptionsId: String
+    VpcId: String
+
+
+snippet  AWS::EC2::VPCEndpoint
+  Type: "AWS::EC2::VPCEndpoint"
+  Properties: 
+    PolicyDocument: JSON object
+    RouteTableIds:
+      - String
+    ServiceName: String
+    VpcId: String
+
+
+snippet  AWS::EC2::VPCGatewayAttachment
+  Type: "AWS::EC2::VPCGatewayAttachment"
+  Properties: 
+    InternetGatewayId: String
+    VpcId: String
+    VpnGatewayId: String
+
+
+snippet  AWS::EC2::VPC
+  Type: "AWS::EC2::VPC"
+  Properties: 
+    CidrBlock: String
+    EnableDnsSupport: Boolean
+    EnableDnsHostnames: Boolean
+    InstanceTenancy: String
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::EC2::VPCPeeringConnection
+  Type: "AWS::EC2::VPCPeeringConnection"
+  Properties: 
+    PeerVpcId: String
+    Tags:
+      - Resource Tag
+    VpcId: String
+    PeerOwnerId: String
+    PeerRoleArn:  String
+
+
+snippet  AWS::EC2::VPNConnection
+  Type: "AWS::EC2::VPNConnection"
+  Properties: 
+    Type: String
+    CustomerGatewayId:
+      GatewayID
+    StaticRoutesOnly: Boolean
+    Tags:
+      - Resource Tag
+    VpnGatewayId:
+      GatewayID
+    VpnTunnelOptionsSpecifications: 
+      - *VpnTunnelOptionsSpecification*
+
+
+snippet  AWS::EC2::VPNConnectionRoute
+  Type: "AWS::EC2::VPNConnectionRoute"
+  Properties: 
+    DestinationCidrBlock: String
+    VpnConnectionId: String
+
+
+snippet  AWS::EC2::VPNGateway
+  Type: "AWS::EC2::VPNGateway"
+  Properties: 
+    AmazonSideAsn: Long
+    Type: String
+    Tags:
+      Resource Tag
+
+
+snippet  AWS::EC2::VPNGatewayRoutePropagation
+  Type: "AWS::EC2::VPNGatewayRoutePropagation"
+  Properties: 
+    RouteTableIds:
+      - String
+    VpnGatewayId: String
+
+
+snippet  AWS::ECR::Repository
+  Type: "AWS::ECR::Repository"
+  Properties: 
+    LifecyclePolicy:
+      *LifecyclePolicy*
+    RepositoryName: String
+    RepositoryPolicyText: JSON object
+
+
+snippet  AWS::ECS::Cluster
+  Type: "AWS::ECS::Cluster"
+  Properties:
+    ClusterName: String
+
+
+snippet  AWS::ECS::Service
+  Type: "AWS::ECS::Service"
+  Properties: 
+    Cluster: String
+    DeploymentConfiguration:
+      DeploymentConfiguration
+    DesiredCount: Integer
+    HealthCheckGracePeriodSeconds: Integer
+    LaunchType: String
+    LoadBalancers:
+      - Load Balancer Objects, ...
+    NetworkConfiguration: 
+      *NetworkConfiguration*
+    PlacementConstraints: 
+     - PlacementConstraints, ...
+    PlacementStrategies: 
+     - PlacementStrategies, ...
+    PlatformVersion: String
+    Role: String
+    ServiceName: String
+    TaskDefinition: String
+
+
+snippet  AWS::ECS::TaskDefinition
+  Type: "AWS::ECS::TaskDefinition"
+  Properties: 
+    Volumes:
+      - Volume Definition
+    Cpu: String
+    ExecutionRoleArn: String
+    Family: String
+    Memory: String
+    NetworkMode: String
+    PlacementConstraints:
+      - TaskDefinitionPlacementConstraint
+    RequiresCompatibilities:
+      - String
+    TaskRoleArn: String
+    ContainerDefinitions:
+      - Container Definition
+
+
+snippet  AWS::EFS::FileSystem
+  Type: "AWS::EFS::FileSystem"
+  Properties: 
+    Encrypted: Boolean
+    FileSystemTags:
+      - FileSystemTags
+    KmsKeyId: String
+    PerformanceMode: String
+
+
+snippet  AWS::EFS::MountTarget
+  Type: "AWS::EFS::MountTarget"
+  Properties:
+    FileSystemId: String
+    IpAddress: String
+    SecurityGroups:
+       String, ... ]
+    SubnetId: String
+
+
+snippet  AWS::ElastiCache::ReplicationGroup
+  Type: "AWS::ElastiCache::ReplicationGroup"
+  Properties: 
+    AtRestEncryptionEnabled: Boolean
+    AuthToken: String
+    AutomaticFailoverEnabled: Boolean
+    AutoMinorVersionUpgrade: Boolean
+    CacheNodeType: String
+    CacheParameterGroupName: String
+    CacheSecurityGroupNames:
+      - String
+    CacheSubnetGroupName: String
+    Engine: String
+    EngineVersion: String
+    NodeGroupConfiguration:
+      - NodeGroupConfiguration
+    NotificationTopicArn: String
+    NumCacheClusters: Integer
+    NumNodeGroups: Integer
+    Port: Integer
+    PreferredCacheClusterAZs:
+      - String
+    PreferredMaintenanceWindow: String
+    PrimaryClusterId: String
+    ReplicasPerNodeGroup: Integer
+    ReplicationGroupDescription: String
+    ReplicationGroupId: String
+    SecurityGroupIds:
+      - String
+    SnapshotArns:
+      - String
+    SnapshotName: String
+    SnapshotRetentionLimit: Integer
+    SnapshottingClusterId: String
+    SnapshotWindow: String
+    Tags
+      - Resource Tag
+    TransitEncryptionEnabled: Boolean
+
+
+snippet  AWS::ElasticLoadBalancingV2::ListenerCertificate
+  Type: "AWS::ElasticLoadBalancingV2::ListenerCertificate"
+  Properties:
+    Certificates: 
+      - *Certificate*
+    ListenerArn: String
+
+
+snippet  AWS::ElasticLoadBalancingV2::Listener
+  Type: "AWS::ElasticLoadBalancingV2::Listener"
+  Properties: 
+    Certificates:
+      - Certificate
+    DefaultActions:
+      - Action
+    LoadBalancerArn: String
+    Port: Integer
+    Protocol: String
+    SslPolicy: String
+
+
+snippet  AWS::ElasticLoadBalancingV2::ListenerRule
+  Type: "AWS::ElasticLoadBalancingV2::ListenerRule"
+  Properties:
+    Actions:
+      - Actions
+    Conditions:
+      - Conditions
+    ListenerArn: String
+    Priority: Integer
+
+
+snippet  AWS::ElasticLoadBalancingV2::LoadBalancer
+  Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
+  Properties:
+    LoadBalancerAttributes:
+      - LoadBalancerAttributes
+    Name: String
+    Scheme: String
+    SecurityGroups:
+      - String
+    SubnetMappings:
+      - *SubnetMapping*
+    Subnets:
+      - String
+    Tags:
+      - Resource Tag
+    Type: String
+    IpAddressType: String
+
+
+snippet  AWS::ElasticLoadBalancingV2::TargetGroup
+  Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
+  Properties:
+    HealthCheckIntervalSeconds: Integer
+    HealthCheckPath: String
+    HealthCheckPort: String
+    HealthCheckProtocol: String
+    HealthCheckTimeoutSeconds: Integer
+    HealthyThresholdCount: Integer
+    Matcher
+    Name: String
+    Port: Integer
+    Protocol: String
+    Tags:
+      - Resource Tag
+    TargetGroupAttributes:
+      - TargetGroupAttributes
+    Targets:
+      - TargetDescription
+    TargetType: String
+    UnhealthyThresholdCount: Integer
+    VpcId: String
+
+
+snippet  AWS::EMR::InstanceFleetConfig
+  Type: "AWS::EMR::InstanceFleetConfig"
+  Properties: 
+    ClusterId: String
+    InstanceFleetType: String
+    InstanceTypeConfigs:
+      - *InstanceTypeConfig*
+    LaunchSpecifications:
+      *InstanceFleetProvisioningSpecifications*
+    Name: String
+    TargetOnDemandCapacity: Integer
+    TargetSpotCapacity: Integer
+
+
+snippet  AWS::Elasticsearch::Domain
+  Type: "AWS::Elasticsearch::Domain"
+  Properties: 
+    AccessPolicies: JSON object
+    AdvancedOptions:
+      String: String
+    DomainName: String
+    EBSOptions:
+      *EBSOptions*
+    ElasticsearchClusterConfig:
+      *ElasticsearchClusterConfig*
+    ElasticsearchVersion: String
+    SnapshotOptions:
+      *SnapshotOptions*
+    Tags:
+      - Resource Tag
+    VPCOptions: 
+      *VPCOptions*
+
+
+snippet  AWS::EMR::Cluster
+  Type: "AWS::EMR::Cluster"
+  Properties: 
+    AdditionalInfo: JSON object
+    Applications:
+      - Applications
+    AutoScalingRole: String      
+    BootstrapActions:
+      - Bootstrap Actions
+    Configurations:
+      - Configurations        
+    CustomAmiId: String
+    EbsRootVolumeSize: Integer
+    Instances:
+      JobFlowInstancesConfig
+    JobFlowRole: String
+    LogUri: String
+    Name: String
+    ReleaseLabel: String
+    ScaleDownBehavior: String
+    SecurityConfiguration: String
+    ServiceRole: String
+    Tags:
+      - Resource Tag
+    VisibleToAllUsers: Boolean
+
+
+snippet  AWS::EMR::InstanceGroupConfig
+  Type: "AWS::EMR::InstanceGroupConfig"
+  Properties: 
+    AutoScalingPolicy:
+      AutoScalingPolicy
+    BidPrice: String
+    Configurations:
+      - Configuration
+    EbsConfiguration" :
+      EBSConfiguration
+    InstanceCount" : Integer
+    InstanceRole" : String
+    InstanceType" : String
+    JobFlowId": String
+    Market" : String
+    Name" : String
+
+
+snippet  AWS::EMR::SecurityConfiguration
+  Type: "AWS::EMR::SecurityConfiguration"
+  Properties: 
+    Name: String
+    SecurityConfiguration: String
+
+
+snippet  AWS::EMR::Step
+  Type: "AWS::EMR::Step"
+  Properties: 
+    ActionOnFailure: String
+    HadoopJarStep:
+      HadoopJarStepConfig
+    JobFlowId: String
+    Name: String
+
+
+snippet  AWS::Events::Rule
+  Type: "AWS::Events::Rule"
+  Properties: 
+    Description: String
+    EventPattern: JSON object
+    Name: String
+    ScheduleExpression: String
+    State: String
+    Targets:
+      - Target
+
+
+snippet  AWS::GameLift::Alias
+  Type: "AWS::GameLift::Alias"
+  Properties: 
+    Name: String
+    Description: String
+    RoutingStrategy:
+      RoutingStrategy
+
+
+snippet  AWS::GameLift::Build
+  Type: "AWS::GameLift::Build"
+  Properties: 
+    Name: String
+    StorageLocation:
+      StorageLocation
+    Version: String
+
+
+snippet  AWS::GameLift::Fleet
+  Type: "AWS::GameLift::Fleet"
+  Properties: 
+    BuildId: String
+    Description: String
+    DesiredEC2Instances: Integer
+    EC2InboundPermissions:
+      - EC2InboundPermission
+    EC2InstanceType: String
+    LogPaths:
+       String, ... ]
+    MaxSize: Integer
+    MinSize: Integer
+    Name: String
+    ServerLaunchParameters: String
+    ServerLaunchPath: String
+
+
+snippet  AWS::Glue::Classifier
+  Type: "AWS::Glue::Classifier"
+  Properties:
+    GrokClassifier: 
+      *GrokClassifier*
+
+
+snippet  AWS::Glue::Connection
+  Type: "AWS::Glue::Connection"
+  Properties:
+    ConnectionInput: 
+      *ConnectionInput*
+    CatalogId: String
+
+
+snippet  AWS::Glue::Crawler
+  Type: "AWS::Glue::Crawler"
+  Properties:
+    Role: String
+    Classifiers: 
+      - String
+    Description: String
+    SchemaChangePolicy: 
+      *SchemaChangePolicy*
+    Schedule: 
+      *Schedule*
+    DatabaseName: String
+    Targets: 
+      *Targets*
+    TablePrefix: String
+    Name: String
+
+
+snippet  AWS::Glue::Database
+  Type: "AWS::Glue::Database"
+  Properties:
+    DatabaseInput: 
+      *DatabaseInput*
+    CatalogId: String
+
+
+snippet  AWS::Glue::DevEndpoint
+  Type: "AWS::Glue::DevEndpoint"
+  Properties:
+    EndpointName: String
+    ExtraJarsS3Path: String
+    ExtraPythonLibsS3Path: String
+    NumberOfNodes: Integer
+    PublicKey: String
+    RoleArn: String
+    SecurityGroupIds: 
+      - String
+    SubnetId: String
+
+
+snippet  AWS::Glue::Job
+  Type: "AWS::Glue::Job"
+  Properties:
+    Role: String
+    DefaultArguments: JSON object
+    Connections: 
+      *ConnectionsList*
+    MaxRetries: Double
+    Description: String
+    LogUri: String
+    Command: 
+      *JobCommand*
+    AllocatedCapacity: Double
+    ExecutionProperty: 
+      *ExecutionProperty*
+    Name: String
+
+
+snippet  AWS::Glue::Partition
+  Type: "AWS::Glue::Partition"
+  Properties:
+    TableName: String
+    DatabaseName: String
+    CatalogId: String
+    PartitionInput: 
+      *PartitionInput*
+
+
+snippet  AWS::Glue::Table
+  Type: "AWS::Glue::Table"
+  Properties:
+    TableInput: 
+      *TableInput*
+    DatabaseName: String
+    CatalogId: String
+
+
+snippet  AWS::Glue::Trigger
+  Type: "AWS::Glue::Trigger"
+  Properties:
+    Type: String
+    Description: String
+    Actions: 
+      - *Action* 
+    Schedule: String
+    Name: String
+    Predicate: 
+      *Predicate*
+
+
+snippet  AWS::GuardDuty::Detector
+  Type: "AWS::GuardDuty::Detector"
+  Properties:
+    Enable: Boolean
+
+
+snippet  AWS::GuardDuty::IPSet
+  Type: "AWS::GuardDuty::IPSet"
+  Properties:
+    Activate: Boolean
+    DetectorId: String
+    Format: String
+    Location: String
+    Name: String
+
+
+snippet  AWS::GuardDuty::Master
+  Type: "AWS::GuardDuty::Master"
+  Properties:
+    DetectorId: String
+    MasterId: String
+    InvitationId: String
+
+
+snippet  AWS::GuardDuty::Member
+  Type: "AWS::GuardDuty::Member"
+  Properties:
+    Status: String
+    MemberId: String
+    Email: String
+    Message: String
+    DetectorId: String
+
+
+snippet  AWS::GuardDuty::ThreatIntelSet
+  Type: "AWS::GuardDuty::ThreatIntelSet"
+  Properties:
+    Activate: Boolean
+    DetectorId: String
+    Format: String
+    Location: String
+    Name: String
+
+
+snippet  AWS::IAM::InstanceProfile
+  Type: "AWS::IAM::InstanceProfile"
+  Properties: 
+    Path: String
+    Roles:
+      - IAM Roles 
+    InstanceProfileName: String
+
+
+snippet  AWS::IAM::ManagedPolicy
+  Type: "AWS::IAM::ManagedPolicy"
+  Properties: 
+    Description: String
+    Groups:
+      - String
+    Path: String
+    PolicyDocument: JSON object
+    Roles:
+      - String
+    Users:
+      - String
+    ManagedPolicyName: String
+
+
+snippet  AWS::IAM::Policy
+  Type: "AWS::IAM::Policy"
+  Properties: 
+    Groups:
+      - String
+    PolicyDocument: JSON object
+    PolicyName: String
+    Roles:
+      - String
+    Users:
+      - String
+
+
+snippet  AWS::IAM::Role
+  Type: "AWS::IAM::Role"
+  Properties: 
+    AssumeRolePolicyDocument:
+      JSON object
+    ManagedPolicyArns:
+      - String
+    Path: String
+    Policies:
+      - Policies
+    RoleName: String
+
+
+snippet  AWS::CloudFormation::Init
+  Resources: 
+    MyInstance: 
+      Type: "AWS::EC2::Instance"
+      Metadata: 
+        AWS::CloudFormation::Init: 
+          config: 
+            packages: 
+              :
+            groups: 
+              :
+            users: 
+              :
+            sources: 
+              :
+            files: 
+              :
+            commands: 
+              :
+            services: 
+              :
+      Properties: 
+        :
+
+
+snippet  AWS::Inspector::AssessmentTarget
+  Type: "AWS::Inspector::AssessmentTarget"
+  Properties:
+    AssessmentTargetName: String
+    ResourceGroupArn: String
+
+
+snippet  AWS::Inspector::AssessmentTemplate
+  Type: "AWS::Inspector::AssessmentTemplate"
+  Properties:
+    AssessmentTargetArn: String
+    DurationInSeconds: Integer
+    AssessmentTemplateName: String
+    RulesPackageArns: 
+      - String
+    UserAttributesForFindings: 
+      - Resource Tag
+
+
+snippet  AWS::Inspector::ResourceGroup
+  Type: "AWS::Inspector::ResourceGroup"
+  Properties:
+    ResourceGroupTags: 
+      - Resource Tag
+
+
+snippet  AWS::IoT::Certificate
+  Type: "AWS::IoT::Certificate"
+    Properties:
+      CertificateSigningRequest: String
+      Status: String
+
+
+snippet  AWS::IoT::Policy
+  Type: "AWS::IoT::Policy"
+  Properties:
+    PolicyDocument: JSON object
+    PolicyName: String
+
+
+snippet  AWS::IoT::PolicyPrincipalAttachment
+  Type: "AWS::IoT::PolicyPrincipalAttachment"
+    Properties:
+      PolicyName: String
+      Principal: String
+
+
+snippet  AWS::IoT::Thing
+  Type: "AWS::IoT::Thing"
+  Properties:
+    AttributePayload:
+      *AttributePayload*
+    ThingName: String
+
+
+snippet  AWS::IoT::ThingPrincipalAttachment
+  Type: "AWS::IoT::ThingPrincipalAttachment"
+  Properties:
+    Principal: String
+    ThingName: String
+
+
+snippet  AWS::IoT::TopicRule
+  Type: "AWS::IoT::TopicRule"
+  Properties:
+    RuleName: String
+    TopicRulePayload: TopicRulePayLoad
+
+
+snippet  AWS::KinesisAnalytics::Application
+  Type: "AWS::KinesisAnalytics::Application"
+  Properties:
+    ApplicationName: String
+    ApplicationDescription: String
+    ApplicationCode: String
+    Inputs: 
+      - *Input*
+
+
+snippet  AWS::KinesisAnalytics::ApplicationOutput
+  Type: "AWS::KinesisAnalytics::ApplicationOutput"
+  Properties:
+    ApplicationName: String
+    Output: 
+      *Output*
+
+
+snippet  AWS::KinesisAnalytics::ApplicationReferenceDataSource
+  Type: "AWS::KinesisAnalytics::ApplicationReferenceDataSource"
+  Properties:
+    ApplicationName: String
+    ReferenceDataSource: 
+      *ReferenceDataSource*
+
+
+snippet  AWS::KinesisFirehose::DeliveryStream
+  Type: "AWS::KinesisFirehose::DeliveryStream"
+  Properties: 
+    DeliveryStreamName: String
+    DeliveryStreamType: String
+    ElasticsearchDestinationConfiguration:
+      *ElasticsearchDestinationConfiguration*
+    ExtendedS3DestinationConfiguration:
+      *ExtendedS3DestinationConfiguration*
+    KinesisStreamSourceConfiguration:
+      *KinesisStreamSourceConfiguration*
+    RedshiftDestinationConfiguration:
+      *RedshiftDestinationConfiguration*
+    S3DestinationConfiguration:
+      *S3DestinationConfiguration*
+
+
+snippet  AWS::Kinesis::Stream
+  Type: "AWS::Kinesis::Stream"
+  Properties: 
+    Name: String
+    RetentionPeriodHours: Integer
+    ShardCount: Integer
+    StreamEncryption
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::KMS::Alias
+  Type: "AWS::KMS::Alias"
+  Properties:
+    AliasName: String
+    TargetKeyId: String
+
+
+snippet  AWS::KMS::Key
+  Type: "AWS::KMS::Key"
+  Properties: 
+    Description: String
+    Enabled: Boolean
+    EnableKeyRotation: Boolean
+    KeyPolicy: JSON object
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::Lambda::Alias
+  Type: "AWS::Lambda::Alias"
+  Properties:     
+    Description: String         
+    FunctionName: String
+    FunctionVersion: String
+    Name: String
+    RoutingConfig: 
+      AliasRoutingConfiguration
+
+
+snippet  AWS::Lambda::EventSourceMapping
+  Type: "AWS::Lambda::EventSourceMapping"
+  Properties: 
+    BatchSize: Integer
+    Enabled: Boolean
+    EventSourceArn: String
+    FunctionName: String
+    StartingPosition: String
+
+
+snippet  AWS::Lambda::Function
+  Type: "AWS::Lambda::Function"
+  Properties: 
+    Code:
+      Code
+    DeadLetterConfig:
+      *DeadLetterConfig*
+    Description: String
+    Environment:
+      *Environment*
+    FunctionName: String
+    Handler: String
+    KmsKeyArn: String
+    MemorySize: Integer
+    ReservedConcurrentExecutions: Integer
+    Role: String
+    Runtime: String
+    Timeout: Integer
+    TracingConfig:
+      *TracingConfig*
+    VpcConfig:
+      *VPCConfig*
+    Tags: 
+      Resource Tag
+
+
+snippet  AWS::Lambda::Permission
+  Type: "AWS::Lambda::Permission"
+  Properties: 
+    Action: String
+    EventSourceToken: String
+    FunctionName: String
+    Principal: String
+    SourceAccount: String
+    SourceArn: String
+
+
+snippet  AWS::Lambda::Version
+  Type: "AWS::Lambda::Version"
+  Properties:     
+    CodeSha256 : String
+    Description : String         
+    FunctionName : String
+
+
+snippet  AWS::Logs::Destination
+  Type: "AWS::Logs::Destination"
+  Properties: 
+    DestinationName: String
+    DestinationPolicy: String
+    RoleArn: String
+    TargetArn: String
+
+
+snippet  AWS::Logs::LogGroup
+  Type: "AWS::Logs::LogGroup"
+  Properties: 
+    LogGroupName: String
+    RetentionInDays: Integer
+
+
+snippet  AWS::Logs::LogStream
+  Type: "AWS::Logs::LogStream"
+  Properties: 
+    LogGroupName: String
+    LogStreamName: String
+
+
+snippet  AWS::Logs::MetricFilter
+  Type: "AWS::Logs::MetricFilter"
+  Properties: 
+    FilterPattern: String
+    LogGroupName: String
+    MetricTransformations:
+      MetricTransformations
+
+
+snippet  AWS::Logs::SubscriptionFilter
+  Type: "AWS::Logs::SubscriptionFilter"
+  Properties: 
+    DestinationArn: String
+    FilterPattern: String
+    LogGroupName: String
+    RoleArn: String
+
+
+snippet  AWS::OpsWorks::App
+  Type: "AWS::OpsWorks::App"
+  Properties: 
+    AppSource:
+      Source
+    Attributes:
+      String: String
+    Description: String
+    DataSources: 
+      - DataSource
+    Domains:
+      - String
+    EnableSsl: Boolean
+    Environment:
+      - Environment
+    Name: String
+    Shortname: String
+    SslConfiguration:
+      SslConfiguration
+    StackId: String
+    Type: String
+
+
+snippet  AWS::OpsWorks::ElasticLoadBalancerAttachment
+  Type: "AWS::OpsWorks::ElasticLoadBalancerAttachment"
+  Properties: 
+    ElasticLoadBalancerName: String
+    LayerId: String
+
+
+snippet  AWS::OpsWorks::Instance
+  Type: "AWS::OpsWorks::Instance"
+  Properties:
+    AgentVersion: String
+    AmiId: String
+    Architecture: String
+    AutoScalingType: String
+    AvailabilityZone: String
+    BlockDeviceMappings: 
+    - BlockDeviceMapping
+    EbsOptimized: Boolean
+    ElasticIps: 
+    - String
+    Hostname: String
+    InstallUpdatesOnBoot: Boolean
+    InstanceType: String
+    LayerIds: 
+    - String
+    Os: String
+    RootDeviceType: String
+    SshKeyName: String
+    StackId: String
+    SubnetId: String
+    Tenancy: String
+    TimeBasedAutoScaling:
+    TimeBasedAutoScaling
+    VirtualizationType: String
+    Volumes: 
+    - String
+
+
+snippet  AWS::OpsWorks::Layer
+  Type: "AWS::OpsWorks::Layer"
+  Properties:
+    Attributes:
+      String:String
+    AutoAssignElasticIps: Boolean
+    AutoAssignPublicIps: Boolean
+    CustomInstanceProfileArn: String
+    CustomRecipes:
+      Recipes
+    CustomJson:
+      JSON object
+    CustomSecurityGroupIds:
+      - String
+    EnableAutoHealing: Boolean
+    InstallUpdatesOnBoot: Boolean
+    LifecycleEventConfiguration:
+      LifeCycleEventConfiguration
+    LoadBasedAutoScaling:
+      LoadBasedAutoScaling
+    Name: String
+    Packages:
+      - String
+    Shortname: String
+    StackId: String
+    Tags: 
+    - Tags 
+    Type: String
+    VolumeConfigurations:
+      - VolumeConfiguration
+
+
+snippet  AWS::OpsWorks::Stack
+  Type: "AWS::OpsWorks::Stack"
+  Properties: 
+    AgentVersion: String
+    Attributes:
+      String:String
+    ChefConfiguration:
+      ChefConfiguration
+    CloneAppIds: 
+    - String
+    ClonePermissions: Boolean
+    ConfigurationManager:
+      StackConfigurationManager
+    CustomCookbooksSource:
+      Source
+    CustomJson: JSON
+    DefaultAvailabilityZone: String
+    DefaultInstanceProfileArn: String
+    DefaultOs: String
+    DefaultRootDeviceType: String
+    DefaultSshKeyName: String
+    DefaultSubnetId: String
+    EcsClusterArn: String
+    ElasticIps: 
+    - ElasticIp
+    HostnameTheme: String
+    Name: String
+    RdsDbInstances: 
+    - RdsDbInstance
+    ServiceRoleArn: String
+    SourceStackId: String
+    Tags: 
+    - Tags
+    UseCustomCookbooks: Boolean
+    UseOpsworksSecurityGroups: Boolean
+    VpcId: String
+
+
+snippet  AWS::OpsWorks::UserProfile
+  Type: "AWS::OpsWorks::UserProfile"
+  Properties:
+    AllowSelfManagement: Boolean
+    IamUserArn: String
+    SshPublicKey: String
+    SshUsername: String
+
+
+snippet  AWS::OpsWorks::Volume
+  Type: "AWS::OpsWorks::Volume"
+  Properties:
+    Ec2VolumeId: String
+    MountPoint: String
+    Name: String
+    StackId: String
+
+
+snippet  AWS::RDS::DBCluster
+  Type: "AWS::RDS::DBCluster"
+  Properties:
+    AvailabilityZones:
+      - String
+    BackupRetentionPeriod: Integer
+    DatabaseName: String
+    DBClusterIdentifier: String
+    DBClusterParameterGroupName: String
+    DBSubnetGroupName: String
+    Engine: String
+    EngineVersion: String
+    KmsKeyId: String
+    MasterUsername: String
+    MasterUserPassword: String
+    Port: Integer
+    PreferredBackupWindow: String
+    PreferredMaintenanceWindow: String
+    ReplicationSourceIdentifier: String
+    SnapshotIdentifier: String
+    StorageEncrypted: Boolean
+    Tags:
+      - Resource Tag
+    VpcSecurityGroupIds:
+      - String
+
+
+snippet  AWS::RDS::DBClusterParameterGroup
+  Type: "AWS::RDS::DBClusterParameterGroup"
+  Properties: 
+    Description: String
+    Family: String
+    Parameters: DBParameters
+    Tags:
+      Resource Tag
+
+
+snippet  AWS::RDS::DBSubnetGroup
+  Type: "AWS::RDS::DBSubnetGroup"
+  Properties: 
+    DBSubnetGroupDescription: String
+    DBSubnetGroupName: String
+    SubnetIds:
+      - String
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::RDS::EventSubscription
+  Type: "AWS::RDS::EventSubscription"
+  Properties: 
+    Enabled: Boolean
+    EventCategories:
+      - String
+    SnsTopicArn: String
+    SourceIds:
+      - String
+    SourceType: String
+
+
+snippet  AWS::RDS::OptionGroup
+  Type: "AWS::RDS::OptionGroup"
+  Properties: 
+    EngineName: String
+    MajorEngineVersion: String
+    OptionGroupDescription: String
+    OptionConfigurations:
+      - OptionConfiguration
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::RDS::DBSecurityGroupIngress
+  Type: "AWS::RDS::DBSecurityGroupIngress"
+  Properties:  
+    CIDRIP: String
+    DBSecurityGroupName: String
+    EC2SecurityGroupId: String
+    EC2SecurityGroupName: String
+    EC2SecurityGroupOwnerId: String
+
+
+snippet  AWS::Redshift::Cluster
+  Type: "AWS::Redshift::Cluster"
+  Properties: 
+    AllowVersionUpgrade: Boolean
+    AutomatedSnapshotRetentionPeriod: Integer
+    AvailabilityZone: String
+    ClusterIdentifier: String
+    ClusterParameterGroupName: String
+    ClusterSecurityGroups: 
+      - String
+    ClusterSubnetGroupName: String
+    ClusterType: String
+    ClusterVersion: String
+    DBName: String
+    ElasticIp: String
+    Encrypted: Boolean
+    HsmClientCertificateIdentifier: String
+    HsmConfigurationIdentifier: String
+    IamRoles: 
+      - String
+    KmsKeyId: String
+    LoggingProperties: 
+       LoggingProperties
+    MasterUsername: String
+    MasterUserPassword: String
+    NodeType: String
+    NumberOfNodes: Integer
+    OwnerAccount: String
+    Port: Integer
+    PreferredMaintenanceWindow: String
+    PubliclyAccessible: Boolean
+    SnapshotClusterIdentifier: String
+    SnapshotIdentifier: String
+    Tags:
+      - Resource Tag
+    VpcSecurityGroupIds:
+      - String
+
+
+snippet  AWS::Redshift::ClusterParameterGroup
+  Type: "AWS::Redshift::ClusterParameterGroup"
+  Properties: 
+    Description: String
+    ParameterGroupFamily: String
+    Parameters:
+      - Parameter
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::Redshift::ClusterSecurityGroupIngress
+  Type: "AWS::Redshift::ClusterSecurityGroupIngress"
+  Properties: 
+    ClusterSecurityGroupName: String
+    CIDRIP: String
+    EC2SecurityGroupName: String
+    EC2SecurityGroupOwnerId: String
+
+
+snippet  AWS::Redshift::ClusterSecurityGroup
+  Type: "AWS::Redshift::ClusterSecurityGroup"
+  Properties: 
+    Description: String
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::Redshift::ClusterSubnetGroup
+  Type: "AWS::Redshift::ClusterSubnetGroup"
+  Properties: 
+    Description: String
+    SubnetIds:
+      - String
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::Route53::HealthCheck
+  Type: "AWS::Route53::HealthCheck"
+  Properties: 
+    HealthCheckConfig:
+      HealthCheckConfig
+    HealthCheckTags:
+      - HealthCheckTags
+
+
+snippet  Route 53 HostedZoneVPCs
+  VPCId: String
+  VPCRegion: String
+
+
+snippet  AWS::Route53::HostedZone
+  Type: "AWS::Route53::HostedZone"
+  Properties: 
+    HostedZoneConfig:
+      HostedZoneConfig
+    HostedZoneTags:
+      -  HostedZoneTags
+    Name: String
+    QueryLoggingConfig: String
+    VPCs:
+      - HostedZoneVPCs
+
+
+snippet  AWS::ServiceDiscovery::Instance
+  Type: "AWS::ServiceDiscovery::Instance"
+  Properties:
+    InstanceAttributes: JSON object
+    InstanceId: String
+    ServiceId: String
+
+
+snippet  AWS::ServiceDiscovery::PrivateDnsNamespace
+  Type: "AWS::ServiceDiscovery::PrivateDnsNamespace"
+  Properties:
+    Description: String
+    Vpc: String
+    Name: String
+
+
+snippet  AWS::ServiceDiscovery::PublicDnsNamespace
+  Type: "AWS::ServiceDiscovery::PublicDnsNamespace"
+  Properties:
+    Description: String
+    Name: String
+
+
+snippet  AWS::ServiceDiscovery::Service
+  Type: "AWS::ServiceDiscovery::Service"
+  Properties:
+    Description: String
+    DnsConfig: 
+      *DnsConfig*
+    HealthCheckConfig: 
+      *HealthCheckConfig*
+    Name: String
+
+
+snippet  AWS::SES::ConfigurationSetEventDestination
+  Type: "AWS::SES::ConfigurationSetEventDestination"
+  Properties:
+    ConfigurationSetName: String
+    EventDestination
+
+
+snippet  AWS::SES::ConfigurationSet
+  Type: "AWS::SES::ConfigurationSet"
+  Properties:
+    Name: String
+
+
+snippet  AWS::SES::ReceiptFilter
+  Type: "AWS::SES::ReceiptFilter"
+  Properties:
+    Filter
+
+
+snippet  AWS::SES::ReceiptRule
+  Type: "AWS::SES::ReceiptRule"
+  Properties:
+    After: String
+    Rule
+    RuleSetName: String
+
+
+snippet  AWS::SES::ReceiptRuleSet
+  Type: "AWS::SES::ReceiptRuleSet"
+  Properties:
+    RuleSetName: String
+
+
+snippet  AWS::SES::Template
+  Type: "AWS::SES::Template"
+  Properties:
+    Template
+
+
+snippet  AWS::SNS::Subscription
+  Type: "AWS::SNS::Subscription"
+  Properties:
+    Endpoint: String
+    Protocol: String
+    TopicArn: String
+
+
+snippet  AWS::SSM::Association
+  Type: "AWS::SSM::Association"
+  Properties: 
+    AssociationName: String
+    DocumentVersion: String
+    InstanceId: String
+    Name: String
+    Parameters:
+      String:
+        - String
+    ScheduleExpression: String
+    Targets:
+      - *Targets*
+
+
+snippet  AWS::SSM::Document
+  Type: "AWS::SSM::Document"
+  Properties: 
+    Content: JSON object
+    DocumentType: String
+    Tags:
+      - Resource Tag
+
+
+snippet  AWS::SSM::MaintenanceWindow
+  Type: "AWS::SSM::MaintenanceWindow"
+  Properties:
+    Description: String
+    AllowUnassociatedTargets: Boolean
+    Cutoff: Integer
+    Schedule: String
+    Duration: Integer
+    Name: String
+
+
+snippet  AWS::SSM::MaintenanceWindowTarget
+  Type: "AWS::SSM::MaintenanceWindowTarget"
+  Properties:
+    OwnerInformation: String
+    Description: String
+    WindowId: String
+    ResourceType: String
+    Targets: 
+      - *Targets*
+    Name: String
+
+
+snippet  AWS::SSM::MaintenanceWindowTask
+  Type: "AWS::SSM::MaintenanceWindowTask"
+  Properties:
+    MaxErrors: String
+    Description: String
+    ServiceRoleArn: String
+    Priority: Integer
+    MaxConcurrency: String
+    Targets: 
+      - *Target*
+    Name: String
+    TaskArn: String
+    TaskInvocationParameters:
+      *TaskInvocationParameters*
+    WindowId: String
+    TaskParameters:
+      JSON object
+    TaskType: String
+    LoggingInfo: 
+      *LoggingInfo*
+
+
+snippet  AWS::SSM::Parameter
+  Type: "AWS::SSM::Parameter"
+  Properties: 
+    Name: String
+    Description: String
+    Type: String
+    Value: String
+    AllowedPattern: String
+
+
+snippet  AWS::SSM::PatchBaseline
+  Type: "AWS::SSM::PatchBaseline"
+  Properties:
+    OperatingSystem: String
+    ApprovedPatches: 
+      - String
+    PatchGroups: 
+      - String
+    Description: String
+    ApprovedPatchesComplianceLevel: String
+    ApprovalRules:
+      *RuleGroup*
+    GlobalFilters:
+      *PatchFilterGroup*
+    Name: String
+    RejectedPatches: 
+      - String
+
+
+snippet  AWS::StepFunctions::Activity
+  Type: "AWS::StepFunctions::Activity"
+  Properties:
+    Name: String
+
+
+snippet  AWS::StepFunctions::StateMachine
+  Type: "AWS::StepFunctions::StateMachine"
+  Properties:
+    StateMachineName: String
+    DefinitionString: String
+    RoleArn: String
+
+
+snippet  AWS::WAF::ByteMatchSet
+  Type: "AWS::WAF::ByteMatchSet"
+  Properties: 
+    ByteMatchTuples:
+      - Byte match tuple
+    Name: String
+
+
+snippet  AWS::WAF::IPSet
+  Type: "AWS::WAF::IPSet"
+  Properties: 
+    IPSetDescriptors:
+      - IPSet descriptor
+    Name: String
+
+
+snippet  AWS::WAFRegional::ByteMatchSet
+  Type: "AWS::WAFRegional::ByteMatchSet"
+  Properties: 
+    ByteMatchTuples:
+      - Byte match tuple
+    Name: String
+
+
+snippet  AWS::WAFRegional::IPSet
+  Type: "AWS::WAFRegional::IPSet"
+  Properties: 
+    IPSetDescriptors:
+      - IPSet descriptor
+    Name: String
+
+
+snippet  AWS::WAFRegional::Rule
+  Type: "AWS::WAFRegional::Rule"
+  Properties: 
+    MetricName: String
+    Name: String
+    Predicates:
+      - Predicate
+
+
+snippet  AWS::WAFRegional::SizeConstraintSet
+  Type: "AWS::WAFRegional::SizeConstraintSet"
+  Properties: 
+    Name: String
+    SizeConstraints:
+      - SizeConstraint
+
+
+snippet  AWS::WAFRegional::SqlInjectionMatchSet
+  Type: "AWS::WAFRegional::SqlInjectionMatchSet"
+  Properties: 
+    Name: String
+    SqlInjectionMatchTuples:
+      - SqlInjectionMatchTuple
+
+
+snippet  AWS::WAFRegional::WebACLAssociation
+  Type: "AWS::WAFRegional::WebACLAssociation"
+  Properties: 
+    ResourceArn: String
+    WebACLId: String
+
+
+snippet  AWS::WAFRegional::WebACL
+  Type: "AWS::WAFRegional::WebACL"
+  Properties: 
+    DefaultAction:
+      Action
+    MetricName: String
+    Name: String
+    Rules:
+      - Rule
+
+
+snippet  AWS::WAFRegional::XssMatchSet
+  Type: "AWS::WAFRegional::XssMatchSet"
+  Properties: 
+    Name: String
+    XssMatchTuples:
+      - XssMatchTuple
+
+
+snippet  AWS::WAF::Rule
+  Type: "AWS::WAF::Rule"
+  Properties: 
+    MetricName: String
+    Name: String
+    Predicates:
+      - Predicate
+
+
+snippet  AWS::WAF::SizeConstraintSet
+  Type: "AWS::WAF::SizeConstraintSet"
+  Properties: 
+    Name: String
+    SizeConstraints:
+      - SizeConstraint
+
+
+snippet  AWS::WAF::SqlInjectionMatchSet
+  Type: "AWS::WAF::SqlInjectionMatchSet"
+  Properties: 
+    Name: String
+    SqlInjectionMatchTuples:
+      - SqlInjectionMatchTuple
+
+
+snippet  AWS::WAF::WebACL
+  Type: "AWS::WAF::WebACL"
+  Properties: 
+    DefaultAction:
+      Action
+    MetricName: String
+    Name: String
+    Rules:
+      - Rule
+
+
+snippet  AWS::WAF::XssMatchSet
+  Type: "AWS::WAF::XssMatchSet"
+  Properties: 
+    Name: String
+    XssMatchTuples:
+      - XssMatchTuple
+
+
+snippet  AWS::WorkSpaces::Workspace
+  Type: "AWS::WorkSpaces::Workspace"
+  Properties: 
+    BundleId: String
+    DirectoryId: String
+    UserName: String
+    RootVolumeEncryptionEnabled: Boolean
+    UserVolumeEncryptionEnabled: Boolean
+    VolumeEncryptionKey: String
+
+
