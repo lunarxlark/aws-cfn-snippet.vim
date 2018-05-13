@@ -1,6 +1,8 @@
 # aws-cfn-snippet.vim
 
-need [Shougo/neosnippet](https://github.com/Shougo/neosnippet.vim) Plugin.
+## Make yaml and json snippet file for AWS CloudFormation.
+
+you need [Shougo/neosnippet](https://github.com/Shougo/neosnippet.vim) Plugin.
 check your snippet directory in vimrc.
 ```bash:vimrc
 let g:neosnippet#snippets_directory='~/.vim/snippets/'
@@ -8,5 +10,6 @@ let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
 ```bash
 $ ./make-cfn-snippet.sh
-$ cat yaml.snip >> $HOME/.vim/snippet/yaml.snip
+$ cat yaml.snip >> ~/.vim/snippet/yaml.snip
+$ cat json.snip >> ~/.vim/snippet/json.snip
 ```
