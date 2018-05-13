@@ -13,3 +13,7 @@ $ ./make-cfn-snippet.sh
 $ cat yaml.snip >> ~/.vim/snippet/yaml.snip
 $ cat json.snip >> ~/.vim/snippet/json.snip
 ```
+
+## Sample
+![Sample1](./sample1.png)
+![Sample2](./sample2.png)

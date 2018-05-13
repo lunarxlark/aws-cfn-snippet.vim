@@ -14,7 +14,7 @@ for file_type in yaml json
 do 
 
   # initialize
-  snip=${home}/${file_type}.snip
+  snip=${home}/snippets/${file_type}.snip
   if [ -e "${snip}" ];then rm ${snip}; fi
 
   # AWS Resource snippets
@@ -58,4 +58,4 @@ do
 done
 
 # refact
-sed -i -e "s/ $//g" ${home}/*.snip
+sed -i -e "s/ $//g" ${home}/snippets/*.snip
