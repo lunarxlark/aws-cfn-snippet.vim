@@ -15,5 +15,5 @@ $ cat json.snip >> ~/.vim/snippet/json.snip
 ```
 
 ## Sample
-![Sample1](./sample1.png)
-![Sample2](./sample2.png)
+![Sample1](./images/sample1.png)
+![Sample2](./images/sample2.png)
