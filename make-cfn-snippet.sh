@@ -32,6 +32,7 @@ do
   echo "" >> ${yaml_snip}
 done
 
+
 # make json.snip
 for FILE in `grep "^### JSON" aws-resource* | awk -F: '{ print $1 }' | sort -u`
 do
@@ -48,3 +49,6 @@ do
   echo "" >> ${json_snip}
   echo "" >> ${json_snip}
 done
+
+
+sed -i -e "s/ $//g" ${home}/*.snip

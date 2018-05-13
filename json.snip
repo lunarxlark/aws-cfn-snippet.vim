@@ -178,13 +178,13 @@ snippet  AWS::ApiGateway::Resource
 snippet  AWS::ApiGateway::RestApi
   {
     "Type" : "AWS::ApiGateway::RestApi",
-    "Properties" : {  
+    "Properties" : { 
       "ApiKeySourceType" : String,
       "BinaryMediaTypes" :  String, ... ],
       "Body" : JSON object,
       "BodyS3Location,
       "CloneFrom" : String,
-      "Description" : String,      
+      "Description" : String,     
       "EndpointConfiguration,
       "FailOnWarnings" : Boolean,
       "MinimumCompressionSize" : Integer,
@@ -379,7 +379,7 @@ snippet  AWS::Batch::JobQueue
 snippet  AWS::ElasticBeanstalk::ConfigurationTemplate
   {
     "Type" : "AWS::ElasticBeanstalk::ConfigurationTemplate",
-    "Properties" : {  
+    "Properties" : { 
       "ApplicationName" : String,
       "Description" : String,
       "EnvironmentId" : String,
@@ -387,7 +387,7 @@ snippet  AWS::ElasticBeanstalk::ConfigurationTemplate
       "PlatformArn" : String,
       "SolutionStackName" : String,
       "SourceConfiguration
-    } 
+    }
   }
 
 
@@ -424,7 +424,7 @@ snippet  AWS::Cloud9::EnvironmentEC2
       "AutomaticStopTimeMinutes" : Integer,
       "InstanceType" : String,
       "Name" : String,
-      "SubnetId" : String          
+      "SubnetId" : String         
     }
   }
 
@@ -613,13 +613,13 @@ snippet  AWS::Cognito::IdentityPool
     "Type" : "AWS::Cognito::IdentityPool",
     "Properties" : {
       "IdentityPoolName" : String,
-      "AllowUnauthenticatedIdentities" : Boolean, 
+      "AllowUnauthenticatedIdentities" : Boolean,
       "DeveloperProviderName" : String,
       "SupportedLoginProviders" : { String:String, ... },
-      "CognitoIdentityProviders, ... ], 
+      "CognitoIdentityProviders, ... ],
       "SamlProviderARNs" :  String, ... ],
       "OpenIdConnectProviderARNs" :  String, ... ],
-      "CognitoStreams" : CognitoStreams, 
+      "CognitoStreams" : CognitoStreams,
       "PushSync" : PushSync,
       "CognitoEvents" : { String:String, ... }
     }
@@ -1044,7 +1044,7 @@ snippet  AWS::EC2::NetworkAclEntry
         "CidrBlock" : String,
         "Egress" : Boolean,
         "Icmp" : EC2 ICMP,
-        "Ipv6CidrBlock" : String, 
+        "Ipv6CidrBlock" : String,
         "NetworkAclId" : String,
         "PortRange" : EC2 PortRange,
         "Protocol" : Integer,
@@ -1224,7 +1224,7 @@ snippet  AWS::EC2::VPCCidrBlock
 
 
 snippet  AWS::EC2::VPCDHCPOptionsAssociation
-  { 
+  {
      "Type" : "AWS::EC2::VPCDHCPOptionsAssociation",
      "Properties" : {
         "DhcpOptionsId" : String,
@@ -1486,7 +1486,7 @@ snippet  AWS::ElasticLoadBalancingV2::ListenerRule
 snippet  AWS::ElasticLoadBalancingV2::LoadBalancer
   {
     "Type" : "AWS::ElasticLoadBalancingV2::LoadBalancer",
-    "Properties" : {    
+    "Properties" : {   
       "LoadBalancerAttributes, ... ],
       "Name" : String,
       "Scheme" : String,
@@ -1533,7 +1533,7 @@ snippet  AWS::EMR::InstanceFleetConfig
       "InstanceTypeConfigs, ... ],
       "LaunchSpecifications,
       "Name" : String,
-      "TargetOnDemandCapacity" : Integer,      
+      "TargetOnDemandCapacity" : Integer,     
       "TargetSpotCapacity" : Integer
     }
   }
@@ -1881,7 +1881,7 @@ snippet  AWS::IAM::ManagedPolicy
 snippet  AWS::IAM::Policy
   {
     "Type" : "AWS::IAM::Policy",
-    "Properties" : { 
+    "Properties" : {
       "Groups" :  String, ... ],
       "PolicyDocument" : JSON object,
       "PolicyName" : String,
@@ -2120,8 +2120,8 @@ snippet  AWS::KMS::Key
 snippet  AWS::Lambda::Alias
   {
     "Type" : "AWS::Lambda::Alias",
-    "Properties" : { 
-      "Description" : String,         
+    "Properties" : {
+      "Description" : String,        
       "FunctionName" : String,
       "FunctionVersion" : String,
       "Name" : String,
@@ -2183,9 +2183,9 @@ snippet  AWS::Lambda::Permission
 snippet  AWS::Lambda::Version
   {
     "Type" : "AWS::Lambda::Version",
-    "Properties" : {    
+    "Properties" : {   
       "CodeSha256" : String,
-      "Description" : String,         
+      "Description" : String,        
       "FunctionName" : String
     }
   }
@@ -2356,7 +2356,7 @@ snippet  AWS::OpsWorks::Stack
       "RdsDbInstances, ... ],
       "ServiceRoleArn" : String,
       "SourceStackId" : String,
-      "Tags, ... ], 
+      "Tags, ... ],
       "UseCustomCookbooks" : Boolean,
       "UseOpsworksSecurityGroups" : Boolean,
       "VpcId" : String
@@ -2395,7 +2395,7 @@ snippet  AWS::RDS::DBCluster
     {
       "AvailabilityZones" :  String, ... ],
       "BackupRetentionPeriod" : Integer,
-      "DatabaseName" : String,   
+      "DatabaseName" : String,  
       "DBClusterIdentifier" : String,
       "DBClusterParameterGroupName" : String,
       "DBSubnetGroupName" : String,
@@ -2709,7 +2709,7 @@ snippet  AWS::SSM::Association
       "AssociationName" : String,
       "DocumentVersion" : String,
       "InstanceId" : String,
-      "Name" : String,   
+      "Name" : String,  
       "Parameters" : { String: String, ...] },
       "ScheduleExpression" : String,
       "Targets ]
