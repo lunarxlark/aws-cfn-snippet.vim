@@ -162,6 +162,7 @@ snippet  AWS::ApiGateway::RestApi
     Name: String
     Parameters:
       String: String
+   Policy: JSON object
 
 
 snippet  AWS::ApiGateway::Stage
@@ -237,6 +238,58 @@ snippet  AWS::ApplicationAutoScaling::ScalingPolicy
       *TargetTrackingScalingPolicyConfiguration*
 
 
+snippet  AWS::AppSync::ApiKey
+  Type: "AWS::AppSync::ApiKey"
+  Properties:
+    Description: String
+    Expires: Number
+    ApiId: String
+
+
+snippet  AWS::AppSync::DataSource
+  Type: "AWS::AppSync::DataSource"
+  Properties:
+    Type: String
+    Description: String
+    ServiceRoleArn: String
+    LambdaConfig: *LambdaConfig*
+    ApiId: String
+    Name: String
+    DynamoDBConfig: *DynamoDBConfig*
+    ElasticsearchConfig: *ElasticsearchConfig*
+
+
+snippet  AWS::AppSync::GraphQLApi
+  Type: "AWS::AppSync::GraphQLApi"
+  Properties:
+    UserPoolConfig: *UserPoolConfig*
+    OpenIDConnectConfig : *OpenIDConnectConfig*
+    Name: String
+    AuthenticationType: String
+    LogConfig: *LogConfig*
+
+
+snippet  AWS::AppSync::GraphQLSchema
+  Type: "AWS::AppSync::GraphQLSchema"
+  Properties:
+    Definition: String
+    DefinitionS3Location: String
+    ApiId: String
+
+
+snippet  AWS::AppSync::Resolver
+  Type: "AWS::AppSync::Resolver"
+  Properties:
+    ResponseMappingTemplateS3Location: String
+    TypeName: String
+    DataSourceName: String
+    RequestMappingTemplate: String
+    ResponseMappingTemplate: String
+    RequestMappingTemplateS3Location: String
+    ApiId: String
+    FieldName: String
+
+
 snippet  AWS::AutoScaling::LifecycleHook
   Type: "AWS::AutoScaling::LifecycleHook"
   Properties:
@@ -286,6 +339,14 @@ snippet  AWS::CloudFormation::Authentication
     roleName: String
 
 
+snippet  AWS::AutoScalingPlans::ScalingPlan
+  Type: "AWS::AutoScalingPlans::ScalingPlan"
+  Properties:
+    ApplicationSource: *ApplicationSource*
+    ScalingInstructions:
+      - *ScalingInstruction*
+
+
 snippet  AWS::Batch::ComputeEnvironment
   Type: "AWS::Batch::ComputeEnvironment"
   Properties:
@@ -331,6 +392,14 @@ snippet  AWS::ElasticBeanstalk::ConfigurationTemplate
     SolutionStackName: String
     SourceConfiguration:
       *SourceConfiguration*
+
+
+snippet  AWS::Budgets::Budget
+  Type: "AWS::Budgets::Budget"
+  Properties:
+    NotificationsWithSubscribers:
+      - *NotificationWithSubscribers*
+    Budget: *BudgetData*
 
 
 snippet  AWS::CertificateManager::Certificate
@@ -379,6 +448,15 @@ snippet  AWS::CloudFront::CloudFrontOriginAccessIdentity
   Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
   Properties:
     CloudFrontOriginAccessIdentityConfig: CloudFrontOriginAccessIdentityConfig
+
+
+snippet  AWS::CloudFront::Distribution
+  Type: "AWS::CloudFront::Distribution"
+  Properties:
+    DistributionConfig:
+      *DistributionConfig*
+    Tags:
+      - *Tag*
 
 
 snippet  AWS::CloudFront::StreamingDistribution
@@ -642,6 +720,13 @@ snippet  AWS::Cognito::UserPoolUserToGroupAttachment
     UserPoolId: String
 
 
+snippet  AWS::Config::AggregationAuthorization
+  Type: "AWS::Config::AggregationAuthorization"
+  Properties:
+    AuthorizedAccountId: String
+    AuthorizedAwsRegion: String
+
+
 snippet  AWS::Config::ConfigRule
   Type: "AWS::Config::ConfigRule"
   Properties:
@@ -654,6 +739,16 @@ snippet  AWS::Config::ConfigRule
       Scope
     Source:
       Source
+
+
+snippet  AWS::Config::ConfigurationAggregator
+  Type: "AWS::Config::ConfigurationAggregator"
+  Properties:
+    AccountAggregationSources:
+      - *AccountAggregationSource*
+   OrganizationAggregationSource:
+      *OrganizationAggregationSource*
+    ConfigurationAggregatorName: String
 
 
 snippet  AWS::Config::ConfigurationRecorder
@@ -729,6 +824,7 @@ snippet  AWS::DirectoryService::MicrosoftAD
   Type: "AWS::DirectoryService::MicrosoftAD"
   Properties:
     CreateAlias: Boolean
+    Edition: String
     EnableSso: Boolean
     Name: String
     Password: String
@@ -857,6 +953,8 @@ snippet  AWS::DynamoDB::Table
       - KeySchema
     LocalSecondaryIndexes:
       - LocalSecondaryIndexes
+    PointInTimeRecoverySpecification:
+      PointInTimeRecoverySpecification
     ProvisionedThroughput:
       ProvisionedThroughput
     SSESpecification:
@@ -924,6 +1022,13 @@ snippet  AWS::EC2::InternetGateway
   Properties:
     Tags:
       - Resource Tag
+
+
+snippet  AWS::EC2::LaunchTemplate
+  Type: "AWS::EC2::LaunchTemplate"
+  Properties:
+    LaunchTemplateName: String
+    LaunchTemplateData: *LaunchTemplateData*
 
 
 snippet  AWS::EC2::NatGateway
@@ -1207,6 +1312,8 @@ snippet  AWS::ECS::Service
     PlatformVersion: String
     Role: String
     ServiceName: String
+    ServiceRegistries:
+     - *ServiceRegistry*
     TaskDefinition: String
 
 
@@ -1247,6 +1354,15 @@ snippet  AWS::EFS::MountTarget
     SecurityGroups:
        String, ...
     SubnetId: String
+
+
+snippet  AWS::EKS::Cluster
+  Type: "AWS::EKS::Cluster"
+  Properties:
+    Name: String
+    ResourcesVpcConfig: EKS Cluster ResourcesVpcConfig
+    RoleArn: String
+    Version: String
 
 
 snippet  AWS::ElastiCache::ReplicationGroup
@@ -1390,6 +1506,8 @@ snippet  AWS::Elasticsearch::Domain
     ElasticsearchClusterConfig:
       *ElasticsearchClusterConfig*
     ElasticsearchVersion: String
+    EncryptionAtRestOptions:
+      *EncryptionAtRestOptions*
     SnapshotOptions:
       *SnapshotOptions*
     Tags:
@@ -1619,6 +1737,17 @@ snippet  AWS::GuardDuty::Detector
     Enable: Boolean
 
 
+snippet  AWS::GuardDuty::Filter
+  Type: "AWS::GuardDuty::Filter"
+  Properties:
+    Action: String
+    Description: String
+    DetectorId: String
+    FindingCriteria: *FindingCriteria*
+    Rank: Integer
+    Name: String
+
+
 snippet  AWS::GuardDuty::IPSet
   Type: "AWS::GuardDuty::IPSet"
   Properties:
@@ -1645,6 +1774,7 @@ snippet  AWS::GuardDuty::Member
     Email: String
     Message: String
     DetectorId: String
+    DisableEmailNotification: Boolean
 
 
 snippet  AWS::GuardDuty::ThreatIntelSet
@@ -1701,7 +1831,8 @@ snippet  AWS::IAM::Role
       JSON object
     ManagedPolicyArns:
       - String
-    Path: String
+    MaxSessionDuration: Integer
+     Path: String
     Policies:
       - Policies
     RoleName: String
@@ -1842,6 +1973,8 @@ snippet  AWS::KinesisFirehose::DeliveryStream
       *RedshiftDestinationConfiguration*
     S3DestinationConfiguration:
       *S3DestinationConfiguration*
+    SplunkDestinationConfiguration:
+      *SplunkDestinationConfiguration*
 
 
 snippet  AWS::Kinesis::Stream
@@ -1978,6 +2111,79 @@ snippet  AWS::Logs::SubscriptionFilter
     FilterPattern: String
     LogGroupName: String
     RoleArn: String
+
+
+snippet  AWS::Neptune::DBCluster
+  Type: "AWS::Neptune::DBCluster"
+  Properties:
+    AvailabilityZones:
+      - String
+    BackupRetentionPeriod: Integer
+    DBClusterIdentifier: String
+    DBClusterParameterGroupName: String
+    DBSubnetGroupName: String
+    IamAuthEnabled: Boolean
+    KmsKeyId: String
+    Port: Integer
+    PreferredBackupWindow: String
+    PreferredMaintenanceWindow: String
+    SnapshotIdentifier: String
+    StorageEncrypted: Boolean
+    Tags:
+      - Resource Tag
+    VpcSecurityGroupIds:
+      - String
+
+
+snippet  AWS::Neptune::DBClusterParameterGroup
+  Type: "AWS::Neptune::DBClusterParameterGroup"
+  Properties:
+    Description: String
+    Parameters: DBParameters
+    Family : String
+    Tags:
+      Resource Tag
+    Name : String
+
+
+snippet  AWS::Neptune::DBInstance
+  Type: "AWS::Neptune::DBInstance"
+  Properties:
+    AllowMajorVersionUpgrade: Boolean
+    AutoMinorVersionUpgrade: Boolean
+    AvailabilityZone: String
+    DBClusterIdentifier: String
+    DBInstanceClass: String
+    DBInstanceIdentifier: String
+    DBParameterGroupName: String
+    DBSnapshotIdentifier: String
+    DBSubnetGroupName: String
+    PreferredMaintenanceWindow : String
+    Tags:
+      Resource Tag
+
+
+snippet  AWS::Neptune::DBParameterGroup
+  Type: "AWS::Neptune::DBParameterGroup"
+  Properties:
+    Description: String
+    Parameters:
+      DBParameters
+    Family : String
+    Tags:
+      - Resource Tag
+    Name : String
+
+
+snippet  AWS::Neptune::DBSubnetGroup
+  Type: "AWS::Neptune::DBSubnetGroup"
+  Properties:
+    DBSubnetGroupDescription: String
+    DBSubnetGroupName: String
+    SubnetIds:
+      - String
+    Tags:
+      - Resource Tag
 
 
 snippet  AWS::OpsWorks::App
@@ -2315,6 +2521,189 @@ snippet  AWS::Route53::HostedZone
       - HostedZoneVPCs
 
 
+snippet  AWS::SageMaker::EndpointConfig
+  Type: "AWS::SageMaker::EndpointConfig"
+  Properties:
+      ProductionVariants:
+      - *ProductionVariants*
+    EndpointConfigName: String
+    KmsKeyId: String
+    Tags:
+      - *Tag*
+
+
+snippet  AWS::SageMaker::Endpoint
+  Type: "AWS::SageMaker::Endpoint"
+  Properties:
+    EndpointName: String
+    EndpointConfigName: String
+    Tags:
+      - *Tag*
+
+
+snippet  AWS::SageMaker::Model
+  Type: "AWS::SageMaker::Model"
+  Properties:
+    ExecutionRoleArn: String
+    PrimaryContainer: *Tag*
+    ModelName: String
+    VpcConfig: *Tag*
+    Tags:
+      - *Tag*
+
+
+snippet  AWS::SageMaker::NotebookInstanceLifecycleConfig
+  Type: "AWS::SageMaker::NotebookInstanceLifecycleConfig"
+  Properties:
+    OnStart:
+      - *NotebookInstanceLifecycleHook* 
+    NotebookInstanceLifecycleConfigName: String
+    OnCreate:
+      - *NotebookInstanceLifecycleHook*
+
+
+snippet  AWS::SageMaker::NotebookInstance
+  Type: "AWS::SageMaker::NotebookInstance"
+  Properties:
+    KmsKeyId: String
+    DirectInternetAccess: String
+    SubnetId: String
+    NotebookInstanceName: String
+    InstanceType: String
+    LifecycleConfigName: String
+    SecurityGroupIds: String
+    SecurityGroupIds:
+      - String
+    RoleArn: String
+    Tags:
+      - *Tag*
+
+
+snippet  AWS::ServiceCatalog::AcceptedPortfolioShare
+  Type: "AWS::ServiceCatalog::AcceptedPortfolioShare"
+  Properties:
+    AcceptLanguage: String
+    PortfolioId: String
+
+
+snippet  AWS::ServiceCatalog::CloudFormationProduct
+  Type: "AWS::ServiceCatalog::CloudFormationProduct"
+  Properties:
+    Owner: String
+    SupportDescription: String
+    Description: String
+    Distributor: String
+    SupportEmail: String
+    AcceptLanguage: String
+    SupportUrl: String
+    Tags:
+      - *Resource Tag*
+    Name: String
+    ProvisioningArtifactParameters:
+      - *ProvisioningArtifactProperties*
+
+
+snippet  AWS::ServiceCatalog::CloudFormationProvisionedProduct
+  Type: "AWS::ServiceCatalog::CloudFormationProvisionedProduct"
+  Properties:
+    PathId: String
+    ProvisioningParameters:
+      - *ProvisioningParameter*
+    ProductName: String
+    ProvisioningArtifactName: String
+    NotificationArns:
+      - String
+    AcceptLanguage: String
+    ProductId: String
+    Tags:
+      - *Tag*
+    ProvisionedProductName: String
+    ProvisioningArtifactId: String
+
+
+snippet  AWS::ServiceCatalog::LaunchNotificationConstraint
+  Type: "AWS::ServiceCatalog::LaunchNotificationConstraint"
+  Properties:
+    Description: String
+    NotificationArns:
+      - String
+    AcceptLanguage: String
+    PortfolioId: String
+    ProductId: String
+
+
+snippet  AWS::ServiceCatalog::LaunchRoleConstraint
+  Type: "AWS::ServiceCatalog::LaunchRoleConstraint"
+  Properties:
+    Description: String
+    AcceptLanguage: String
+    PortfolioId: String
+    ProductId: String
+    RoleArn: String
+
+
+snippet  AWS::ServiceCatalog::LaunchTemplateConstraint
+  Type: "AWS::ServiceCatalog::LaunchTemplateConstraint"
+  Properties:
+    Description: String
+    AcceptLanguage: String
+    PortfolioId: String
+    ProductId: String
+    Rules: String
+
+
+snippet  AWS::ServiceCatalog::Portfolio
+  Type: "AWS::ServiceCatalog::Portfolio"
+  Properties:
+    ProviderName: String
+    Description: String
+    DisplayName: String
+    AcceptLanguage: String
+    Tags:
+      - *Resource Tag*
+
+
+snippet  AWS::ServiceCatalog::PortfolioPrincipalAssociation
+  Type: "AWS::ServiceCatalog::PortfolioPrincipalAssociation"
+  Properties:
+    PrincipalARN: String
+    AcceptLanguage: String
+    PortfolioId: String
+    PrincipalType: String
+
+
+snippet  AWS::ServiceCatalog::PortfolioProductAssociation
+  Type: "AWS::ServiceCatalog::PortfolioProductAssociation"
+  Properties:
+    SourcePortfolioId: String
+    AcceptLanguage: String
+    PortfolioId: String
+    ProductId: String
+
+
+snippet  AWS::ServiceCatalog::PortfolioShare
+  Type: "AWS::ServiceCatalog::PortfolioShare"
+  Properties:
+    AccountId: String
+    AcceptLanguage: String
+    PortfolioId: String
+
+
+snippet  AWS::ServiceCatalog::TagOptionAssociation
+  Type: "AWS::ServiceCatalog::TagOptionAssociation"
+  Properties:
+    TagOptionId: String
+    ResourceId: String
+
+
+snippet  AWS::ServiceCatalog::TagOption
+  Type: "AWS::ServiceCatalog::TagOption"
+  Properties:
+    Active: Boolean
+    Value: String
+    Key: String
+
+
 snippet  AWS::ServiceDiscovery::Instance
   Type: "AWS::ServiceDiscovery::Instance"
   Properties:
@@ -2403,6 +2792,7 @@ snippet  AWS::SSM::Association
     DocumentVersion: String
     InstanceId: String
     Name: String
+    OutputLocation: *InstanceAssociationOutputLocation*
     Parameters:
       String:
         - String
@@ -2492,6 +2882,17 @@ snippet  AWS::SSM::PatchBaseline
     Name: String
     RejectedPatches:
       - String
+
+
+snippet  AWS::SSM::ResourceDataSync
+  Type: "AWS::SSM::ResourceDataSync"
+  Properties:
+    KMSKeyArn: String
+    BucketName: String
+    BucketRegion: String
+    SyncFormat: String
+    SyncName: String
+    BucketPrefix: String
 
 
 snippet  AWS::StepFunctions::Activity
@@ -2834,6 +3235,40 @@ snippet TargetTrackingScalingPolicyConfiguration-applicationautoscaling-scalingp
   TargetValue: Double
 
 
+snippet DynamoDBConfig-appsync-datasource-dynamodbconfig
+  TableName: String
+  AwsRegion: String
+  UseCallerCredentials: Boolean
+
+
+snippet ElasticsearchConfig-appsync-datasource-elasticsearchconfig
+  AwsRegion: String
+  Endpoint: String
+
+
+snippet LambdaConfig-appsync-datasource-lambdaconfig
+  LambdaFunctionArn: String
+
+
+snippet LogConfig-appsync-graphqlapi-logconfig
+  CloudWatchLogsRoleArn: String
+  FieldLogLevel: String
+
+
+snippet Config-appsync-graphqlapi-openidconnectconfig
+  Issuer: String
+  ClientId: String
+  IatTTL: Number
+  AuthTTL: Number
+
+
+snippet UserPoolConfig-appsync-graphqlapi-userpoolconfig
+  AppIdClientRegex: String
+  UserPoolId: String
+  AwsRegion: String
+  DefaultAction: String
+
+
 snippet AWS::AutoScaling::AutoScalingGroup-as-group
   Type: "AWS::AutoScaling::AutoScalingGroup"
   Properties:
@@ -2846,6 +3281,7 @@ snippet AWS::AutoScaling::AutoScalingGroup-as-group
     HealthCheckType: String
     InstanceId: String
     LaunchConfigurationName: String
+    LaunchTemplate: *LaunchTemplateSpecification*
     LifecycleHookSpecificationList:
       - *LifecycleHookSpecification*
     LoadBalancerNames:
@@ -2857,6 +3293,7 @@ snippet AWS::AutoScaling::AutoScalingGroup-as-group
     NotificationConfigurations:
       - *NotificationConfiguration*
     PlacementGroup: String
+    ServiceLinkedRoleARN: String
     Tags:
       - *TagProperty*
     TargetGroupARNs:
@@ -2901,6 +3338,7 @@ snippet AWS::AutoScaling::LaunchConfiguration-as-launchconfig
     InstanceType: String
     KernelId: String
     KeyName: String
+    LaunchConfigurationName: String
     PlacementTenancy: String
     RamDiskId: String
     SecurityGroups:
@@ -2944,6 +3382,12 @@ snippet TagProperty-as-tags
   PropagateAtLaunch: Boolean
 
 
+snippet LaunchTemplateSpecification-autoscaling-autoscalinggroup-launchtemplatespecification
+  LaunchTemplateId: String
+  LaunchTemplateName: String
+  Version: String
+
+
 snippet LifecycleHookSpecification-autoscaling-autoscalinggroup-lifecyclehookspecification
   DefaultResult: String
   HeartbeatTimeout: Integer
@@ -2952,6 +3396,57 @@ snippet LifecycleHookSpecification-autoscaling-autoscalinggroup-lifecyclehookspe
   NotificationMetadata: String
   NotificationTargetARN: String
   RoleARN: String
+
+
+snippet ApplicationSource-autoscalingplans-scalingplan-applicationsource
+  CloudFormationStackARN: String
+  TagFilters:
+    - *TagFilter*
+
+
+snippet CustomizedScalingMetricSpecification-autoscalingplans-scalingplan-customizedscalingmetricspecification
+  MetricName: String
+  Statistic: String
+  Dimensions:
+    - *MetricDimension*
+  Unit: String
+  Namespace: String
+
+
+snippet MetricDimension-autoscalingplans-scalingplan-metricdimension
+  Value: String
+  Name: String
+
+
+snippet PredefinedScalingMetricSpecification-autoscalingplans-scalingplan-predefinedscalingmetricspecification
+  ResourceLabel: String
+  PredefinedScalingMetricType: String
+
+
+snippet ScalingInstruction-autoscalingplans-scalingplan-scalinginstruction
+  ResourceId: String
+  ServiceNamespace: String
+  ScalableDimension: String
+  MinCapacity: Integer
+  TargetTrackingConfigurations:
+    - *TargetTrackingConfiguration*
+  MaxCapacity: Integer
+
+
+snippet TagFilter-autoscalingplans-scalingplan-tagfilter
+  Values:
+    - String
+  Key: String
+
+
+snippet TargetTrackingConfiguration-autoscalingplans-scalingplan-targettrackingconfiguration
+  ScaleOutCooldown: Integer
+  TargetValue: Double
+  PredefinedScalingMetricSpecification: *PredefinedScalingMetricSpecification*
+  DisableScaleIn: Boolean
+  ScaleInCooldown: Integer
+  EstimatedInstanceWarmup: Integer
+  CustomizedScalingMetricSpecification: *CustomizedScalingMetricSpecification*
 
 
 snippet CustomizedMetricSpecification-autoscaling-scalingpolicy-customizedmetricspecification
@@ -3123,6 +3618,58 @@ snippet AWS::ElasticBeanstalk::ApplicationVersion-beanstalk-version
       SourceBundle
 
 
+snippet BudgetData-budgets-budget-budgetdata
+  BudgetLimit: *Spend*
+  TimePeriod: *TimePeriod*
+  TimeUnit: String
+  CostFilters: Json
+  BudgetName: String
+  CostTypes: *CostTypes*
+  BudgetType: String
+
+
+snippet CostTypes-budgets-budget-costtypes
+  IncludeSupport: Boolean
+  IncludeOtherSubscription: Boolean
+  IncludeTax: Boolean
+  IncludeSubscription: Boolean
+  UseBlended: Boolean
+  IncludeUpfront: Boolean
+  IncludeDiscount: Boolean
+  IncludeCredit: Boolean
+  IncludeRecurring: Boolean
+  UseAmortized: Boolean
+  IncludeRefund: Boolean
+
+
+snippet Notification-budgets-budget-notification
+  ComparisonOperator: String
+  NotificationType: String
+  Threshold: Double
+  ThresholdType: String
+
+
+snippet NotificationWithSubscribers-budgets-budget-notificationwithsubscribers
+  Subscribers:
+    - *Subscriber*
+  Notification: *Notification*
+
+
+snippet Spend-budgets-budget-spend
+  Amount: Double
+  Unit: String
+
+
+snippet Subscriber-budgets-budget-subscriber
+  SubscriptionType: String
+  Address: String
+
+
+snippet TimePeriod-budgets-budget-timeperiod
+  Start: String
+  End: String
+
+
 snippet DomainValidationOption-certificatemanager-certificate-domainvalidationoption
   DomainName: String
   ValidationDomain: String
@@ -3147,7 +3694,11 @@ snippet ParameterLabel-cloudformation-interface-parameterlabel
   ParameterLogicalID: Label
 
 
-snippet CacheBehavior-cloudfront-cachebehavior
+snippet CloudFrontOriginAccessIdentityConfig-cloudfront-cloudfrontoriginaccessidentity-cloudfrontoriginaccessidentityconfig
+  Comment: String
+
+
+snippet CacheBehavior-cloudfront-distribution-cachebehavior
   AllowedMethods:
     - String
   CachedMethods:
@@ -3168,11 +3719,20 @@ snippet CacheBehavior-cloudfront-cachebehavior
   ViewerProtocolPolicy: String
 
 
-snippet CloudFrontOriginAccessIdentityConfig-cloudfront-cloudfrontoriginaccessidentity-cloudfrontoriginaccessidentityconfig
-  Comment: String
+snippet Cookies-cloudfront-distribution-cookies
+  Forward: String
+  WhitelistedNames:
+    - String
 
 
-snippet CustomOriginConfig-cloudfront-customorigin
+snippet CustomErrorResponse-cloudfront-distribution-customerrorresponse
+  ErrorCachingMinTTL: Integer
+  ErrorCode: Integer
+  ResponseCode: Integer
+  ResponsePagePath: String
+
+
+snippet CustomOriginConfig-cloudfront-distribution-customoriginconfig
   HTTPPort: Integer
   HTTPSPort: Integer
   OriginKeepaliveTimeout: Integer
@@ -3182,7 +3742,7 @@ snippet CustomOriginConfig-cloudfront-customorigin
     - String
 
 
-snippet DefaultCacheBehavior-cloudfront-defaultcachebehavior
+snippet DefaultCacheBehavior-cloudfront-distribution-defaultcachebehavior
   AllowedMethods:
     - String
   CachedMethods:
@@ -3202,21 +3762,14 @@ snippet DefaultCacheBehavior-cloudfront-defaultcachebehavior
   ViewerProtocolPolicy : String
 
 
-snippet CustomErrorResponse-cloudfront-distributionconfig-customerrorresponse
-  ErrorCachingMinTTL: Integer
-  ErrorCode: Integer
-  ResponseCode: Integer
-  ResponsePagePath: String
-
-
-snippet DistributionConfig-cloudfront-distributionconfig
+snippet DistributionConfig-cloudfront-distribution-distributionconfig
   Aliases:
     - String
   CacheBehaviors:
-    - CacheBehavior
+    CacheBehavior
   Comment: String
   CustomErrorResponses:
-    - CustomErrorResponse
+    CustomErrorResponse
   DefaultCacheBehavior:
     DefaultCacheBehavior
   DefaultRootObject: String
@@ -3226,7 +3779,7 @@ snippet DistributionConfig-cloudfront-distributionconfig
   Logging:
     Logging
   Origins:
-    - Origin
+    Origin
   PriceClass: String
   Restrictions:
     Restriction
@@ -3235,45 +3788,7 @@ snippet DistributionConfig-cloudfront-distributionconfig
   WebACLId: String
 
 
-snippet GeoRestriction-cloudfront-distributionconfig-restrictions-georestriction
-  Locations:
-    - String
-  RestrictionType: String
-
-
-snippet Restrictions-cloudfront-distributionconfig-restrictions
-  GeoRestriction: GeoRestriction
-
-
-snippet ViewerCertificate-cloudfront-distributionconfig-viewercertificate
-  AcmCertificateArn: String
-  CloudFrontDefaultCertificate: Boolean
-  IamCertificateId: String
-  MinimumProtocolVersion: String
-  SslSupportMethod: String
-
-
-snippet LambdaFunctionAssociation-cloudfront-distribution-lambdafunctionassociation
-  EventType: String
-  LambdaFunctionARN: String
-
-
-snippet AWS::CloudFront::Distribution-cloudfront-distribution
-  Type: "AWS::CloudFront::Distribution"
-  Properties:
-    DistributionConfig:
-      *DistributionConfig*
-    Tags:
-      - *Tag*
-
-
-snippet Cookies-cloudfront-forwardedvalues-cookies
-  Forward: String
-  WhitelistedNames:
-    - String
-
-
-snippet ForwardedValues-cloudfront-forwardedvalues
+snippet ForwardedValues-cloudfront-distribution-forwardedvalues
   Cookies:
     Cookies
   Headers:
@@ -3283,13 +3798,29 @@ snippet ForwardedValues-cloudfront-forwardedvalues
     - String
 
 
-snippet Logging-cloudfront-logging
+snippet GeoRestriction-cloudfront-distribution-georestriction
+  Locations:
+    - String
+  RestrictionType: String
+
+
+snippet LambdaFunctionAssociation-cloudfront-distribution-lambdafunctionassociation
+  EventType: String
+  LambdaFunctionARN: String
+
+
+snippet Logging-cloudfront-distribution-logging
   Bucket: String
   IncludeCookies: Boolean
   Prefix: String
 
 
-snippet Origin-cloudfront-origin
+snippet OriginCustomHeader-cloudfront-distribution-origincustomheader
+  HeaderName: String
+  HeaderValue: String
+
+
+snippet Origin-cloudfront-distribution-origin
   CustomOriginConfig:
     CustomOriginConfig
   DomainName: String
@@ -3301,13 +3832,20 @@ snippet Origin-cloudfront-origin
     S3 Origin
 
 
-snippet OriginCustomHeader-cloudfront-origin-origincustomheader
-  HeaderName: String
-  HeaderValue: String
+snippet Restrictions-cloudfront-distribution-restrictions
+  GeoRestriction: GeoRestriction
 
 
-snippet S3Origin-cloudfront-s3origin
+snippet S3Origin-cloudfront-distribution-s3originconfig
   OriginAccessIdentity: String
+
+
+snippet ViewerCertificate-cloudfront-distribution-viewercertificate
+  AcmCertificateArn: String
+  CloudFrontDefaultCertificate: Boolean
+  IamCertificateId: String
+  MinimumProtocolVersion: String
+  SslSupportMethod: String
 
 
 snippet Logging-cloudfront-streamingdistribution-logging
@@ -3712,6 +4250,22 @@ snippet SourceDetails-config-configrule-source-sourcedetails
   MessageType: String
 
 
+snippet AccountAggregationSource-config-configurationaggregator-accountaggregationsource
+  AllAwsRegions: Boolean
+  AwsRegions:
+    - String
+  AccountIds:
+    - String
+
+
+snippet OrganizationAggregationSource-config-configurationaggregator-organizationaggregationsource
+  AllAwsRegions: Boolean
+  AwsRegions:
+    - String
+  RoleArn:
+    String
+
+
 snippet RecordingGroup-config-configurationrecorder-recordinggroup
   AllSupported: Boolean
   IncludeGlobalResourceTypes: Boolean
@@ -3879,6 +4433,10 @@ snippet StreamSpecification-dynamodb-streamspecification
   StreamViewType: String
 
 
+snippet PointInTimeRecoverySpecification-dynamodb-table-pointintimerecoveryspecification
+  PointInTimeRecoveryEnabled: Boolean
+
+
 snippet SSESpecification-dynamodb-table-ssespecification
   SSEEnabled: Boolean
 
@@ -4008,9 +4566,9 @@ snippet AWS::ElasticLoadBalancing::LoadBalancer-ec2-elb
       - String
     LBCookieStickinessPolicy:
       - LBCookieStickinessPolicy
+    LoadBalancerName: String
     Listeners:
       - Listener
-    LoadBalancerName: String
     Policies:
       - ElasticLoadBalancing Policy
     Scheme: String,
@@ -4043,6 +4601,12 @@ snippet ElasticGpuSpecification-ec2-instance-elasticgpuspecification
   Type: String
 
 
+snippet LaunchTemplateSpecification-ec2-instance-launchtemplatespecification
+  LaunchTemplateId: String
+  LaunchTemplateName: String
+  Version: String
+
+
 snippet AWS::EC2::Instance-ec2-instance
   Type: "AWS::EC2::Instance"
   Properties:
@@ -4064,6 +4628,7 @@ snippet AWS::EC2::Instance-ec2-instance
       - IPv6 Address Type
     KernelId: String
     KeyName: String
+    LaunchTemplate: Amazon EC2 Instance LaunchTemplateSpecification
     Monitoring: Boolean
     NetworkInterfaces:
       - EC2 Network Interface
@@ -4097,6 +4662,121 @@ snippet SsmAssociations-ec2-instance-ssmassociations
   AssociationParameters:
     - Parameters
   DocumentName: String
+
+
+snippet BlockDeviceMapping-ec2-launchtemplate-blockdevicemapping
+  Ebs: *Ebs*
+  NoDevice: String
+  VirtualName: String
+  DeviceName: String
+
+
+snippet CreditSpecification-ec2-launchtemplate-creditspecification
+  CpuCredits: String
+
+
+snippet Ebs-ec2-launchtemplate-ebs
+  SnapshotId: String
+  VolumeType: String
+  KmsKeyId: String
+  Encrypted: Boolean
+  Iops: Integer
+  VolumeSize: Integer
+  DeleteOnTermination: Boolean
+
+
+snippet ElasticGpuSpecification-ec2-launchtemplate-elasticgpuspecification
+  Type: String
+
+
+snippet IamInstanceProfile-ec2-launchtemplate-iaminstanceprofile
+  Arn: String
+  Name: String
+
+
+snippet InstanceMarketOptions-ec2-launchtemplate-instancemarketoptions
+  SpotOptions: *SpotOptions*
+  MarketType: String
+
+
+snippet Ipv6Add-ec2-launchtemplate-ipv6add
+  Ipv6Address: String
+
+
+snippet LaunchTemplateData-ec2-launchtemplate-launchtemplatedata
+  SecurityGroups:
+    - String
+  TagSpecifications:
+    - *TagSpecification*
+  UserData: String
+  InstanceInitiatedShutdownBehavior: String
+  BlockDeviceMappings:
+    - *BlockDeviceMapping*
+  IamInstanceProfile: *IamInstanceProfile*
+  KernelId: String
+  SecurityGroupIds:
+    - String
+  EbsOptimized: Boolean
+  KeyName: String
+  DisableApiTermination: Boolean
+  ElasticGpuSpecifications:
+    - *ElasticGpuSpecification*
+  Placement: *Placement*
+  InstanceMarketOptions: *InstanceMarketOptions*
+  NetworkInterfaces:
+    - *NetworkInterface*
+  ImageId: String
+  InstanceType: String
+  RamDiskId: String
+  Monitoring: *Monitoring*
+  CreditSpecification: *CreditSpecification*
+
+
+snippet Monitoring-ec2-launchtemplate-monitoring
+  Enabled: Boolean
+
+
+snippet NetworkInterface-ec2-launchtemplate-networkinterface
+  Description: String
+  PrivateIpAddress: String
+  PrivateIpAddresses:
+    - *PrivateIpAdd*
+  SecondaryPrivateIpAddressCount: Integer
+  Ipv6AddressCount: Integer
+  Groups:
+    - String
+  DeviceIndex: Integer
+  SubnetId: String
+  Ipv6Addresses:
+    - *Ipv6Add*
+  AssociatePublicIpAddress: Boolean
+  NetworkInterfaceId: String
+  DeleteOnTermination: Boolean
+
+
+snippet Placement-ec2-launchtemplate-placement
+  GroupName: String
+  Tenancy: String
+  AvailabilityZone: String
+  Affinity: String
+  HostId: String
+
+
+snippet PrivateIpAdd-ec2-launchtemplate-privateipadd
+  PrivateIpAddress: String
+  Primary: Boolean
+
+
+snippet SpotOptions-ec2-launchtemplate-spotoptions
+  SpotInstanceType: String
+  InstanceInterruptionBehavior: String
+  MaxPrice: String
+
+
+snippet TagSpecification-ec2-launchtemplate-tagspecification
+  ResourceType: String
+  Tags:
+    - *Tag*
 
 
 snippet Type-ec2-mount-point
@@ -4181,6 +4861,26 @@ snippet Type-ec2-security-group-rule
   SourceSecurityGroupName: String
   SourceSecurityGroupOwnerId: String
   ToPort: Integer
+
+
+snippet FleetLaunchTemplateSpecification-ec2-spotfleet-fleetlaunchtemplatespecification
+  LaunchTemplateId: String
+  LaunchTemplateName: String
+  Version: String
+
+
+snippet LaunchTemplateConfig-ec2-spotfleet-launchtemplateconfig
+  LaunchTemplateSpecification: LaunchTemplateSpecification
+  Overrides:
+    - *LaunchTemplateOverrides*
+
+
+snippet LaunchTemplateOverrides-ec2-spotfleet-launchtemplateoverrides
+  AvailabilityZone: String
+  InstanceType: String
+  SpotPrice: String
+  SubnetId: String
+  WeightedCapacity: Boolean
 
 
 snippet Ebs-ec2-spotfleet-spotfleetrequestconfigdata-launchspecifications-blockdevicemappings-ebs
@@ -4277,6 +4977,8 @@ snippet SpotFleetRequestConfigData-ec2-spotfleet-spotfleetrequestconfigdata
   IamFleetRole: String
   LaunchSpecifications:
     - *LaunchSpecifications*
+  LaunchTemplateConfigs:
+    - *LaunchTemplateConfigs*
   ReplaceUnhealthyInstances: Boolean
   SpotPrice: String
   TargetCapacity: Integer
@@ -4330,6 +5032,11 @@ snippet PlacementStrategies-ecs-service-placementstrategies-placementstrategy
   Field: String
 
 
+snippet ServiceRegistry-ecs-service-serviceregistry
+  Port: Integer
+  RegistryArn: String
+
+
 snippet KeyValuePair-ecs-taskdefinition-containerdefinitions-environment
   Name: String
   Value: String
@@ -4366,6 +5073,8 @@ snippet ContainerDefinition-ecs-taskdefinition-containerdefinitions
   Essential: Boolean
   ExtraHosts:
     - *HostEntry*
+  HealthCheck:
+    *HealthCheck*
   Hostname: String
   Image: String
   Links:
@@ -4421,6 +5130,15 @@ snippet Device-ecs-taskdefinition-device
     - String
 
 
+snippet HealthCheck-ecs-taskdefinition-healthcheck
+  Command
+    - String
+  Interval: Integer
+  Retries: Integer
+  StartPeriod: Integer
+  Timeout: Integer
+
+
 snippet KernelCapabilities-ecs-taskdefinition-kernelcapabilities
   Add:
     - String
@@ -4454,6 +5172,13 @@ snippet Volumes-ecs-taskdefinition-volumes
 snippet FileSystemTags-efs-filesystem-filesystemtags
   Key: String
   Value: String
+
+
+snippet ResourcesVpcConfig-eks-cluster-resourcesvpcconfig
+  SecurityGroupIds
+    - String
+  SubnetIds
+    - String
 
 
 snippet AWS::ElastiCache::CacheCluster-elasticache-cache-cluster
@@ -4780,6 +5505,11 @@ snippet ElasticsearchClusterConfig-elasticsearch-domain-elasticsearchclusterconf
   InstanceCount: Integer
   InstanceType: String
   ZoneAwarenessEnabled: Boolean
+
+
+snippet EncryptionAtRestOptions-elasticsearch-domain-encryptionatrestoptions
+  Enabled: Boolean
+  KmsKeyId: String
 
 
 snippet SnapshotOptions-elasticsearch-domain-snapshotoptions
@@ -5187,6 +5917,21 @@ snippet Predicate-glue-trigger-predicate
   Logical: String
   Conditions:
     - *Condition*
+
+
+snippet Condition-guardduty-filter-condition
+  Lt: Integer
+  Gte: Integer
+  Neq:
+    - String
+  Eq:
+    - String
+  Lte: Integer
+
+
+snippet FindingCriteria-guardduty-filter-findingcriteria
+  Criterion: Json
+  ItemType: *Condition*
 
 
 snippet AWS::IAM::AccessKey-iam-accesskey
@@ -5643,6 +6388,26 @@ snippet S3DestinationConfiguration-kinesisfirehose-deliverystream-s3destinationc
   RoleARN: String
 
 
+snippet SplunkDestinationConfiguration-kinesisfirehose-deliverystream-splunkdestinationconfiguration
+  CloudWatchLoggingOptions:
+    *CloudWatchLoggingOptions*
+  HECAcknowledgmentTimeoutInSeconds: Integer
+  HECEndpoint: String
+  HECEndpointType: String
+  HECToken: String
+  ProcessingConfiguration:
+    *ProcessingConfiguration*
+  RetryOptions:
+    *RetryOptions*
+  S3BackupMode: String
+  S3Configuration:
+    *S3Configuration*
+
+
+snippet SplunkRetryOptions-kinesisfirehose-deliverystream-splunkretryoptions
+  DurationInSeconds: Integer
+
+
 snippet StreamEncryption-kinesis-stream-streamencryption
   EncryptionType: String
   KeyId: String
@@ -5687,6 +6452,7 @@ snippet VpcConfig-lambda-function-vpcconfig
 
 
 snippet Property-logs-metricfilter-metrictransformation
+  DefaultValue: Double
   MetricName: String
   MetricNamespace: String
   MetricValue: String
@@ -6322,6 +7088,63 @@ snippet Property-s3-websiteconfiguration-routingrules-routingrulecondition
   KeyPrefixEquals: String
 
 
+snippet ProductionVariant-sagemaker-endpointconfig-productionvariant
+  ModelName: String
+  VariantName: String
+  InitialInstanceCount: Integer
+  InstanceType: String
+  InitialVariantWeight: Double
+
+
+snippet Tag-sagemaker-endpointconfig-tag
+  Key: String
+  Value" : String
+
+
+snippet Tag-sagemaker-endpoint-tag
+  Key: String
+  Value" : String
+
+
+snippet ContainerDefinition-sagemaker-model-containerdefinition
+  ContainerHostname: String
+  Environment: String
+  ModelDataUrl: JSON
+  Image: String
+
+
+snippet Tag-sagemaker-model-tag
+  Key: String
+  Value: String
+
+
+snippet VpcConfig-sagemaker-model-vpcconfig
+  Subnets:
+      - String
+  SecurityGroupIds:
+      - String
+
+
+snippet NotebookInstanceLifecycleHook-sagemaker-notebookinstancelifecycleconfig-notebookinstancelifecyclehook
+  Content: String
+
+
+snippet Tag-sagemaker-notebookinstance-tag
+  Key: String
+  Value" : String
+
+
+snippet ProvisioningArtifactProperties-servicecatalog-cloudformationproduct-provisioningartifactproperties
+  Description: String
+  Info: Json
+  Name: String
+
+
+snippet ProvisioningParameter-servicecatalog-cloudformationprovisionedproduct-provisioningparameter
+  Value: String
+  Key: String
+
+
 snippet DnsConfig-servicediscovery-service-dnsconfig
   DnsRecords:
     - *DnsRecord*
@@ -6501,6 +7324,15 @@ snippet RedrivePolicy-sqs-queues-redrivepolicy
   maxReceiveCount: Integer
 
 
+snippet InstanceAssociationOutputLocation-ssm-association-instanceassociationoutputlocation
+  S3Location: *S3OutputLocation*
+
+
+snippet S3OutputLocation-ssm-association-s3outputlocation
+  OutputS3BucketName: String
+  OutputS3KeyPrefix: String
+
+
 snippet Targets-ssm-association-targets
   Key: String
   Values:
@@ -6595,6 +7427,7 @@ snippet Rule-ssm-patchbaseline-rule
     *PatchFilterGroup*
   ApproveAfterDays: Integer
   ComplianceLevel: String
+  EnableNonSecurity: Boolean
 
 
 snippet AWS::CloudFormation::Stack-stack
