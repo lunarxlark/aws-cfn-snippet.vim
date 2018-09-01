@@ -31,6 +31,7 @@ do
       sed -e "s/^/  /g" | \
       sed -e "s/([^)]*)//g" | \
       sed -e "s/\[//g" -e "s/\]//g" >> ${snip}
+    echo "endsnippet" >> ${snip}
     echo "" >> ${snip}
     echo "" >> ${snip}
   done
@@ -52,6 +53,7 @@ do
       sed -e "s/^/  /g" | \
       sed -e "s/([^)]*)//g" | \
       sed -e "s/\[//g" -e "s/\]//g" >> ${snip}
+    echo "endsnippet" >> ${snip}
     echo "" >> ${snip}
     echo "" >> ${snip}
   done
@@ -65,6 +67,7 @@ snippet AWSTemplateFormatVersion
     MyEC2Instance: # inline comment
       Type: "AWS::EC2::Instance"
       ...
+endsnippet
 EOS
 
 # refact
