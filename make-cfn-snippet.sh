@@ -1,71 +1,68 @@
 #!/bin/bash
 
-home=$(cd $(dirname $0);pwd)
-aws_cfn_doc_repo=${home}/aws-cloudformation-user-guide
-aws_cfn_doc_dir=${aws_cfn_doc_repo}/doc_source
+home=$(cd $(dirname $0); pwd)
+aws_cfn_doc_repo="${home}/aws-cloudformation-user-guide"
+aws_cfn_doc_dir="${aws_cfn_doc_repo}/doc_source"
 
-if [ ! -d "aws-cloudformation-user-guide" ];then 
-  git clone https://github.com/awsdocs/aws-cloudformation-user-guide.git
-fi
+git submodule update --init --force
 
-cd ${aws_cfn_doc_dir}
+# initialize
+mkdir -p "${home}/snippets/"
+rm -vrf "${home}"/snippets/*
 
+cd "${aws_cfn_doc_dir}"
 for file_type in yaml json
-do 
-
-  # initialize
-  snip=${home}/snippets/${file_type}.snip
-  if [ -e "${snip}" ];then rm ${snip}; fi
-
+do
+  snip="${home}/snippets/${file_type}.snip"
   # AWS Resource snippets
-  echo "### AWS Resource snippets" >> ${snip}
-  for FILE in `grep "^### ${file_type~~}" aws-resource* | awk -F: '{ print $1 }' | sort -u`
+  echo "### AWS Resource snippets" >> "${snip}"
+  for FILE in $(grep "^### ${file_type~~}" aws-resource* | awk -F: '{ print $1 }' | sort -u)
   do
-    echo "snippet " `sed -n 1P $FILE | sed -e "s/^# //g" -e "s/<a .*//g" -e "s/ /::/g"` >> ${snip} 
-  
-    start=$(expr $(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n "\`\`\`" | awk -F: 'NR==1 { print $1}') + 1)
-    end=$(expr $(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n "\`\`\`" | awk -F: 'NR==2 { print $1}') - 1)
-  
-    sed -ne '/^### '${file_type~~}'/,$p' $FILE | \
-      sed -ne "${start},${end}p" | \
-      sed -e "s/^/  /g" | \
-      sed -e "s/([^)]*)//g" | \
-      sed -e "s/\[//g" -e "s/\]//g" >> ${snip}
-    echo "" >> ${snip}
-    echo "" >> ${snip}
+    echo "snippet $(sed -n 1P $FILE | sed -e 's/^# //g' -e 's/<a .*//g' -e 's/ /::/g')" >> "${snip}"
+
+    start=$(expr "$(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==1 { print $1}')" + 1)
+    end=$(expr "$(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==2 { print $1}')" - 1)
+
+    sed -ne "/^### ${file_type~~}/,\$p" "$FILE" \
+      | sed -ne "${start},${end}p" \
+      | sed -e "s/^/  /g" \
+      | sed -e "s/([^)]*)//g" \
+      | sed -e "s/\[//g" -e "s/\]//g" >> "${snip}"
+    echo "" >> "${snip}"
+    echo "" >> "${snip}"
   done
- 
 
   # Resource Properties snippets
-  echo "### Resource Properties snippets" >> ${snip}
-  for FILE in `grep "^### ${file_type~~}" aws-properties-* | awk -F: '{ print $1 }' | sort -u`
+  echo "### Resource Properties snippets" >> "${snip}"
+  for FILE in $(grep "^### ${file_type~~}" aws-properties-* | awk -F: '{ print $1 }' | sort -u)
   do
-    echo -n "snippet " >> ${snip}
-    echo -n `sed -n 1P $FILE | sed -e "s/^# //g" -e "s/<a .*//g" -e "s/.* //g"` >> ${snip}
-    echo $FILE | sed -e "s/aws-properties//g" -e "s/.md//g" >> ${snip}
-  
-    start=$(expr $(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n "\`\`\`" | awk -F: 'NR==1 { print $1}') + 1)
-    end=$(expr $(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n "\`\`\`" | awk -F: 'NR==2 { print $1}') - 1)
-  
-    sed -ne '/^### '${file_type~~}'/,$p' $FILE | \
-      sed -ne "${start},${end}p" | \
-      sed -e "s/^/  /g" | \
-      sed -e "s/([^)]*)//g" | \
-      sed -e "s/\[//g" -e "s/\]//g" >> ${snip}
-    echo "" >> ${snip}
-    echo "" >> ${snip}
+    echo -n "snippet $(sed -n 1P $FILE | sed -e 's/^# //g' -e 's/<a .*//g' -e 's/.* //g')" >> "${snip}"
+    echo "$FILE" | sed -e 's/aws-properties//g' -e 's/.md//g' >> "${snip}"
+
+    start=$(expr "$(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==1 { print $1}')" + 1)
+    end=$(expr "$(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==2 { print $1}')" - 1)
+
+    sed -ne "/^### ${file_type~~}/,\$p" "$FILE" \
+      | sed -ne "${start},${end}p" \
+      | sed -e "s/^/  /g" \
+      | sed -e "s/([^)]*)//g" \
+      | sed -e "s/\[//g" -e "s/\]//g" >> "${snip}"
+    echo "" >> "${snip}"
+    echo "" >> "${snip}"
   done
 done
 
-cat << EOS >> ${home}/snippets/yaml.snip
-snippet AWSTemplateFormatVersion
-  AWSTemplateFormatVersion: "2010-09-09"
-  Description: A sample template
-  Resources:
-    MyEC2Instance: # inline comment
-      Type: "AWS::EC2::Instance"
-      ...
-EOS
+cat >> "${home}/snippets/yaml.snip" <<- 'EOS'
+	snippet AWSTemplateFormatVersion
+	  AWSTemplateFormatVersion: "2010-09-09"
+	  Description: A sample template
+	  Resources:
+	    MyEC2Instance: # inline comment
+	      Type: "AWS::EC2::Instance"
+	      ...
+
+	EOS
 
 # refact
-sed -i -e "s/ $//g" ${home}/snippets/*.snip
+sed -i'' -e 's/\s\+$//g' "${home}"/snippets/*.snip
+
