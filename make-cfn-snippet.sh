@@ -1,11 +1,32 @@
 #!/bin/bash
 
 home=$(cd $(dirname $0); pwd)
+target="${1:--n}"
 aws_cfn_doc_repo="${home}/aws-cloudformation-user-guide"
 aws_cfn_doc_dir="${aws_cfn_doc_repo}/doc_source"
 
+case "${target#-}" in
+    n|-neosnippet)
+        endsnippet_str=""
+        ;;
+    u|-ultisnip)
+        endsnippet_str="endsnippet"
+        ;;
+    *)
+        cat <<- 'EOS'
+			Unsupported argument. Valid targets are:
+			  UltiSnip: '-u' or '--ultisnip'
+			  NeoSnippet: '-n' or '--neosnippet' [default]
+
+		EOS
+
+        exit 1
+        ;;
+esac
+
 git submodule update --init --force
 
+cd "${aws_cfn_doc_dir}"
 # initialize
 mkdir -p "${home}/snippets/"
 rm -vrf "${home}"/snippets/*
@@ -28,6 +49,7 @@ do
       | sed -e "s/^/  /g" \
       | sed -e "s/([^)]*)//g" \
       | sed -e "s/\[//g" -e "s/\]//g" >> "${snip}"
+    echo -n "${endsnippet_str}" >> "${snip}"
     echo "" >> "${snip}"
     echo "" >> "${snip}"
   done
@@ -47,12 +69,13 @@ do
       | sed -e "s/^/  /g" \
       | sed -e "s/([^)]*)//g" \
       | sed -e "s/\[//g" -e "s/\]//g" >> "${snip}"
+    echo -n "${endsnippet_str}" >> "${snip}"
     echo "" >> "${snip}"
     echo "" >> "${snip}"
   done
 done
 
-cat >> "${home}/snippets/yaml.snip" <<- 'EOS'
+cat >> "${home}/snippets/yaml.snip" <<- EOS
 	snippet AWSTemplateFormatVersion
 	  AWSTemplateFormatVersion: "2010-09-09"
 	  Description: A sample template
@@ -60,6 +83,7 @@ cat >> "${home}/snippets/yaml.snip" <<- 'EOS'
 	    MyEC2Instance: # inline comment
 	      Type: "AWS::EC2::Instance"
 	      ...
+	${endsnippet_str}
 
 	EOS
 
