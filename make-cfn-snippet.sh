@@ -1,13 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+function usage() {
+  cat <<EOF
+Usage: ./$0 [Option]
+
+Option:
+  -u,--ultisnip     format for UltiSnip.
+  -n,--neosippet    (default) format for NeoSnippet.
+  -h,--help         display this message.
+EOF
+}
 
 # option for below snippet plugins
 # - neosnippet
 # - Ultisnip
-USAGE="
-Unsupported argument. Valid targets are:\n
-  UltiSnip: '-u' or '--ultisnip'\n
-  NeoSnippet: '-n' or '--neosnippet' [default]\n"
-target="${1:--n}"
+target="${1:-n}"
 case "${target#-}" in
     n|-neosnippet)
         endsnippet_str=""
@@ -15,8 +22,12 @@ case "${target#-}" in
     u|-ultisnip)
         endsnippet_str="endsnippet"
         ;;
+    h|--help)
+        usage
+        exit 1
+        ;;
     *)
-        echo -e ${USAGE}
+        usage
         exit 1
         ;;
 esac
@@ -27,6 +38,7 @@ home=$(cd $(dirname $0); pwd)
 aws_cfn_doc_repo="${home}/aws-cloudformation-user-guide"
 aws_cfn_doc_dir="${aws_cfn_doc_repo}/doc_source"
 
+# update submodule(aws-cloudformation-user-guide)
 git submodule update --init --force
 mkdir -p "${home}/snippets/"
 rm -vrf "${home}"/snippets/*
@@ -39,14 +51,14 @@ do
   snip="${home}/snippets/${file_type}.snip"
   # AWS Resource snippets
   echo "### AWS Resource snippets" >> "${snip}"
-  for FILE in $(grep "^### ${file_type~~}" aws-resource* | awk -F: '{ print $1 }' | sort -u)
+  for FILE in $(grep "^### ${file_type^^}" aws-resource* | awk -F: '{ print $1 }' | sort -u)
   do
     echo "snippet $(sed -n 1P $FILE | sed -e 's/^# //g' -e 's/<a .*//g' -e 's/ /::/g')" >> "${snip}"
 
-    start=$(expr "$(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==1 { print $1}')" + 1)
-    end=$(expr "$(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==2 { print $1}')" - 1)
+    start=$(expr "$(sed -ne '/^### '${file_type^^}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==1 { print $1}')" + 1)
+    end=$(expr "$(sed -ne '/^### '${file_type^^}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==2 { print $1}')" - 1)
 
-    sed -ne "/^### ${file_type~~}/,\$p" "$FILE" \
+    sed -ne "/^### ${file_type^^}/,\$p" "$FILE" \
       | sed -ne "${start},${end}p" \
       | sed -e "s/^/  /g" \
       | sed -e "s/([^)]*)//g" \
@@ -58,15 +70,15 @@ do
 
   # Resource Properties snippets
   echo "### Resource Properties snippets" >> "${snip}"
-  for FILE in $(grep "^### ${file_type~~}" aws-properties-* | awk -F: '{ print $1 }' | sort -u)
+  for FILE in $(grep "^### ${file_type^^}" aws-properties-* | awk -F: '{ print $1 }' | sort -u)
   do
     echo -n "snippet $(sed -n 1P $FILE | sed -e 's/^# //g' -e 's/<a .*//g' -e 's/.* //g')" >> "${snip}"
     echo "$FILE" | sed -e 's/aws-properties//g' -e 's/.md//g' >> "${snip}"
 
-    start=$(expr "$(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==1 { print $1}')" + 1)
-    end=$(expr "$(sed -ne '/^### '${file_type~~}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==2 { print $1}')" - 1)
+    start=$(expr "$(sed -ne '/^### '${file_type^^}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==1 { print $1}')" + 1)
+    end=$(expr "$(sed -ne '/^### '${file_type^^}'/,$p' $FILE | grep -n '```' | awk -F: 'NR==2 { print $1}')" - 1)
 
-    sed -ne "/^### ${file_type~~}/,\$p" "$FILE" \
+    sed -ne "/^### ${file_type^^}/,\$p" "$FILE" \
       | sed -ne "${start},${end}p" \
       | sed -e "s/^/  /g" \
       | sed -e "s/([^)]*)//g" \
@@ -77,7 +89,7 @@ do
   done
 done
 
-cat >> "${home}/snippets/yaml.snip" <<- EOS
+cat >> "${home}/snippets/yaml.snip" <<-EOS
 	snippet AWSTemplateFormatVersion
 	  AWSTemplateFormatVersion: "2010-09-09"
 	  Description: A sample template
@@ -87,8 +99,4 @@ cat >> "${home}/snippets/yaml.snip" <<- EOS
 	      ...
 	${endsnippet_str}
 
-	EOS
-
-# refact
-sed -i'' -e 's/\s\+$//g' "${home}"/snippets/*.snip
-
+EOS
