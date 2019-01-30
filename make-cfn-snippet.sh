@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export LC_ALL=C
+
 function usage() {
   cat <<EOF
 Usage: ./$0 [Option]
@@ -39,7 +41,7 @@ aws_cfn_doc_repo="${home}/aws-cloudformation-user-guide"
 aws_cfn_doc_dir="${aws_cfn_doc_repo}/doc_source"
 
 # update submodule(aws-cloudformation-user-guide)
-git submodule update --init --force
+git submodule foreach git pull origin master
 mkdir -p "${home}/snippets/"
 rm -vrf "${home}"/snippets/*
 
