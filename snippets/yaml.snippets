@@ -1,3 +1,12 @@
+snippet init
+AWSTemplateFormatVersion: "2010-09-09"
+Description: ${1: Welcome to CFn template!!}
+Parameters:
+Mappings:
+Resources:
+Outputs:
+endsnippet
+
 # Cfn Resources {{{
 snippet AWS::ElasticBeanstalk::ConfigurationTemplate
 Type AWS::ElasticBeanstalk::ConfigurationTemplate
@@ -5,7 +14,7 @@ Properties:
 	ApplicationName : ${1:String(R)}
 	Description : ${2:String(O)}
 	EnvironmentId : ${3:String(O)}
-	OptionSettings : [${4:AWS::ElasticBeanstalk::ConfigurationTemplate.ConfigurationOptionSetting(O)}]
+	OptionSettings : [ ${4:AWS::ElasticBeanstalk::ConfigurationTemplate.ConfigurationOptionSetting(O)} ]
 	PlatformArn : ${5:String(O)}
 	SolutionStackName : ${6:String(O)}
 	SourceConfiguration: ${7:AWS::ElasticBeanstalk::ConfigurationTemplate.SourceConfiguration(O)}
@@ -14,20 +23,20 @@ endsnippet
 snippet AWS::AmazonMQ::Broker
 Type AWS::AmazonMQ::Broker
 Properties:
-	SecurityGroups : [${1:String(O)}]
+	SecurityGroups : [ ${1:String(O)} ]
 	EngineVersion : ${2:String(R)}
 	Configuration: ${3:AWS::AmazonMQ::Broker.ConfigurationId(O)}
 	MaintenanceWindowStartTime: ${4:AWS::AmazonMQ::Broker.MaintenanceWindow(O)}
 	HostInstanceType : ${5:String(R)}
 	AutoMinorVersionUpgrade : ${6:Boolean(R)}
-	Users : [${7:AWS::AmazonMQ::Broker.User(R)}]
+	Users : [ ${7:AWS::AmazonMQ::Broker.User(R)} ]
 	Logs: ${8:AWS::AmazonMQ::Broker.LogList(O)}
-	SubnetIds : [${9:String(O)}]
+	SubnetIds : [ ${9:String(O)} ]
 	BrokerName : ${10:String(R)}
 	DeploymentMode : ${11:String(R)}
 	EngineType : ${12:String(R)}
 	PubliclyAccessible : ${13:Boolean(R)}
-	Tags : [${14:AWS::AmazonMQ::Broker.TagsEntry(O)}]
+	Tags : [ ${14:AWS::AmazonMQ::Broker.TagsEntry(O)} ]
 endsnippet
 
 snippet AWS::AppSync::DataSource
@@ -48,7 +57,7 @@ endsnippet
 snippet AWS::EC2::RouteTable
 Type AWS::EC2::RouteTable
 Properties:
-	Tags : [${1:AWS::EC2::RouteTable.Tag(O)}]
+	Tags : [ ${1:AWS::EC2::RouteTable.Tag(O)} ]
 	VpcId : ${2:String(R)}
 endsnippet
 
@@ -85,13 +94,13 @@ Properties:
 	RoleArn : ${4:String(O)}
 	ScheduleExpression : ${5:String(O)}
 	State : ${6:String(O)}
-	Targets : [${7:AWS::Events::Rule.Target(O)}]
+	Targets : [ ${7:AWS::Events::Rule.Target(O)} ]
 endsnippet
 
 snippet AWS::WAF::IPSet
 Type AWS::WAF::IPSet
 Properties:
-	IPSetDescriptors : [${1:AWS::WAF::IPSet.IPSetDescriptor(O)}]
+	IPSetDescriptors : [ ${1:AWS::WAF::IPSet.IPSetDescriptor(O)} ]
 	Name : ${2:String(R)}
 endsnippet
 
@@ -99,16 +108,16 @@ snippet AWS::IAM::Group
 Type AWS::IAM::Group
 Properties:
 	GroupName : ${1:String(O)}
-	ManagedPolicyArns : [${2:String(O)}]
+	ManagedPolicyArns : [ ${2:String(O)} ]
 	Path : ${3:String(O)}
-	Policies : [${4:AWS::IAM::Group.Policy(O)}]
+	Policies : [ ${4:AWS::IAM::Group.Policy(O)} ]
 endsnippet
 
 snippet AWS::CodePipeline::CustomActionType
 Type AWS::CodePipeline::CustomActionType
 Properties:
 	Category : ${1:String(R)}
-	ConfigurationProperties : [${2:AWS::CodePipeline::CustomActionType.ConfigurationProperties(O)}]
+	ConfigurationProperties : [ ${2:AWS::CodePipeline::CustomActionType.ConfigurationProperties(O)} ]
 	InputArtifactDetails: ${3:AWS::CodePipeline::CustomActionType.ArtifactDetails(R)}
 	OutputArtifactDetails: ${4:AWS::CodePipeline::CustomActionType.ArtifactDetails(R)}
 	Provider : ${5:String(R)}
@@ -136,7 +145,7 @@ Properties:
 	PeerRegion : ${2:String(O)}
 	PeerRoleArn : ${3:String(O)}
 	PeerVpcId : ${4:String(R)}
-	Tags : [${5:AWS::EC2::VPCPeeringConnection.Tag(O)}]
+	Tags : [ ${5:AWS::EC2::VPCPeeringConnection.Tag(O)} ]
 	VpcId : ${6:String(R)}
 endsnippet
 
@@ -144,7 +153,7 @@ snippet AWS::Elasticsearch::Domain
 Type AWS::Elasticsearch::Domain
 Properties:
 	AccessPolicies : ${1:Json(O)}
-	AdvancedOptions : [${2:String(O)}]
+	AdvancedOptions : [ ${2:String(O)} ]
 	DomainName : ${3:String(O)}
 	EBSOptions: ${4:AWS::Elasticsearch::Domain.EBSOptions(O)}
 	ElasticsearchClusterConfig: ${5:AWS::Elasticsearch::Domain.ElasticsearchClusterConfig(O)}
@@ -152,14 +161,14 @@ Properties:
 	EncryptionAtRestOptions: ${7:AWS::Elasticsearch::Domain.EncryptionAtRestOptions(O)}
 	NodeToNodeEncryptionOptions: ${8:AWS::Elasticsearch::Domain.NodeToNodeEncryptionOptions(O)}
 	SnapshotOptions: ${9:AWS::Elasticsearch::Domain.SnapshotOptions(O)}
-	Tags : [${10:AWS::Elasticsearch::Domain.Tag(O)}]
+	Tags : [ ${10:AWS::Elasticsearch::Domain.Tag(O)} ]
 	VPCOptions: ${11:AWS::Elasticsearch::Domain.VPCOptions(O)}
 endsnippet
 
 snippet AWS::WAFRegional::SizeConstraintSet
 Type AWS::WAFRegional::SizeConstraintSet
 Properties:
-	SizeConstraints : [${1:AWS::WAFRegional::SizeConstraintSet.SizeConstraint(O)}]
+	SizeConstraints : [ ${1:AWS::WAFRegional::SizeConstraintSet.SizeConstraint(O)} ]
 	Name : ${2:String(R)}
 endsnippet
 
@@ -177,7 +186,7 @@ Type AWS::EMR::InstanceFleetConfig
 Properties:
 	ClusterId : ${1:String(R)}
 	InstanceFleetType : ${2:String(R)}
-	InstanceTypeConfigs : [${3:AWS::EMR::InstanceFleetConfig.InstanceTypeConfig(O)}]
+	InstanceTypeConfigs : [ ${3:AWS::EMR::InstanceFleetConfig.InstanceTypeConfig(O)} ]
 	LaunchSpecifications: ${4:AWS::EMR::InstanceFleetConfig.InstanceFleetProvisioningSpecifications(O)}
 	Name : ${5:String(O)}
 	TargetOnDemandCapacity : ${6:Integer(O)}
@@ -190,7 +199,7 @@ Properties:
 	BundleId : ${1:String(R)}
 	DirectoryId : ${2:String(R)}
 	RootVolumeEncryptionEnabled : ${3:Boolean(O)}
-	Tags : [${4:AWS::WorkSpaces::Workspace.Tag(O)}]
+	Tags : [ ${4:AWS::WorkSpaces::Workspace.Tag(O)} ]
 	UserName : ${5:String(R)}
 	UserVolumeEncryptionEnabled : ${6:Boolean(O)}
 	VolumeEncryptionKey : ${7:String(O)}
@@ -210,7 +219,7 @@ endsnippet
 snippet AWS::WAFRegional::SqlInjectionMatchSet
 Type AWS::WAFRegional::SqlInjectionMatchSet
 Properties:
-	SqlInjectionMatchTuples : [${1:AWS::WAFRegional::SqlInjectionMatchSet.SqlInjectionMatchTuple(O)}]
+	SqlInjectionMatchTuples : [ ${1:AWS::WAFRegional::SqlInjectionMatchSet.SqlInjectionMatchTuple(O)} ]
 	Name : ${2:String(R)}
 endsnippet
 
@@ -222,7 +231,7 @@ Properties:
 	AuthorizerId : ${3:String(O)}
 	RequestModels : ${4:Json(O)}
 	OperationName : ${5:String(O)}
-	AuthorizationScopes : [${6:String(O)}]
+	AuthorizationScopes : [ ${6:String(O)} ]
 	ApiKeyRequired : ${7:Boolean(O)}
 	RouteKey : ${8:String(R)}
 	AuthorizationType : ${9:String(O)}
@@ -235,7 +244,7 @@ snippet AWS::CodePipeline::Webhook
 Type AWS::CodePipeline::Webhook
 Properties:
 	AuthenticationConfiguration: ${1:AWS::CodePipeline::Webhook.WebhookAuthConfiguration(R)}
-	Filters : [${2:AWS::CodePipeline::Webhook.WebhookFilterRule(R)}]
+	Filters : [ ${2:AWS::CodePipeline::Webhook.WebhookFilterRule(R)} ]
 	Authentication : ${3:String(R)}
 	TargetPipeline : ${4:String(R)}
 	TargetAction : ${5:String(R)}
@@ -254,10 +263,10 @@ endsnippet
 snippet AWS::RAM::ResourceShare
 Type AWS::RAM::ResourceShare
 Properties:
-	Principals : [${1:String(O)}]
+	Principals : [ ${1:String(O)} ]
 	AllowExternalPrincipals : ${2:Boolean(O)}
-	ResourceArns : [${3:String(O)}]
-	Tags : [${4:AWS::RAM::ResourceShare.Tag(O)}]
+	ResourceArns : [ ${3:String(O)} ]
+	Tags : [ ${4:AWS::RAM::ResourceShare.Tag(O)} ]
 	Name : ${5:String(R)}
 endsnippet
 
@@ -268,16 +277,16 @@ Properties:
 	RetentionPeriodHours : ${2:Integer(O)}
 	ShardCount : ${3:Integer(R)}
 	StreamEncryption: ${4:AWS::Kinesis::Stream.StreamEncryption(O)}
-	Tags : [${5:AWS::Kinesis::Stream.Tag(O)}]
+	Tags : [ ${5:AWS::Kinesis::Stream.Tag(O)} ]
 endsnippet
 
 snippet AWS::AutoScaling::LaunchConfiguration
 Type AWS::AutoScaling::LaunchConfiguration
 Properties:
 	AssociatePublicIpAddress : ${1:Boolean(O)}
-	BlockDeviceMappings : [${2:AWS::AutoScaling::LaunchConfiguration.BlockDeviceMapping(O)}]
+	BlockDeviceMappings : [ ${2:AWS::AutoScaling::LaunchConfiguration.BlockDeviceMapping(O)} ]
 	ClassicLinkVPCId : ${3:String(O)}
-	ClassicLinkVPCSecurityGroups : [${4:String(O)}]
+	ClassicLinkVPCSecurityGroups : [ ${4:String(O)} ]
 	EbsOptimized : ${5:Boolean(O)}
 	IamInstanceProfile : ${6:String(O)}
 	ImageId : ${7:String(R)}
@@ -289,7 +298,7 @@ Properties:
 	LaunchConfigurationName : ${13:String(O)}
 	PlacementTenancy : ${14:String(O)}
 	RamDiskId : ${15:String(O)}
-	SecurityGroups : [${16:String(O)}]
+	SecurityGroups : [ ${16:String(O)} ]
 	SpotPrice : ${17:String(O)}
 	UserData : ${18:String(O)}
 endsnippet
@@ -304,7 +313,7 @@ Properties:
 	VpnEcmpSupport : ${5:String(O)}
 	DnsSupport : ${6:String(O)}
 	AmazonSideAsn : ${7:Integer(O)}
-	Tags : [${8:AWS::EC2::TransitGateway.Tag(O)}]
+	Tags : [ ${8:AWS::EC2::TransitGateway.Tag(O)} ]
 endsnippet
 
 snippet AWS::SQS::Queue
@@ -320,7 +329,7 @@ Properties:
 	QueueName : ${8:String(O)}
 	ReceiveMessageWaitTimeSeconds : ${9:Integer(O)}
 	RedrivePolicy : ${10:Json(O)}
-	Tags : [${11:AWS::SQS::Queue.Tag(O)}]
+	Tags : [ ${11:AWS::SQS::Queue.Tag(O)} ]
 	VisibilityTimeout : ${12:Integer(O)}
 endsnippet
 
@@ -343,7 +352,7 @@ snippet AWS::AutoScalingPlans::ScalingPlan
 Type AWS::AutoScalingPlans::ScalingPlan
 Properties:
 	ApplicationSource: ${1:AWS::AutoScalingPlans::ScalingPlan.ApplicationSource(R)}
-	ScalingInstructions : [${2:AWS::AutoScalingPlans::ScalingPlan.ScalingInstruction(R)}]
+	ScalingInstructions : [ ${2:AWS::AutoScalingPlans::ScalingPlan.ScalingInstruction(R)} ]
 endsnippet
 
 snippet AWS::AppStream::ImageBuilder
@@ -357,7 +366,7 @@ Properties:
 	DomainJoinInfo: ${6:AWS::AppStream::ImageBuilder.DomainJoinInfo(O)}
 	AppstreamAgentVersion : ${7:String(O)}
 	InstanceType : ${8:String(R)}
-	Tags : [${9:AWS::AppStream::ImageBuilder.Tag(O)}]
+	Tags : [ ${9:AWS::AppStream::ImageBuilder.Tag(O)} ]
 	Name : ${10:String(O)}
 	ImageArn : ${11:String(O)}
 endsnippet
@@ -365,7 +374,7 @@ endsnippet
 snippet AWS::EC2::VPCEndpointServicePermissions
 Type AWS::EC2::VPCEndpointServicePermissions
 Properties:
-	AllowedPrincipals : [${1:String(O)}]
+	AllowedPrincipals : [ ${1:String(O)} ]
 	ServiceId : ${2:String(R)}
 endsnippet
 
@@ -382,7 +391,7 @@ Properties:
 	MultiValueAnswer : ${8:Boolean(O)}
 	Name : ${9:String(R)}
 	Region : ${10:String(O)}
-	ResourceRecords : [${11:String(O)}]
+	ResourceRecords : [ ${11:String(O)} ]
 	SetIdentifier : ${12:String(O)}
 	TTL : ${13:String(O)}
 	Type : ${14:String(R)}
@@ -392,7 +401,7 @@ endsnippet
 snippet AWS::WAFRegional::XssMatchSet
 Type AWS::WAFRegional::XssMatchSet
 Properties:
-	XssMatchTuples : [${1:AWS::WAFRegional::XssMatchSet.XssMatchTuple(O)}]
+	XssMatchTuples : [ ${1:AWS::WAFRegional::XssMatchSet.XssMatchTuple(O)} ]
 	Name : ${2:String(R)}
 endsnippet
 
@@ -400,7 +409,7 @@ snippet AWS::WAF::SizeConstraintSet
 Type AWS::WAF::SizeConstraintSet
 Properties:
 	Name : ${1:String(R)}
-	SizeConstraints : [${2:AWS::WAF::SizeConstraintSet.SizeConstraint(R)}]
+	SizeConstraints : [ ${2:AWS::WAF::SizeConstraintSet.SizeConstraint(R)} ]
 endsnippet
 
 snippet AWS::EC2::NetworkAclEntry
@@ -427,17 +436,17 @@ endsnippet
 snippet AWS::IAM::Policy
 Type AWS::IAM::Policy
 Properties:
-	Groups : [${1:String(O)}]
+	Groups : [ ${1:String(O)} ]
 	PolicyDocument : ${2:Json(R)}
 	PolicyName : ${3:String(R)}
-	Roles : [${4:String(O)}]
-	Users : [${5:String(O)}]
+	Roles : [ ${4:String(O)} ]
+	Users : [ ${5:String(O)} ]
 endsnippet
 
 snippet AWS::EC2::InternetGateway
 Type AWS::EC2::InternetGateway
 Properties:
-	Tags : [${1:AWS::EC2::InternetGateway.Tag(O)}]
+	Tags : [ ${1:AWS::EC2::InternetGateway.Tag(O)} ]
 endsnippet
 
 snippet AWS::ECS::Cluster
@@ -449,7 +458,7 @@ endsnippet
 snippet AWS::ElasticLoadBalancingV2::ListenerCertificate
 Type AWS::ElasticLoadBalancingV2::ListenerCertificate
 Properties:
-	Certificates : [${1:AWS::ElasticLoadBalancingV2::ListenerCertificate.Certificate(R)}]
+	Certificates : [ ${1:AWS::ElasticLoadBalancingV2::ListenerCertificate.Certificate(R)} ]
 	ListenerArn : ${2:String(R)}
 endsnippet
 
@@ -457,18 +466,18 @@ snippet AWS::IAM::Role
 Type AWS::IAM::Role
 Properties:
 	AssumeRolePolicyDocument : ${1:Json(R)}
-	ManagedPolicyArns : [${2:String(O)}]
+	ManagedPolicyArns : [ ${2:String(O)} ]
 	MaxSessionDuration : ${3:Integer(O)}
 	Path : ${4:String(O)}
 	PermissionsBoundary : ${5:String(O)}
-	Policies : [${6:AWS::IAM::Role.Policy(O)}]
+	Policies : [ ${6:AWS::IAM::Role.Policy(O)} ]
 	RoleName : ${7:String(O)}
 endsnippet
 
 snippet AWS::StepFunctions::Activity
 Type AWS::StepFunctions::Activity
 Properties:
-	Tags : [${1:AWS::StepFunctions::Activity.TagsEntry(O)}]
+	Tags : [ ${1:AWS::StepFunctions::Activity.TagsEntry(O)} ]
 	Name : ${2:String(R)}
 endsnippet
 
@@ -500,13 +509,13 @@ Type AWS::AppStream::Stack
 Properties:
 	ApplicationSettings: ${1:AWS::AppStream::Stack.ApplicationSettings(O)}
 	Description : ${2:String(O)}
-	StorageConnectors : [${3:AWS::AppStream::Stack.StorageConnector(O)}]
+	StorageConnectors : [ ${3:AWS::AppStream::Stack.StorageConnector(O)} ]
 	DeleteStorageConnectors : ${4:Boolean(O)}
-	UserSettings : [${5:AWS::AppStream::Stack.UserSetting(O)}]
-	AttributesToDelete : [${6:String(O)}]
+	UserSettings : [ ${5:AWS::AppStream::Stack.UserSetting(O)} ]
+	AttributesToDelete : [ ${6:String(O)} ]
 	DisplayName : ${7:String(O)}
 	RedirectURL : ${8:String(O)}
-	Tags : [${9:AWS::AppStream::Stack.Tag(O)}]
+	Tags : [ ${9:AWS::AppStream::Stack.Tag(O)} ]
 	Name : ${10:String(O)}
 	FeedbackURL : ${11:String(O)}
 endsnippet
@@ -521,7 +530,7 @@ Properties:
 	KmsKeyId : ${5:String(O)}
 	Size : ${6:Integer(O)}
 	SnapshotId : ${7:String(O)}
-	Tags : [${8:AWS::EC2::Volume.Tag(O)}]
+	Tags : [ ${8:AWS::EC2::Volume.Tag(O)} ]
 	VolumeType : ${9:String(O)}
 endsnippet
 
@@ -561,7 +570,7 @@ endsnippet
 snippet AWS::Greengrass::ConnectorDefinitionVersion
 Type AWS::Greengrass::ConnectorDefinitionVersion
 Properties:
-	Connectors : [${1:AWS::Greengrass::ConnectorDefinitionVersion.Connector(R)}]
+	Connectors : [ ${1:AWS::Greengrass::ConnectorDefinitionVersion.Connector(R)} ]
 	ConnectorDefinitionId : ${2:String(R)}
 endsnippet
 
@@ -569,10 +578,10 @@ snippet AWS::EMR::Cluster
 Type AWS::EMR::Cluster
 Properties:
 	AdditionalInfo : ${1:Json(O)}
-	Applications : [${2:AWS::EMR::Cluster.Application(O)}]
+	Applications : [ ${2:AWS::EMR::Cluster.Application(O)} ]
 	AutoScalingRole : ${3:String(O)}
-	BootstrapActions : [${4:AWS::EMR::Cluster.BootstrapActionConfig(O)}]
-	Configurations : [${5:AWS::EMR::Cluster.Configuration(O)}]
+	BootstrapActions : [ ${4:AWS::EMR::Cluster.BootstrapActionConfig(O)} ]
+	Configurations : [ ${5:AWS::EMR::Cluster.Configuration(O)} ]
 	CustomAmiId : ${6:String(O)}
 	EbsRootVolumeSize : ${7:Integer(O)}
 	Instances: ${8:AWS::EMR::Cluster.JobFlowInstancesConfig(R)}
@@ -584,8 +593,8 @@ Properties:
 	ScaleDownBehavior : ${14:String(O)}
 	SecurityConfiguration : ${15:String(O)}
 	ServiceRole : ${16:String(R)}
-	Steps : [${17:AWS::EMR::Cluster.StepConfig(O)}]
-	Tags : [${18:AWS::EMR::Cluster.Tag(O)}]
+	Steps : [ ${17:AWS::EMR::Cluster.StepConfig(O)} ]
+	Tags : [ ${18:AWS::EMR::Cluster.Tag(O)} ]
 	VisibleToAllUsers : ${19:Boolean(O)}
 endsnippet
 
@@ -599,7 +608,7 @@ snippet AWS::CloudFront::StreamingDistribution
 Type AWS::CloudFront::StreamingDistribution
 Properties:
 	StreamingDistributionConfig: ${1:AWS::CloudFront::StreamingDistribution.StreamingDistributionConfig(R)}
-	Tags : [${2:AWS::CloudFront::StreamingDistribution.Tag(R)}]
+	Tags : [ ${2:AWS::CloudFront::StreamingDistribution.Tag(R)} ]
 endsnippet
 
 snippet AWS::AppSync::GraphQLApi
@@ -643,7 +652,7 @@ Type AWS::WAF::Rule
 Properties:
 	MetricName : ${1:String(R)}
 	Name : ${2:String(R)}
-	Predicates : [${3:AWS::WAF::Rule.Predicate(O)}]
+	Predicates : [ ${3:AWS::WAF::Rule.Predicate(O)} ]
 endsnippet
 
 snippet AWS::DirectoryService::MicrosoftAD
@@ -675,7 +684,7 @@ Type AWS::EFS::MountTarget
 Properties:
 	FileSystemId : ${1:String(R)}
 	IpAddress : ${2:String(O)}
-	SecurityGroups : [${3:String(R)}]
+	SecurityGroups : [ ${3:String(R)} ]
 	SubnetId : ${4:String(R)}
 endsnippet
 
@@ -691,7 +700,7 @@ Type AWS::SSM::Document
 Properties:
 	Content : ${1:Json(R)}
 	DocumentType : ${2:String(O)}
-	Tags : [${3:AWS::SSM::Document.Tag(O)}]
+	Tags : [ ${3:AWS::SSM::Document.Tag(O)} ]
 endsnippet
 
 snippet AWS::Config::DeliveryChannel
@@ -709,7 +718,7 @@ Type AWS::SNS::Topic
 Properties:
 	DisplayName : ${1:String(O)}
 	KmsMasterKeyId : ${2:String(O)}
-	Subscription : [${3:AWS::SNS::Topic.Subscription(O)}]
+	Subscription : [ ${3:AWS::SNS::Topic.Subscription(O)} ]
 	TopicName : ${4:String(O)}
 endsnippet
 
@@ -728,8 +737,8 @@ Properties:
 	PrimaryContainer: ${2:AWS::SageMaker::Model.ContainerDefinition(O)}
 	ModelName : ${3:String(O)}
 	VpcConfig: ${4:AWS::SageMaker::Model.VpcConfig(O)}
-	Containers : [${5:AWS::SageMaker::Model.ContainerDefinition(O)}]
-	Tags : [${6:AWS::SageMaker::Model.Tag(O)}]
+	Containers : [ ${5:AWS::SageMaker::Model.ContainerDefinition(O)} ]
+	Tags : [ ${6:AWS::SageMaker::Model.Tag(O)} ]
 endsnippet
 
 snippet AWS::GameLift::Build
@@ -751,9 +760,9 @@ endsnippet
 snippet AWS::SageMaker::NotebookInstanceLifecycleConfig
 Type AWS::SageMaker::NotebookInstanceLifecycleConfig
 Properties:
-	OnStart : [${1:AWS::SageMaker::NotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHook(O)}]
+	OnStart : [ ${1:AWS::SageMaker::NotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHook(O)} ]
 	NotebookInstanceLifecycleConfigName : ${2:String(O)}
-	OnCreate : [${3:AWS::SageMaker::NotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHook(O)}]
+	OnCreate : [ ${3:AWS::SageMaker::NotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHook(O)} ]
 endsnippet
 
 snippet AWS::Cognito::UserPoolGroup
@@ -803,27 +812,27 @@ Properties:
 	KeyPolicy : ${4:Json(R)}
 	KeyUsage : ${5:String(O)}
 	PendingWindowInDays : ${6:Integer(O)}
-	Tags : [${7:AWS::KMS::Key.Tag(O)}]
+	Tags : [ ${7:AWS::KMS::Key.Tag(O)} ]
 endsnippet
 
 snippet AWS::CloudWatch::Alarm
 Type AWS::CloudWatch::Alarm
 Properties:
 	ActionsEnabled : ${1:Boolean(O)}
-	AlarmActions : [${2:String(O)}]
+	AlarmActions : [ ${2:String(O)} ]
 	AlarmDescription : ${3:String(O)}
 	AlarmName : ${4:String(O)}
 	ComparisonOperator : ${5:String(R)}
 	DatapointsToAlarm : ${6:Integer(O)}
-	Dimensions : [${7:AWS::CloudWatch::Alarm.Dimension(O)}]
+	Dimensions : [ ${7:AWS::CloudWatch::Alarm.Dimension(O)} ]
 	EvaluateLowSampleCountPercentile : ${8:String(O)}
 	EvaluationPeriods : ${9:Integer(R)}
 	ExtendedStatistic : ${10:String(O)}
-	InsufficientDataActions : [${11:String(O)}]
+	InsufficientDataActions : [ ${11:String(O)} ]
 	MetricName : ${12:String(O)}
-	Metrics : [${13:AWS::CloudWatch::Alarm.MetricDataQuery(O)}]
+	Metrics : [ ${13:AWS::CloudWatch::Alarm.MetricDataQuery(O)} ]
 	Namespace : ${14:String(O)}
-	OKActions : [${15:String(O)}]
+	OKActions : [ ${15:String(O)} ]
 	Period : ${16:Integer(O)}
 	Statistic : ${17:String(O)}
 	Threshold : ${18:Double(R)}
@@ -839,7 +848,7 @@ Properties:
 	AvailabilityZone : ${3:String(O)}
 	ClusterIdentifier : ${4:String(O)}
 	ClusterParameterGroupName : ${5:String(O)}
-	ClusterSecurityGroups : [${6:String(O)}]
+	ClusterSecurityGroups : [ ${6:String(O)} ]
 	ClusterSubnetGroupName : ${7:String(O)}
 	ClusterType : ${8:String(R)}
 	ClusterVersion : ${9:String(O)}
@@ -848,7 +857,7 @@ Properties:
 	Encrypted : ${12:Boolean(O)}
 	HsmClientCertificateIdentifier : ${13:String(O)}
 	HsmConfigurationIdentifier : ${14:String(O)}
-	IamRoles : [${15:String(O)}]
+	IamRoles : [ ${15:String(O)} ]
 	KmsKeyId : ${16:String(O)}
 	LoggingProperties: ${17:AWS::Redshift::Cluster.LoggingProperties(O)}
 	MasterUserPassword : ${18:String(R)}
@@ -861,20 +870,20 @@ Properties:
 	PubliclyAccessible : ${25:Boolean(O)}
 	SnapshotClusterIdentifier : ${26:String(O)}
 	SnapshotIdentifier : ${27:String(O)}
-	Tags : [${28:AWS::Redshift::Cluster.Tag(O)}]
-	VpcSecurityGroupIds : [${29:String(O)}]
+	Tags : [ ${28:AWS::Redshift::Cluster.Tag(O)} ]
+	VpcSecurityGroupIds : [ ${29:String(O)} ]
 endsnippet
 
 snippet AWS::OpsWorks::App
 Type AWS::OpsWorks::App
 Properties:
 	AppSource: ${1:AWS::OpsWorks::App.Source(O)}
-	Attributes : [${2:String(O)}]
-	DataSources : [${3:AWS::OpsWorks::App.DataSource(O)}]
+	Attributes : [ ${2:String(O)} ]
+	DataSources : [ ${3:AWS::OpsWorks::App.DataSource(O)} ]
 	Description : ${4:String(O)}
-	Domains : [${5:String(O)}]
+	Domains : [ ${5:String(O)} ]
 	EnableSsl : ${6:Boolean(O)}
-	Environment : [${7:AWS::OpsWorks::App.EnvironmentVariable(O)}]
+	Environment : [ ${7:AWS::OpsWorks::App.EnvironmentVariable(O)} ]
 	Name : ${8:String(R)}
 	Shortname : ${9:String(O)}
 	SslConfiguration: ${10:AWS::OpsWorks::App.SslConfiguration(O)}
@@ -896,9 +905,9 @@ snippet AWS::CertificateManager::Certificate
 Type AWS::CertificateManager::Certificate
 Properties:
 	DomainName : ${1:String(R)}
-	DomainValidationOptions : [${2:AWS::CertificateManager::Certificate.DomainValidationOption(O)}]
-	SubjectAlternativeNames : [${3:String(O)}]
-	Tags : [${4:AWS::CertificateManager::Certificate.Tag(O)}]
+	DomainValidationOptions : [ ${2:AWS::CertificateManager::Certificate.DomainValidationOption(O)} ]
+	SubjectAlternativeNames : [ ${3:String(O)} ]
+	Tags : [ ${4:AWS::CertificateManager::Certificate.Tag(O)} ]
 	ValidationMethod : ${5:String(O)}
 endsnippet
 
@@ -906,13 +915,13 @@ snippet AWS::Greengrass::SubscriptionDefinitionVersion
 Type AWS::Greengrass::SubscriptionDefinitionVersion
 Properties:
 	SubscriptionDefinitionId : ${1:String(R)}
-	Subscriptions : [${2:AWS::Greengrass::SubscriptionDefinitionVersion.Subscription(R)}]
+	Subscriptions : [ ${2:AWS::Greengrass::SubscriptionDefinitionVersion.Subscription(R)} ]
 endsnippet
 
 snippet AWS::Greengrass::CoreDefinitionVersion
 Type AWS::Greengrass::CoreDefinitionVersion
 Properties:
-	Cores : [${1:AWS::Greengrass::CoreDefinitionVersion.Core(R)}]
+	Cores : [ ${1:AWS::Greengrass::CoreDefinitionVersion.Core(R)} ]
 	CoreDefinitionId : ${2:String(R)}
 endsnippet
 
@@ -926,7 +935,7 @@ Properties:
 	IdentitySource : ${5:String(O)}
 	IdentityValidationExpression : ${6:String(O)}
 	Name : ${7:String(O)}
-	ProviderARNs : [${8:String(O)}]
+	ProviderARNs : [ ${8:String(O)} ]
 	RestApiId : ${9:String(R)}
 	Type : ${10:String(R)}
 endsnippet
@@ -942,7 +951,7 @@ endsnippet
 snippet AWS::Inspector::ResourceGroup
 Type AWS::Inspector::ResourceGroup
 Properties:
-	ResourceGroupTags : [${1:AWS::Inspector::ResourceGroup.Tag(R)}]
+	ResourceGroupTags : [ ${1:AWS::Inspector::ResourceGroup.Tag(R)} ]
 endsnippet
 
 snippet AWS::IoT1Click::Project
@@ -956,11 +965,11 @@ endsnippet
 snippet AWS::IoTAnalytics::Dataset
 Type AWS::IoTAnalytics::Dataset
 Properties:
-	Actions : [${1:AWS::IoTAnalytics::Dataset.Action(R)}]
+	Actions : [ ${1:AWS::IoTAnalytics::Dataset.Action(R)} ]
 	DatasetName : ${2:String(O)}
-	Triggers : [${3:AWS::IoTAnalytics::Dataset.Trigger(O)}]
+	Triggers : [ ${3:AWS::IoTAnalytics::Dataset.Trigger(O)} ]
 	RetentionPeriod: ${4:AWS::IoTAnalytics::Dataset.RetentionPeriod(O)}
-	Tags : [${5:AWS::IoTAnalytics::Dataset.Tag(O)}]
+	Tags : [ ${5:AWS::IoTAnalytics::Dataset.Tag(O)} ]
 endsnippet
 
 snippet AWS::ApiGateway::DomainName
@@ -999,9 +1008,9 @@ Properties:
 	BuildId : ${1:String(R)}
 	Description : ${2:String(O)}
 	DesiredEC2Instances : ${3:Integer(R)}
-	EC2InboundPermissions : [${4:AWS::GameLift::Fleet.IpPermission(O)}]
+	EC2InboundPermissions : [ ${4:AWS::GameLift::Fleet.IpPermission(O)} ]
 	EC2InstanceType : ${5:String(R)}
-	LogPaths : [${6:String(O)}]
+	LogPaths : [ ${6:String(O)} ]
 	MaxSize : ${7:Integer(O)}
 	MinSize : ${8:Integer(O)}
 	Name : ${9:String(R)}
@@ -1029,7 +1038,7 @@ endsnippet
 snippet AWS::Lambda::LayerVersion
 Type AWS::Lambda::LayerVersion
 Properties:
-	CompatibleRuntimes : [${1:String(O)}]
+	CompatibleRuntimes : [ ${1:String(O)} ]
 	LicenseInfo : ${2:String(O)}
 	Description : ${3:String(O)}
 	LayerName : ${4:String(O)}
@@ -1047,7 +1056,7 @@ endsnippet
 snippet AWS::RDS::DBCluster
 Type AWS::RDS::DBCluster
 Properties:
-	AvailabilityZones : [${1:String(O)}]
+	AvailabilityZones : [ ${1:String(O)} ]
 	BacktrackWindow : ${2:Long(O)}
 	BackupRetentionPeriod : ${3:Integer(O)}
 	DBClusterIdentifier : ${4:String(O)}
@@ -1055,7 +1064,7 @@ Properties:
 	DBSubnetGroupName : ${6:String(O)}
 	DatabaseName : ${7:String(O)}
 	DeletionProtection : ${8:Boolean(O)}
-	EnableCloudwatchLogsExports : [${9:String(O)}]
+	EnableCloudwatchLogsExports : [ ${9:String(O)} ]
 	EnableIAMDatabaseAuthentication : ${10:Boolean(O)}
 	Engine : ${11:String(R)}
 	EngineMode : ${12:String(O)}
@@ -1071,8 +1080,8 @@ Properties:
 	SnapshotIdentifier : ${22:String(O)}
 	SourceRegion : ${23:String(O)}
 	StorageEncrypted : ${24:Boolean(O)}
-	Tags : [${25:AWS::RDS::DBCluster.Tag(O)}]
-	VpcSecurityGroupIds : [${26:String(O)}]
+	Tags : [ ${25:AWS::RDS::DBCluster.Tag(O)} ]
+	VpcSecurityGroupIds : [ ${26:String(O)} ]
 endsnippet
 
 snippet AWS::ECS::Service
@@ -1083,15 +1092,15 @@ Properties:
 	DesiredCount : ${3:Integer(O)}
 	HealthCheckGracePeriodSeconds : ${4:Integer(O)}
 	LaunchType : ${5:String(O)}
-	LoadBalancers : [${6:AWS::ECS::Service.LoadBalancer(O)}]
+	LoadBalancers : [ ${6:AWS::ECS::Service.LoadBalancer(O)} ]
 	NetworkConfiguration: ${7:AWS::ECS::Service.NetworkConfiguration(O)}
-	PlacementConstraints : [${8:AWS::ECS::Service.PlacementConstraint(O)}]
-	PlacementStrategies : [${9:AWS::ECS::Service.PlacementStrategy(O)}]
+	PlacementConstraints : [ ${8:AWS::ECS::Service.PlacementConstraint(O)} ]
+	PlacementStrategies : [ ${9:AWS::ECS::Service.PlacementStrategy(O)} ]
 	PlatformVersion : ${10:String(O)}
 	Role : ${11:String(O)}
 	SchedulingStrategy : ${12:String(O)}
 	ServiceName : ${13:String(O)}
-	ServiceRegistries : [${14:AWS::ECS::Service.ServiceRegistry(O)}]
+	ServiceRegistries : [ ${14:AWS::ECS::Service.ServiceRegistry(O)} ]
 	TaskDefinition : ${15:String(R)}
 endsnippet
 
@@ -1099,7 +1108,7 @@ snippet AWS::IAM::UserToGroupAddition
 Type AWS::IAM::UserToGroupAddition
 Properties:
 	GroupName : ${1:String(R)}
-	Users : [${2:String(R)}]
+	Users : [ ${2:String(R)} ]
 endsnippet
 
 snippet AWS::RDS::DBSubnetGroup
@@ -1107,8 +1116,8 @@ Type AWS::RDS::DBSubnetGroup
 Properties:
 	DBSubnetGroupDescription : ${1:String(R)}
 	DBSubnetGroupName : ${2:String(O)}
-	SubnetIds : [${3:String(R)}]
-	Tags : [${4:AWS::RDS::DBSubnetGroup.Tag(O)}]
+	SubnetIds : [ ${3:String(R)} ]
+	Tags : [ ${4:AWS::RDS::DBSubnetGroup.Tag(O)} ]
 endsnippet
 
 snippet AWS::OpsWorksCM::Server
@@ -1124,10 +1133,10 @@ Properties:
 	AssociatePublicIpAddress : ${8:Boolean(O)}
 	InstanceProfileArn : ${9:String(R)}
 	PreferredBackupWindow : ${10:String(O)}
-	SecurityGroupIds : [${11:String(O)}]
-	SubnetIds : [${12:String(O)}]
+	SecurityGroupIds : [ ${11:String(O)} ]
+	SubnetIds : [ ${12:String(O)} ]
 	ServerName : ${13:String(O)}
-	EngineAttributes : [${14:AWS::OpsWorksCM::Server.EngineAttribute(O)}]
+	EngineAttributes : [ ${14:AWS::OpsWorksCM::Server.EngineAttribute(O)} ]
 	BackupRetentionCount : ${15:Integer(O)}
 	InstanceType : ${16:String(R)}
 	Engine : ${17:String(O)}
@@ -1136,7 +1145,7 @@ endsnippet
 snippet AWS::Batch::JobQueue
 Type AWS::Batch::JobQueue
 Properties:
-	ComputeEnvironmentOrder : [${1:AWS::Batch::JobQueue.ComputeEnvironmentOrder(R)}]
+	ComputeEnvironmentOrder : [ ${1:AWS::Batch::JobQueue.ComputeEnvironmentOrder(R)} ]
 	Priority : ${2:Integer(R)}
 	State : ${3:String(O)}
 	JobQueueName : ${4:String(O)}
@@ -1146,21 +1155,21 @@ snippet AWS::ElasticLoadBalancing::LoadBalancer
 Type AWS::ElasticLoadBalancing::LoadBalancer
 Properties:
 	AccessLoggingPolicy: ${1:AWS::ElasticLoadBalancing::LoadBalancer.AccessLoggingPolicy(O)}
-	AppCookieStickinessPolicy : [${2:AWS::ElasticLoadBalancing::LoadBalancer.AppCookieStickinessPolicy(O)}]
-	AvailabilityZones : [${3:String(O)}]
+	AppCookieStickinessPolicy : [ ${2:AWS::ElasticLoadBalancing::LoadBalancer.AppCookieStickinessPolicy(O)} ]
+	AvailabilityZones : [ ${3:String(O)} ]
 	ConnectionDrainingPolicy: ${4:AWS::ElasticLoadBalancing::LoadBalancer.ConnectionDrainingPolicy(O)}
 	ConnectionSettings: ${5:AWS::ElasticLoadBalancing::LoadBalancer.ConnectionSettings(O)}
 	CrossZone : ${6:Boolean(O)}
 	HealthCheck: ${7:AWS::ElasticLoadBalancing::LoadBalancer.HealthCheck(O)}
-	Instances : [${8:String(O)}]
-	LBCookieStickinessPolicy : [${9:AWS::ElasticLoadBalancing::LoadBalancer.LBCookieStickinessPolicy(O)}]
-	Listeners : [${10:AWS::ElasticLoadBalancing::LoadBalancer.Listeners(R)}]
+	Instances : [ ${8:String(O)} ]
+	LBCookieStickinessPolicy : [ ${9:AWS::ElasticLoadBalancing::LoadBalancer.LBCookieStickinessPolicy(O)} ]
+	Listeners : [ ${10:AWS::ElasticLoadBalancing::LoadBalancer.Listeners(R)} ]
 	LoadBalancerName : ${11:String(O)}
-	Policies : [${12:AWS::ElasticLoadBalancing::LoadBalancer.Policies(O)}]
+	Policies : [ ${12:AWS::ElasticLoadBalancing::LoadBalancer.Policies(O)} ]
 	Scheme : ${13:String(O)}
-	SecurityGroups : [${14:String(O)}]
-	Subnets : [${15:String(O)}]
-	Tags : [${16:AWS::ElasticLoadBalancing::LoadBalancer.Tag(O)}]
+	SecurityGroups : [ ${14:String(O)} ]
+	Subnets : [ ${15:String(O)} ]
+	Tags : [ ${16:AWS::ElasticLoadBalancing::LoadBalancer.Tag(O)} ]
 endsnippet
 
 snippet AWS::IoT::Thing
@@ -1173,25 +1182,25 @@ endsnippet
 snippet AWS::OpsWorks::Layer
 Type AWS::OpsWorks::Layer
 Properties:
-	Attributes : [${1:String(O)}]
+	Attributes : [ ${1:String(O)} ]
 	AutoAssignElasticIps : ${2:Boolean(R)}
 	AutoAssignPublicIps : ${3:Boolean(R)}
 	CustomInstanceProfileArn : ${4:String(O)}
 	CustomJson : ${5:Json(O)}
 	CustomRecipes: ${6:AWS::OpsWorks::Layer.Recipes(O)}
-	CustomSecurityGroupIds : [${7:String(O)}]
+	CustomSecurityGroupIds : [ ${7:String(O)} ]
 	EnableAutoHealing : ${8:Boolean(R)}
 	InstallUpdatesOnBoot : ${9:Boolean(O)}
 	LifecycleEventConfiguration: ${10:AWS::OpsWorks::Layer.LifecycleEventConfiguration(O)}
 	LoadBasedAutoScaling: ${11:AWS::OpsWorks::Layer.LoadBasedAutoScaling(O)}
 	Name : ${12:String(R)}
-	Packages : [${13:String(O)}]
+	Packages : [ ${13:String(O)} ]
 	Shortname : ${14:String(R)}
 	StackId : ${15:String(R)}
-	Tags : [${16:AWS::OpsWorks::Layer.Tag(O)}]
+	Tags : [ ${16:AWS::OpsWorks::Layer.Tag(O)} ]
 	Type : ${17:String(R)}
 	UseEbsOptimizedInstances : ${18:Boolean(O)}
-	VolumeConfigurations : [${19:AWS::OpsWorks::Layer.VolumeConfiguration(O)}]
+	VolumeConfigurations : [ ${19:AWS::OpsWorks::Layer.VolumeConfiguration(O)} ]
 endsnippet
 
 snippet AWS::DMS::Certificate
@@ -1210,7 +1219,7 @@ Properties:
 	Enabled : ${3:Boolean(O)}
 	GenerateDistinctId : ${4:Boolean(O)}
 	Name : ${5:String(O)}
-	StageKeys : [${6:AWS::ApiGateway::ApiKey.StageKey(O)}]
+	StageKeys : [ ${6:AWS::ApiGateway::ApiKey.StageKey(O)} ]
 	Value : ${7:String(O)}
 endsnippet
 
@@ -1261,7 +1270,7 @@ Type AWS::IAM::InstanceProfile
 Properties:
 	InstanceProfileName : ${1:String(O)}
 	Path : ${2:String(O)}
-	Roles : [${3:String(R)}]
+	Roles : [ ${3:String(R)} ]
 endsnippet
 
 snippet AWS::CodeDeploy::DeploymentGroup
@@ -1270,18 +1279,18 @@ Properties:
 	AlarmConfiguration: ${1:AWS::CodeDeploy::DeploymentGroup.AlarmConfiguration(O)}
 	ApplicationName : ${2:String(R)}
 	AutoRollbackConfiguration: ${3:AWS::CodeDeploy::DeploymentGroup.AutoRollbackConfiguration(O)}
-	AutoScalingGroups : [${4:String(O)}]
+	AutoScalingGroups : [ ${4:String(O)} ]
 	Deployment: ${5:AWS::CodeDeploy::DeploymentGroup.Deployment(O)}
 	DeploymentConfigName : ${6:String(O)}
 	DeploymentGroupName : ${7:String(O)}
 	DeploymentStyle: ${8:AWS::CodeDeploy::DeploymentGroup.DeploymentStyle(O)}
-	Ec2TagFilters : [${9:AWS::CodeDeploy::DeploymentGroup.EC2TagFilter(O)}]
+	Ec2TagFilters : [ ${9:AWS::CodeDeploy::DeploymentGroup.EC2TagFilter(O)} ]
 	Ec2TagSet: ${10:AWS::CodeDeploy::DeploymentGroup.EC2TagSet(O)}
 	LoadBalancerInfo: ${11:AWS::CodeDeploy::DeploymentGroup.LoadBalancerInfo(O)}
-	OnPremisesInstanceTagFilters : [${12:AWS::CodeDeploy::DeploymentGroup.TagFilter(O)}]
+	OnPremisesInstanceTagFilters : [ ${12:AWS::CodeDeploy::DeploymentGroup.TagFilter(O)} ]
 	OnPremisesTagSet: ${13:AWS::CodeDeploy::DeploymentGroup.OnPremisesTagSet(O)}
 	ServiceRoleArn : ${14:String(R)}
-	TriggerConfigurations : [${15:AWS::CodeDeploy::DeploymentGroup.TriggerConfig(O)}]
+	TriggerConfigurations : [ ${15:AWS::CodeDeploy::DeploymentGroup.TriggerConfig(O)} ]
 endsnippet
 
 snippet AWS::Batch::ComputeEnvironment
@@ -1321,7 +1330,7 @@ endsnippet
 snippet AWS::AppStream::DirectoryConfig
 Type AWS::AppStream::DirectoryConfig
 Properties:
-	OrganizationalUnitDistinguishedNames : [${1:String(R)}]
+	OrganizationalUnitDistinguishedNames : [ ${1:String(R)} ]
 	ServiceAccountCredentials: ${2:AWS::AppStream::DirectoryConfig.ServiceAccountCredentials(R)}
 	DirectoryName : ${3:String(R)}
 endsnippet
@@ -1341,7 +1350,7 @@ Type AWS::Logs::MetricFilter
 Properties:
 	FilterPattern : ${1:String(R)}
 	LogGroupName : ${2:String(R)}
-	MetricTransformations : [${3:AWS::Logs::MetricFilter.MetricTransformation(R)}]
+	MetricTransformations : [ ${3:AWS::Logs::MetricFilter.MetricTransformation(R)} ]
 endsnippet
 
 snippet AWS::ApiGateway::Resource
@@ -1390,28 +1399,28 @@ snippet AWS::Cognito::IdentityPool
 Type AWS::Cognito::IdentityPool
 Properties:
 	PushSync: ${1:AWS::Cognito::IdentityPool.PushSync(O)}
-	CognitoIdentityProviders : [${2:AWS::Cognito::IdentityPool.CognitoIdentityProvider(O)}]
+	CognitoIdentityProviders : [ ${2:AWS::Cognito::IdentityPool.CognitoIdentityProvider(O)} ]
 	CognitoEvents : ${3:Json(O)}
 	DeveloperProviderName : ${4:String(O)}
 	CognitoStreams: ${5:AWS::Cognito::IdentityPool.CognitoStreams(O)}
 	IdentityPoolName : ${6:String(O)}
 	AllowUnauthenticatedIdentities : ${7:Boolean(R)}
 	SupportedLoginProviders : ${8:Json(O)}
-	SamlProviderARNs : [${9:String(O)}]
-	OpenIdConnectProviderARNs : [${10:String(O)}]
+	SamlProviderARNs : [ ${9:String(O)} ]
+	OpenIdConnectProviderARNs : [ ${10:String(O)} ]
 endsnippet
 
 snippet AWS::ElasticLoadBalancingV2::LoadBalancer
 Type AWS::ElasticLoadBalancingV2::LoadBalancer
 Properties:
 	IpAddressType : ${1:String(O)}
-	LoadBalancerAttributes : [${2:AWS::ElasticLoadBalancingV2::LoadBalancer.LoadBalancerAttribute(O)}]
+	LoadBalancerAttributes : [ ${2:AWS::ElasticLoadBalancingV2::LoadBalancer.LoadBalancerAttribute(O)} ]
 	Name : ${3:String(O)}
 	Scheme : ${4:String(O)}
-	SecurityGroups : [${5:String(O)}]
-	SubnetMappings : [${6:AWS::ElasticLoadBalancingV2::LoadBalancer.SubnetMapping(O)}]
-	Subnets : [${7:String(O)}]
-	Tags : [${8:AWS::ElasticLoadBalancingV2::LoadBalancer.Tag(O)}]
+	SecurityGroups : [ ${5:String(O)} ]
+	SubnetMappings : [ ${6:AWS::ElasticLoadBalancingV2::LoadBalancer.SubnetMapping(O)} ]
+	Subnets : [ ${7:String(O)} ]
+	Tags : [ ${8:AWS::ElasticLoadBalancingV2::LoadBalancer.Tag(O)} ]
 	Type : ${9:String(O)}
 endsnippet
 
@@ -1443,8 +1452,8 @@ Type AWS::DMS::ReplicationSubnetGroup
 Properties:
 	ReplicationSubnetGroupDescription : ${1:String(R)}
 	ReplicationSubnetGroupIdentifier : ${2:String(O)}
-	SubnetIds : [${3:String(R)}]
-	Tags : [${4:AWS::DMS::ReplicationSubnetGroup.Tag(O)}]
+	SubnetIds : [ ${3:String(R)} ]
+	Tags : [ ${4:AWS::DMS::ReplicationSubnetGroup.Tag(O)} ]
 endsnippet
 
 snippet AWS::ElastiCache::SubnetGroup
@@ -1452,7 +1461,7 @@ Type AWS::ElastiCache::SubnetGroup
 Properties:
 	CacheSubnetGroupName : ${1:String(O)}
 	Description : ${2:String(R)}
-	SubnetIds : [${3:String(R)}]
+	SubnetIds : [ ${3:String(R)} ]
 endsnippet
 
 snippet AWS::CodeBuild::Project
@@ -1460,10 +1469,10 @@ Type AWS::CodeBuild::Project
 Properties:
 	Description : ${1:String(O)}
 	VpcConfig: ${2:AWS::CodeBuild::Project.VpcConfig(O)}
-	SecondarySources : [${3:AWS::CodeBuild::Project.Source(O)}]
+	SecondarySources : [ ${3:AWS::CodeBuild::Project.Source(O)} ]
 	EncryptionKey : ${4:String(O)}
 	Triggers: ${5:AWS::CodeBuild::Project.ProjectTriggers(O)}
-	SecondaryArtifacts : [${6:AWS::CodeBuild::Project.Artifacts(O)}]
+	SecondaryArtifacts : [ ${6:AWS::CodeBuild::Project.Artifacts(O)} ]
 	Source: ${7:AWS::CodeBuild::Project.Source(R)}
 	Name : ${8:String(O)}
 	Artifacts: ${9:AWS::CodeBuild::Project.Artifacts(R)}
@@ -1472,7 +1481,7 @@ Properties:
 	ServiceRole : ${12:String(R)}
 	QueuedTimeoutInMinutes : ${13:Integer(O)}
 	Environment: ${14:AWS::CodeBuild::Project.Environment(R)}
-	Tags : [${15:AWS::CodeBuild::Project.Tag(O)}]
+	Tags : [ ${15:AWS::CodeBuild::Project.Tag(O)} ]
 	TimeoutInMinutes : ${16:Integer(O)}
 	Cache: ${17:AWS::CodeBuild::Project.ProjectCache(O)}
 endsnippet
@@ -1487,7 +1496,7 @@ endsnippet
 snippet AWS::Budgets::Budget
 Type AWS::Budgets::Budget
 Properties:
-	NotificationsWithSubscribers : [${1:AWS::Budgets::Budget.NotificationWithSubscribers(O)}]
+	NotificationsWithSubscribers : [ ${1:AWS::Budgets::Budget.NotificationWithSubscribers(O)} ]
 	Budget: ${2:AWS::Budgets::Budget.BudgetData(R)}
 endsnippet
 
@@ -1495,7 +1504,7 @@ snippet AWS::SNS::TopicPolicy
 Type AWS::SNS::TopicPolicy
 Properties:
 	PolicyDocument : ${1:Json(R)}
-	Topics : [${2:String(R)}]
+	Topics : [ ${2:String(R)} ]
 endsnippet
 
 snippet AWS::Lambda::Alias
@@ -1511,7 +1520,7 @@ endsnippet
 snippet AWS::WAFRegional::ByteMatchSet
 Type AWS::WAFRegional::ByteMatchSet
 Properties:
-	ByteMatchTuples : [${1:AWS::WAFRegional::ByteMatchSet.ByteMatchTuple(O)}]
+	ByteMatchTuples : [ ${1:AWS::WAFRegional::ByteMatchSet.ByteMatchTuple(O)} ]
 	Name : ${2:String(R)}
 endsnippet
 
@@ -1532,8 +1541,8 @@ endsnippet
 snippet AWS::ElasticLoadBalancingV2::Listener
 Type AWS::ElasticLoadBalancingV2::Listener
 Properties:
-	Certificates : [${1:AWS::ElasticLoadBalancingV2::Listener.Certificate(O)}]
-	DefaultActions : [${2:AWS::ElasticLoadBalancingV2::Listener.Action(R)}]
+	Certificates : [ ${1:AWS::ElasticLoadBalancingV2::Listener.Certificate(O)} ]
+	DefaultActions : [ ${2:AWS::ElasticLoadBalancingV2::Listener.Action(R)} ]
 	LoadBalancerArn : ${3:String(R)}
 	Port : ${4:Integer(R)}
 	Protocol : ${5:String(R)}
@@ -1544,16 +1553,16 @@ snippet AWS::EC2::NetworkInterface
 Type AWS::EC2::NetworkInterface
 Properties:
 	Description : ${1:String(O)}
-	GroupSet : [${2:String(O)}]
+	GroupSet : [ ${2:String(O)} ]
 	InterfaceType : ${3:String(O)}
 	Ipv6AddressCount : ${4:Integer(O)}
 	Ipv6Addresses: ${5:AWS::EC2::NetworkInterface.InstanceIpv6Address(O)}
 	PrivateIpAddress : ${6:String(O)}
-	PrivateIpAddresses : [${7:AWS::EC2::NetworkInterface.PrivateIpAddressSpecification(O)}]
+	PrivateIpAddresses : [ ${7:AWS::EC2::NetworkInterface.PrivateIpAddressSpecification(O)} ]
 	SecondaryPrivateIpAddressCount : ${8:Integer(O)}
 	SourceDestCheck : ${9:Boolean(O)}
 	SubnetId : ${10:String(R)}
-	Tags : [${11:AWS::EC2::NetworkInterface.Tag(O)}]
+	Tags : [ ${11:AWS::EC2::NetworkInterface.Tag(O)} ]
 endsnippet
 
 snippet AWS::ApiGatewayV2::Deployment
@@ -1569,7 +1578,7 @@ Type AWS::DAX::SubnetGroup
 Properties:
 	Description : ${1:String(O)}
 	SubnetGroupName : ${2:String(O)}
-	SubnetIds : [${3:String(R)}]
+	SubnetIds : [ ${3:String(R)} ]
 endsnippet
 
 snippet AWS::Lambda::LayerVersionPermission
@@ -1584,19 +1593,19 @@ endsnippet
 snippet AWS::SageMaker::EndpointConfig
 Type AWS::SageMaker::EndpointConfig
 Properties:
-	ProductionVariants : [${1:AWS::SageMaker::EndpointConfig.ProductionVariant(R)}]
+	ProductionVariants : [ ${1:AWS::SageMaker::EndpointConfig.ProductionVariant(R)} ]
 	KmsKeyId : ${2:String(O)}
 	EndpointConfigName : ${3:String(O)}
-	Tags : [${4:AWS::SageMaker::EndpointConfig.Tag(O)}]
+	Tags : [ ${4:AWS::SageMaker::EndpointConfig.Tag(O)} ]
 endsnippet
 
 snippet AWS::OpsWorks::Stack
 Type AWS::OpsWorks::Stack
 Properties:
 	AgentVersion : ${1:String(O)}
-	Attributes : [${2:String(O)}]
+	Attributes : [ ${2:String(O)} ]
 	ChefConfiguration: ${3:AWS::OpsWorks::Stack.ChefConfiguration(O)}
-	CloneAppIds : [${4:String(O)}]
+	CloneAppIds : [ ${4:String(O)} ]
 	ClonePermissions : ${5:Boolean(O)}
 	ConfigurationManager: ${6:AWS::OpsWorks::Stack.StackConfigurationManager(O)}
 	CustomCookbooksSource: ${7:AWS::OpsWorks::Stack.Source(O)}
@@ -1608,13 +1617,13 @@ Properties:
 	DefaultSshKeyName : ${13:String(O)}
 	DefaultSubnetId : ${14:String(O)}
 	EcsClusterArn : ${15:String(O)}
-	ElasticIps : [${16:AWS::OpsWorks::Stack.ElasticIp(O)}]
+	ElasticIps : [ ${16:AWS::OpsWorks::Stack.ElasticIp(O)} ]
 	HostnameTheme : ${17:String(O)}
 	Name : ${18:String(R)}
-	RdsDbInstances : [${19:AWS::OpsWorks::Stack.RdsDbInstance(O)}]
+	RdsDbInstances : [ ${19:AWS::OpsWorks::Stack.RdsDbInstance(O)} ]
 	ServiceRoleArn : ${20:String(R)}
 	SourceStackId : ${21:String(O)}
-	Tags : [${22:AWS::OpsWorks::Stack.Tag(O)}]
+	Tags : [ ${22:AWS::OpsWorks::Stack.Tag(O)} ]
 	UseCustomCookbooks : ${23:Boolean(O)}
 	UseOpsworksSecurityGroups : ${24:Boolean(O)}
 	VpcId : ${25:String(O)}
@@ -1626,10 +1635,10 @@ Properties:
 	Activate : ${1:Boolean(O)}
 	Description : ${2:String(O)}
 	Name : ${3:String(R)}
-	ParameterObjects : [${4:AWS::DataPipeline::Pipeline.ParameterObject(R)}]
-	ParameterValues : [${5:AWS::DataPipeline::Pipeline.ParameterValue(O)}]
-	PipelineObjects : [${6:AWS::DataPipeline::Pipeline.PipelineObject(O)}]
-	PipelineTags : [${7:AWS::DataPipeline::Pipeline.PipelineTag(O)}]
+	ParameterObjects : [ ${4:AWS::DataPipeline::Pipeline.ParameterObject(R)} ]
+	ParameterValues : [ ${5:AWS::DataPipeline::Pipeline.ParameterValue(O)} ]
+	PipelineObjects : [ ${6:AWS::DataPipeline::Pipeline.PipelineObject(O)} ]
+	PipelineTags : [ ${7:AWS::DataPipeline::Pipeline.PipelineTag(O)} ]
 endsnippet
 
 snippet AWS::Greengrass::DeviceDefinition
@@ -1645,19 +1654,19 @@ Properties:
 	DefinitionString : ${1:String(R)}
 	StateMachineName : ${2:String(O)}
 	RoleArn : ${3:String(R)}
-	Tags : [${4:AWS::StepFunctions::StateMachine.TagsEntry(O)}]
+	Tags : [ ${4:AWS::StepFunctions::StateMachine.TagsEntry(O)} ]
 endsnippet
 
 snippet AWS::DMS::EventSubscription
 Type AWS::DMS::EventSubscription
 Properties:
 	SourceType : ${1:String(O)}
-	EventCategories : [${2:String(O)}]
+	EventCategories : [ ${2:String(O)} ]
 	Enabled : ${3:Boolean(O)}
 	SubscriptionName : ${4:String(O)}
 	SnsTopicArn : ${5:String(R)}
-	SourceIds : [${6:String(O)}]
-	Tags : [${7:AWS::DMS::EventSubscription.Tag(O)}]
+	SourceIds : [ ${6:String(O)} ]
+	Tags : [ ${7:AWS::DMS::EventSubscription.Tag(O)} ]
 endsnippet
 
 snippet AWS::CodeDeploy::DeploymentConfig
@@ -1673,8 +1682,8 @@ Properties:
 	ResolverEndpointId : ${1:String(O)}
 	DomainName : ${2:String(R)}
 	RuleType : ${3:String(R)}
-	TargetIps : [${4:AWS::Route53Resolver::ResolverRule.TargetAddress(O)}]
-	Tags : [${5:AWS::Route53Resolver::ResolverRule.Tag(O)}]
+	TargetIps : [ ${4:AWS::Route53Resolver::ResolverRule.TargetAddress(O)} ]
+	Tags : [ ${5:AWS::Route53Resolver::ResolverRule.Tag(O)} ]
 	Name : ${6:String(O)}
 endsnippet
 
@@ -1683,8 +1692,8 @@ Type AWS::EC2::TransitGatewayAttachment
 Properties:
 	TransitGatewayId : ${1:String(R)}
 	VpcId : ${2:String(R)}
-	SubnetIds : [${3:String(R)}]
-	Tags : [${4:AWS::EC2::TransitGatewayAttachment.Tag(O)}]
+	SubnetIds : [ ${3:String(R)} ]
+	Tags : [ ${4:AWS::EC2::TransitGatewayAttachment.Tag(O)} ]
 endsnippet
 
 snippet AWS::DAX::ParameterGroup
@@ -1705,7 +1714,7 @@ endsnippet
 snippet AWS::Config::ConfigurationAggregator
 Type AWS::Config::ConfigurationAggregator
 Properties:
-	AccountAggregationSources : [${1:AWS::Config::ConfigurationAggregator.AccountAggregationSource(O)}]
+	AccountAggregationSources : [ ${1:AWS::Config::ConfigurationAggregator.AccountAggregationSource(O)} ]
 	ConfigurationAggregatorName : ${2:String(R)}
 	OrganizationAggregationSource: ${3:AWS::Config::ConfigurationAggregator.OrganizationAggregationSource(O)}
 endsnippet
@@ -1720,7 +1729,7 @@ snippet AWS::CloudFront::Distribution
 Type AWS::CloudFront::Distribution
 Properties:
 	DistributionConfig: ${1:AWS::CloudFront::Distribution.DistributionConfig(R)}
-	Tags : [${2:AWS::CloudFront::Distribution.Tag(O)}]
+	Tags : [ ${2:AWS::CloudFront::Distribution.Tag(O)} ]
 endsnippet
 
 snippet AWS::Redshift::ClusterParameterGroup
@@ -1728,8 +1737,8 @@ Type AWS::Redshift::ClusterParameterGroup
 Properties:
 	Description : ${1:String(R)}
 	ParameterGroupFamily : ${2:String(R)}
-	Parameters : [${3:AWS::Redshift::ClusterParameterGroup.Parameter(O)}]
-	Tags : [${4:AWS::Redshift::ClusterParameterGroup.Tag(O)}]
+	Parameters : [ ${3:AWS::Redshift::ClusterParameterGroup.Parameter(O)} ]
+	Tags : [ ${4:AWS::Redshift::ClusterParameterGroup.Tag(O)} ]
 endsnippet
 
 snippet AWS::Greengrass::LoggerDefinition
@@ -1745,7 +1754,7 @@ Properties:
 	CloudWatchLogsLogGroupArn : ${1:String(O)}
 	CloudWatchLogsRoleArn : ${2:String(O)}
 	EnableLogFileValidation : ${3:Boolean(O)}
-	EventSelectors : [${4:AWS::CloudTrail::Trail.EventSelector(O)}]
+	EventSelectors : [ ${4:AWS::CloudTrail::Trail.EventSelector(O)} ]
 	IncludeGlobalServiceEvents : ${5:Boolean(O)}
 	IsLogging : ${6:Boolean(R)}
 	IsMultiRegionTrail : ${7:Boolean(O)}
@@ -1753,7 +1762,7 @@ Properties:
 	S3BucketName : ${9:String(R)}
 	S3KeyPrefix : ${10:String(O)}
 	SnsTopicName : ${11:String(O)}
-	Tags : [${12:AWS::CloudTrail::Trail.Tag(O)}]
+	Tags : [ ${12:AWS::CloudTrail::Trail.Tag(O)} ]
 	TrailName : ${13:String(O)}
 endsnippet
 
@@ -1761,13 +1770,13 @@ snippet AWS::ServiceCatalog::CloudFormationProvisionedProduct
 Type AWS::ServiceCatalog::CloudFormationProvisionedProduct
 Properties:
 	PathId : ${1:String(O)}
-	ProvisioningParameters : [${2:AWS::ServiceCatalog::CloudFormationProvisionedProduct.ProvisioningParameter(O)}]
+	ProvisioningParameters : [ ${2:AWS::ServiceCatalog::CloudFormationProvisionedProduct.ProvisioningParameter(O)} ]
 	ProductName : ${3:String(O)}
 	ProvisioningArtifactName : ${4:String(O)}
-	NotificationArns : [${5:String(O)}]
+	NotificationArns : [ ${5:String(O)} ]
 	AcceptLanguage : ${6:String(O)}
 	ProductId : ${7:String(O)}
-	Tags : [${8:AWS::ServiceCatalog::CloudFormationProvisionedProduct.Tag(O)}]
+	Tags : [ ${8:AWS::ServiceCatalog::CloudFormationProvisionedProduct.Tag(O)} ]
 	ProvisionedProductName : ${9:String(O)}
 	ProvisioningArtifactId : ${10:String(O)}
 endsnippet
@@ -1794,7 +1803,7 @@ Type AWS::EMR::InstanceGroupConfig
 Properties:
 	AutoScalingPolicy: ${1:AWS::EMR::InstanceGroupConfig.AutoScalingPolicy(O)}
 	BidPrice : ${2:String(O)}
-	Configurations : [${3:AWS::EMR::InstanceGroupConfig.Configuration(O)}]
+	Configurations : [ ${3:AWS::EMR::InstanceGroupConfig.Configuration(O)} ]
 	EbsConfiguration: ${4:AWS::EMR::InstanceGroupConfig.EbsConfiguration(O)}
 	InstanceCount : ${5:Integer(R)}
 	InstanceRole : ${6:String(R)}
@@ -1807,8 +1816,8 @@ endsnippet
 snippet AWS::ElasticLoadBalancingV2::ListenerRule
 Type AWS::ElasticLoadBalancingV2::ListenerRule
 Properties:
-	Actions : [${1:AWS::ElasticLoadBalancingV2::ListenerRule.Action(R)}]
-	Conditions : [${2:AWS::ElasticLoadBalancingV2::ListenerRule.RuleCondition(R)}]
+	Actions : [ ${1:AWS::ElasticLoadBalancingV2::ListenerRule.Action(R)} ]
+	Conditions : [ ${2:AWS::ElasticLoadBalancingV2::ListenerRule.RuleCondition(R)} ]
 	ListenerArn : ${3:String(R)}
 	Priority : ${4:Integer(R)}
 endsnippet
@@ -1830,12 +1839,12 @@ snippet AWS::CodePipeline::Pipeline
 Type AWS::CodePipeline::Pipeline
 Properties:
 	ArtifactStore: ${1:AWS::CodePipeline::Pipeline.ArtifactStore(O)}
-	ArtifactStores : [${2:AWS::CodePipeline::Pipeline.ArtifactStoreMap(O)}]
-	DisableInboundStageTransitions : [${3:AWS::CodePipeline::Pipeline.StageTransition(O)}]
+	ArtifactStores : [ ${2:AWS::CodePipeline::Pipeline.ArtifactStoreMap(O)} ]
+	DisableInboundStageTransitions : [ ${3:AWS::CodePipeline::Pipeline.StageTransition(O)} ]
 	Name : ${4:String(O)}
 	RestartExecutionOnUpdate : ${5:Boolean(O)}
 	RoleArn : ${6:String(R)}
-	Stages : [${7:AWS::CodePipeline::Pipeline.StageDeclaration(R)}]
+	Stages : [ ${7:AWS::CodePipeline::Pipeline.StageDeclaration(R)} ]
 endsnippet
 
 snippet AWS::Redshift::ClusterSecurityGroupIngress
@@ -1852,7 +1861,7 @@ Type AWS::EC2::NatGateway
 Properties:
 	AllocationId : ${1:String(R)}
 	SubnetId : ${2:String(R)}
-	Tags : [${3:AWS::EC2::NatGateway.Tag(O)}]
+	Tags : [ ${3:AWS::EC2::NatGateway.Tag(O)} ]
 endsnippet
 
 snippet AWS::RDS::OptionGroup
@@ -1860,9 +1869,9 @@ Type AWS::RDS::OptionGroup
 Properties:
 	EngineName : ${1:String(R)}
 	MajorEngineVersion : ${2:String(R)}
-	OptionConfigurations : [${3:AWS::RDS::OptionGroup.OptionConfiguration(R)}]
+	OptionConfigurations : [ ${3:AWS::RDS::OptionGroup.OptionConfiguration(R)} ]
 	OptionGroupDescription : ${4:String(R)}
-	Tags : [${5:AWS::RDS::OptionGroup.Tag(O)}]
+	Tags : [ ${5:AWS::RDS::OptionGroup.Tag(O)} ]
 endsnippet
 
 snippet AWS::ElastiCache::SecurityGroupIngress
@@ -1896,41 +1905,41 @@ Properties:
 	AutomaticFailoverEnabled : ${4:Boolean(O)}
 	CacheNodeType : ${5:String(O)}
 	CacheParameterGroupName : ${6:String(O)}
-	CacheSecurityGroupNames : [${7:String(O)}]
+	CacheSecurityGroupNames : [ ${7:String(O)} ]
 	CacheSubnetGroupName : ${8:String(O)}
 	Engine : ${9:String(O)}
 	EngineVersion : ${10:String(O)}
-	NodeGroupConfiguration : [${11:AWS::ElastiCache::ReplicationGroup.NodeGroupConfiguration(O)}]
+	NodeGroupConfiguration : [ ${11:AWS::ElastiCache::ReplicationGroup.NodeGroupConfiguration(O)} ]
 	NotificationTopicArn : ${12:String(O)}
 	NumCacheClusters : ${13:Integer(O)}
 	NumNodeGroups : ${14:Integer(O)}
 	Port : ${15:Integer(O)}
-	PreferredCacheClusterAZs : [${16:String(O)}]
+	PreferredCacheClusterAZs : [ ${16:String(O)} ]
 	PreferredMaintenanceWindow : ${17:String(O)}
 	PrimaryClusterId : ${18:String(O)}
 	ReplicasPerNodeGroup : ${19:Integer(O)}
 	ReplicationGroupDescription : ${20:String(R)}
 	ReplicationGroupId : ${21:String(O)}
-	SecurityGroupIds : [${22:String(O)}]
-	SnapshotArns : [${23:String(O)}]
+	SecurityGroupIds : [ ${22:String(O)} ]
+	SnapshotArns : [ ${23:String(O)} ]
 	SnapshotName : ${24:String(O)}
 	SnapshotRetentionLimit : ${25:Integer(O)}
 	SnapshotWindow : ${26:String(O)}
 	SnapshottingClusterId : ${27:String(O)}
-	Tags : [${28:AWS::ElastiCache::ReplicationGroup.Tag(O)}]
+	Tags : [ ${28:AWS::ElastiCache::ReplicationGroup.Tag(O)} ]
 	TransitEncryptionEnabled : ${29:Boolean(O)}
 endsnippet
 
 snippet AWS::Cognito::UserPoolUser
 Type AWS::Cognito::UserPoolUser
 Properties:
-	ValidationData : [${1:AWS::Cognito::UserPoolUser.AttributeType(O)}]
+	ValidationData : [ ${1:AWS::Cognito::UserPoolUser.AttributeType(O)} ]
 	UserPoolId : ${2:String(R)}
 	Username : ${3:String(O)}
 	MessageAction : ${4:String(O)}
-	DesiredDeliveryMediums : [${5:String(O)}]
+	DesiredDeliveryMediums : [ ${5:String(O)} ]
 	ForceAliasCreation : ${6:Boolean(O)}
-	UserAttributes : [${7:AWS::Cognito::UserPoolUser.AttributeType(O)}]
+	UserAttributes : [ ${7:AWS::Cognito::UserPoolUser.AttributeType(O)} ]
 endsnippet
 
 snippet AWS::WAFRegional::WebACLAssociation
@@ -1960,9 +1969,9 @@ Properties:
 	SupportEmail : ${5:String(O)}
 	AcceptLanguage : ${6:String(O)}
 	SupportUrl : ${7:String(O)}
-	Tags : [${8:AWS::ServiceCatalog::CloudFormationProduct.Tag(O)}]
+	Tags : [ ${8:AWS::ServiceCatalog::CloudFormationProduct.Tag(O)} ]
 	Name : ${9:String(R)}
-	ProvisioningArtifactParameters : [${10:AWS::ServiceCatalog::CloudFormationProduct.ProvisioningArtifactProperties(R)}]
+	ProvisioningArtifactParameters : [ ${10:AWS::ServiceCatalog::CloudFormationProduct.ProvisioningArtifactProperties(R)} ]
 endsnippet
 
 snippet AWS::AppSync::FunctionConfiguration
@@ -1984,7 +1993,7 @@ Type AWS::IoTAnalytics::Channel
 Properties:
 	ChannelName : ${1:String(O)}
 	RetentionPeriod: ${2:AWS::IoTAnalytics::Channel.RetentionPeriod(O)}
-	Tags : [${3:AWS::IoTAnalytics::Channel.Tag(O)}]
+	Tags : [ ${3:AWS::IoTAnalytics::Channel.Tag(O)} ]
 endsnippet
 
 snippet AWS::CloudFormation::WaitCondition
@@ -2000,9 +2009,9 @@ Type AWS::EC2::SecurityGroup
 Properties:
 	GroupDescription : ${1:String(R)}
 	GroupName : ${2:String(O)}
-	SecurityGroupEgress : [${3:AWS::EC2::SecurityGroup.Egress(O)}]
-	SecurityGroupIngress : [${4:AWS::EC2::SecurityGroup.Ingress(O)}]
-	Tags : [${5:AWS::EC2::SecurityGroup.Tag(O)}]
+	SecurityGroupEgress : [ ${3:AWS::EC2::SecurityGroup.Egress(O)} ]
+	SecurityGroupIngress : [ ${4:AWS::EC2::SecurityGroup.Ingress(O)} ]
+	Tags : [ ${5:AWS::EC2::SecurityGroup.Tag(O)} ]
 	VpcId : ${6:String(O)}
 endsnippet
 
@@ -2011,7 +2020,7 @@ Type AWS::WAFRegional::WebACL
 Properties:
 	MetricName : ${1:String(R)}
 	DefaultAction: ${2:AWS::WAFRegional::WebACL.Action(R)}
-	Rules : [${3:AWS::WAFRegional::WebACL.Rule(O)}]
+	Rules : [ ${3:AWS::WAFRegional::WebACL.Rule(O)} ]
 	Name : ${4:String(R)}
 endsnippet
 
@@ -2019,7 +2028,7 @@ snippet AWS::WAFRegional::Rule
 Type AWS::WAFRegional::Rule
 Properties:
 	MetricName : ${1:String(R)}
-	Predicates : [${2:AWS::WAFRegional::Rule.Predicate(O)}]
+	Predicates : [ ${2:AWS::WAFRegional::Rule.Predicate(O)} ]
 	Name : ${3:String(R)}
 endsnippet
 
@@ -2034,7 +2043,7 @@ Type AWS::SageMaker::Endpoint
 Properties:
 	EndpointName : ${1:String(O)}
 	EndpointConfigName : ${2:String(R)}
-	Tags : [${3:AWS::SageMaker::Endpoint.Tag(O)}]
+	Tags : [ ${3:AWS::SageMaker::Endpoint.Tag(O)} ]
 endsnippet
 
 snippet AWS::AppSync::ApiKey
@@ -2049,17 +2058,17 @@ snippet AWS::Route53::HostedZone
 Type AWS::Route53::HostedZone
 Properties:
 	HostedZoneConfig: ${1:AWS::Route53::HostedZone.HostedZoneConfig(O)}
-	HostedZoneTags : [${2:AWS::Route53::HostedZone.HostedZoneTag(O)}]
+	HostedZoneTags : [ ${2:AWS::Route53::HostedZone.HostedZoneTag(O)} ]
 	Name : ${3:String(R)}
 	QueryLoggingConfig: ${4:AWS::Route53::HostedZone.QueryLoggingConfig(O)}
-	VPCs : [${5:AWS::Route53::HostedZone.VPC(O)}]
+	VPCs : [ ${5:AWS::Route53::HostedZone.VPC(O)} ]
 endsnippet
 
 snippet AWS::ApiGateway::RestApi
 Type AWS::ApiGateway::RestApi
 Properties:
 	ApiKeySourceType : ${1:String(O)}
-	BinaryMediaTypes : [${2:String(O)}]
+	BinaryMediaTypes : [ ${2:String(O)} ]
 	Body : ${3:Json(O)}
 	BodyS3Location: ${4:AWS::ApiGateway::RestApi.S3Location(O)}
 	CloneFrom : ${5:String(O)}
@@ -2068,7 +2077,7 @@ Properties:
 	FailOnWarnings : ${8:Boolean(O)}
 	MinimumCompressionSize : ${9:Integer(O)}
 	Name : ${10:String(O)}
-	Parameters : [${11:String(O)}]
+	Parameters : [ ${11:String(O)} ]
 	Policy : ${12:Json(O)}
 endsnippet
 
@@ -2080,7 +2089,7 @@ Properties:
 	CidrBlock : ${3:String(R)}
 	Ipv6CidrBlock : ${4:String(O)}
 	MapPublicIpOnLaunch : ${5:Boolean(O)}
-	Tags : [${6:AWS::EC2::Subnet.Tag(O)}]
+	Tags : [ ${6:AWS::EC2::Subnet.Tag(O)} ]
 	VpcId : ${7:String(R)}
 endsnippet
 
@@ -2107,7 +2116,7 @@ Properties:
 	EnableDnsHostnames : ${2:Boolean(O)}
 	EnableDnsSupport : ${3:Boolean(O)}
 	InstanceTenancy : ${4:String(O)}
-	Tags : [${5:AWS::EC2::VPC.Tag(O)}]
+	Tags : [ ${5:AWS::EC2::VPC.Tag(O)} ]
 endsnippet
 
 snippet AWS::ServiceDiscovery::Instance
@@ -2124,37 +2133,37 @@ Properties:
 	AdditionalInfo : ${1:String(O)}
 	Affinity : ${2:String(O)}
 	AvailabilityZone : ${3:String(O)}
-	BlockDeviceMappings : [${4:AWS::EC2::Instance.BlockDeviceMapping(O)}]
+	BlockDeviceMappings : [ ${4:AWS::EC2::Instance.BlockDeviceMapping(O)} ]
 	CreditSpecification: ${5:AWS::EC2::Instance.CreditSpecification(O)}
 	DisableApiTermination : ${6:Boolean(O)}
 	EbsOptimized : ${7:Boolean(O)}
-	ElasticGpuSpecifications : [${8:AWS::EC2::Instance.ElasticGpuSpecification(O)}]
-	ElasticInferenceAccelerators : [${9:AWS::EC2::Instance.ElasticInferenceAccelerator(O)}]
+	ElasticGpuSpecifications : [ ${8:AWS::EC2::Instance.ElasticGpuSpecification(O)} ]
+	ElasticInferenceAccelerators : [ ${9:AWS::EC2::Instance.ElasticInferenceAccelerator(O)} ]
 	HostId : ${10:String(O)}
 	IamInstanceProfile : ${11:String(O)}
 	ImageId : ${12:String(O)}
 	InstanceInitiatedShutdownBehavior : ${13:String(O)}
 	InstanceType : ${14:String(O)}
 	Ipv6AddressCount : ${15:Integer(O)}
-	Ipv6Addresses : [${16:AWS::EC2::Instance.InstanceIpv6Address(O)}]
+	Ipv6Addresses : [ ${16:AWS::EC2::Instance.InstanceIpv6Address(O)} ]
 	KernelId : ${17:String(O)}
 	KeyName : ${18:String(O)}
 	LaunchTemplate: ${19:AWS::EC2::Instance.LaunchTemplateSpecification(O)}
-	LicenseSpecifications : [${20:AWS::EC2::Instance.LicenseSpecification(O)}]
+	LicenseSpecifications : [ ${20:AWS::EC2::Instance.LicenseSpecification(O)} ]
 	Monitoring : ${21:Boolean(O)}
-	NetworkInterfaces : [${22:AWS::EC2::Instance.NetworkInterface(O)}]
+	NetworkInterfaces : [ ${22:AWS::EC2::Instance.NetworkInterface(O)} ]
 	PlacementGroupName : ${23:String(O)}
 	PrivateIpAddress : ${24:String(O)}
 	RamdiskId : ${25:String(O)}
-	SecurityGroupIds : [${26:String(O)}]
-	SecurityGroups : [${27:String(O)}]
+	SecurityGroupIds : [ ${26:String(O)} ]
+	SecurityGroups : [ ${27:String(O)} ]
 	SourceDestCheck : ${28:Boolean(O)}
-	SsmAssociations : [${29:AWS::EC2::Instance.SsmAssociation(O)}]
+	SsmAssociations : [ ${29:AWS::EC2::Instance.SsmAssociation(O)} ]
 	SubnetId : ${30:String(O)}
-	Tags : [${31:AWS::EC2::Instance.Tag(O)}]
+	Tags : [ ${31:AWS::EC2::Instance.Tag(O)} ]
 	Tenancy : ${32:String(O)}
 	UserData : ${33:String(O)}
-	Volumes : [${34:AWS::EC2::Instance.Volume(O)}]
+	Volumes : [ ${34:AWS::EC2::Instance.Volume(O)} ]
 endsnippet
 
 snippet AWS::Events::EventBusPolicy
@@ -2169,9 +2178,9 @@ endsnippet
 snippet AWS::CloudFormation::Stack
 Type AWS::CloudFormation::Stack
 Properties:
-	NotificationARNs : [${1:String(O)}]
-	Parameters : [${2:String(O)}]
-	Tags : [${3:AWS::CloudFormation::Stack.Tag(O)}]
+	NotificationARNs : [ ${1:String(O)} ]
+	Parameters : [ ${2:String(O)} ]
+	Tags : [ ${3:AWS::CloudFormation::Stack.Tag(O)} ]
 	TemplateURL : ${4:String(R)}
 	TimeoutInMinutes : ${5:Integer(O)}
 endsnippet
@@ -2186,7 +2195,7 @@ endsnippet
 snippet AWS::WAF::ByteMatchSet
 Type AWS::WAF::ByteMatchSet
 Properties:
-	ByteMatchTuples : [${1:AWS::WAF::ByteMatchSet.ByteMatchTuple(O)}]
+	ByteMatchTuples : [ ${1:AWS::WAF::ByteMatchSet.ByteMatchTuple(O)} ]
 	Name : ${2:String(R)}
 endsnippet
 
@@ -2195,14 +2204,14 @@ Type AWS::ElastiCache::ParameterGroup
 Properties:
 	CacheParameterGroupFamily : ${1:String(R)}
 	Description : ${2:String(R)}
-	Properties : [${3:String(O)}]
+	Properties : [ ${3:String(O)} ]
 endsnippet
 
 snippet AWS::SQS::QueuePolicy
 Type AWS::SQS::QueuePolicy
 Properties:
 	PolicyDocument : ${1:Json(R)}
-	Queues : [${2:String(R)}]
+	Queues : [ ${2:String(R)} ]
 endsnippet
 
 snippet AWS::DAX::Cluster
@@ -2212,12 +2221,12 @@ Properties:
 	Description : ${2:String(O)}
 	ReplicationFactor : ${3:Integer(R)}
 	ParameterGroupName : ${4:String(O)}
-	AvailabilityZones : [${5:String(O)}]
+	AvailabilityZones : [ ${5:String(O)} ]
 	IAMRoleARN : ${6:String(R)}
 	SubnetGroupName : ${7:String(O)}
 	PreferredMaintenanceWindow : ${8:String(O)}
 	NotificationTopicARN : ${9:String(O)}
-	SecurityGroupIds : [${10:String(O)}]
+	SecurityGroupIds : [ ${10:String(O)} ]
 	NodeType : ${11:String(R)}
 	ClusterName : ${12:String(O)}
 	Tags : ${13:Json(O)}
@@ -2240,7 +2249,7 @@ snippet AWS::EFS::FileSystem
 Type AWS::EFS::FileSystem
 Properties:
 	Encrypted : ${1:Boolean(O)}
-	FileSystemTags : [${2:AWS::EFS::FileSystem.ElasticFileSystemTag(O)}]
+	FileSystemTags : [ ${2:AWS::EFS::FileSystem.ElasticFileSystemTag(O)} ]
 	KmsKeyId : ${3:String(O)}
 	PerformanceMode : ${4:String(O)}
 	ProvisionedThroughputInMibps : ${5:Double(O)}
@@ -2251,7 +2260,7 @@ snippet AWS::WAF::SqlInjectionMatchSet
 Type AWS::WAF::SqlInjectionMatchSet
 Properties:
 	Name : ${1:String(R)}
-	SqlInjectionMatchTuples : [${2:AWS::WAF::SqlInjectionMatchSet.SqlInjectionMatchTuple(O)}]
+	SqlInjectionMatchTuples : [ ${2:AWS::WAF::SqlInjectionMatchSet.SqlInjectionMatchTuple(O)} ]
 endsnippet
 
 snippet AWS::SecretsManager::Secret
@@ -2261,7 +2270,7 @@ Properties:
 	KmsKeyId : ${2:String(O)}
 	SecretString : ${3:String(O)}
 	GenerateSecretString: ${4:AWS::SecretsManager::Secret.GenerateSecretString(O)}
-	Tags : [${5:AWS::SecretsManager::Secret.Tag(O)}]
+	Tags : [ ${5:AWS::SecretsManager::Secret.Tag(O)} ]
 	Name : ${6:String(O)}
 endsnippet
 
@@ -2271,16 +2280,16 @@ Properties:
 	OperatingSystem : ${1:String(O)}
 	Description : ${2:String(O)}
 	ApprovalRules: ${3:AWS::SSM::PatchBaseline.RuleGroup(O)}
-	Sources : [${4:AWS::SSM::PatchBaseline.PatchSource(O)}]
+	Sources : [ ${4:AWS::SSM::PatchBaseline.PatchSource(O)} ]
 	Name : ${5:String(R)}
-	RejectedPatches : [${6:String(O)}]
-	ApprovedPatches : [${7:String(O)}]
+	RejectedPatches : [ ${6:String(O)} ]
+	ApprovedPatches : [ ${7:String(O)} ]
 	RejectedPatchesAction : ${8:String(O)}
-	PatchGroups : [${9:String(O)}]
+	PatchGroups : [ ${9:String(O)} ]
 	ApprovedPatchesComplianceLevel : ${10:String(O)}
 	ApprovedPatchesEnableNonSecurity : ${11:Boolean(O)}
 	GlobalFilters: ${12:AWS::SSM::PatchBaseline.PatchFilterGroup(O)}
-	Tags : [${13:AWS::SSM::PatchBaseline.Tag(O)}]
+	Tags : [ ${13:AWS::SSM::PatchBaseline.Tag(O)} ]
 endsnippet
 
 snippet AWS::ServiceCatalog::Portfolio
@@ -2290,7 +2299,7 @@ Properties:
 	Description : ${2:String(O)}
 	DisplayName : ${3:String(R)}
 	AcceptLanguage : ${4:String(O)}
-	Tags : [${5:AWS::ServiceCatalog::Portfolio.Tag(O)}]
+	Tags : [ ${5:AWS::ServiceCatalog::Portfolio.Tag(O)} ]
 endsnippet
 
 snippet AWS::Greengrass::CoreDefinition
@@ -2316,8 +2325,8 @@ Type AWS::RDS::DBParameterGroup
 Properties:
 	Description : ${1:String(R)}
 	Family : ${2:String(R)}
-	Parameters : [${3:String(O)}]
-	Tags : [${4:AWS::RDS::DBParameterGroup.Tag(O)}]
+	Parameters : [ ${3:String(O)} ]
+	Tags : [ ${4:AWS::RDS::DBParameterGroup.Tag(O)} ]
 endsnippet
 
 snippet AWS::AppStream::StackFleetAssociation
@@ -2370,7 +2379,7 @@ Properties:
 	MinAdjustmentMagnitude : ${6:Integer(O)}
 	PolicyType : ${7:String(O)}
 	ScalingAdjustment : ${8:Integer(O)}
-	StepAdjustments : [${9:AWS::AutoScaling::ScalingPolicy.StepAdjustment(O)}]
+	StepAdjustments : [ ${9:AWS::AutoScaling::ScalingPolicy.StepAdjustment(O)} ]
 	TargetTrackingConfiguration: ${10:AWS::AutoScaling::ScalingPolicy.TargetTrackingConfiguration(O)}
 endsnippet
 
@@ -2395,9 +2404,9 @@ snippet AWS::RDS::EventSubscription
 Type AWS::RDS::EventSubscription
 Properties:
 	Enabled : ${1:Boolean(O)}
-	EventCategories : [${2:String(O)}]
+	EventCategories : [ ${2:String(O)} ]
 	SnsTopicArn : ${3:String(R)}
-	SourceIds : [${4:String(O)}]
+	SourceIds : [ ${4:String(O)} ]
 	SourceType : ${5:String(O)}
 endsnippet
 
@@ -2408,10 +2417,10 @@ Properties:
 	CNAMEPrefix : ${2:String(O)}
 	Description : ${3:String(O)}
 	EnvironmentName : ${4:String(O)}
-	OptionSettings : [${5:AWS::ElasticBeanstalk::Environment.OptionSetting(O)}]
+	OptionSettings : [ ${5:AWS::ElasticBeanstalk::Environment.OptionSetting(O)} ]
 	PlatformArn : ${6:String(O)}
 	SolutionStackName : ${7:String(O)}
-	Tags : [${8:AWS::ElasticBeanstalk::Environment.Tag(O)}]
+	Tags : [ ${8:AWS::ElasticBeanstalk::Environment.Tag(O)} ]
 	TemplateName : ${9:String(O)}
 	Tier: ${10:AWS::ElasticBeanstalk::Environment.Tier(O)}
 	VersionLabel : ${11:String(O)}
@@ -2427,12 +2436,12 @@ Properties:
 	FunctionName : ${5:String(O)}
 	Handler : ${6:String(R)}
 	KmsKeyArn : ${7:String(O)}
-	Layers : [${8:String(O)}]
+	Layers : [ ${8:String(O)} ]
 	MemorySize : ${9:Integer(O)}
 	ReservedConcurrentExecutions : ${10:Integer(O)}
 	Role : ${11:String(R)}
 	Runtime : ${12:String(R)}
-	Tags : [${13:AWS::Lambda::Function.Tag(O)}]
+	Tags : [ ${13:AWS::Lambda::Function.Tag(O)} ]
 	Timeout : ${14:Integer(O)}
 	TracingConfig: ${15:AWS::Lambda::Function.TracingConfig(O)}
 	VpcConfig: ${16:AWS::Lambda::Function.VpcConfig(O)}
@@ -2442,8 +2451,8 @@ snippet AWS::IoTAnalytics::Pipeline
 Type AWS::IoTAnalytics::Pipeline
 Properties:
 	PipelineName : ${1:String(O)}
-	Tags : [${2:AWS::IoTAnalytics::Pipeline.Tag(O)}]
-	PipelineActivities : [${3:AWS::IoTAnalytics::Pipeline.Activity(R)}]
+	Tags : [ ${2:AWS::IoTAnalytics::Pipeline.Tag(O)} ]
+	PipelineActivities : [ ${3:AWS::IoTAnalytics::Pipeline.Activity(R)} ]
 endsnippet
 
 snippet AWS::IoT1Click::Placement
@@ -2459,11 +2468,11 @@ snippet AWS::EC2::DHCPOptions
 Type AWS::EC2::DHCPOptions
 Properties:
 	DomainName : ${1:String(O)}
-	DomainNameServers : [${2:String(O)}]
-	NetbiosNameServers : [${3:String(O)}]
+	DomainNameServers : [ ${2:String(O)} ]
+	NetbiosNameServers : [ ${3:String(O)} ]
 	NetbiosNodeType : ${4:Integer(O)}
-	NtpServers : [${5:String(O)}]
-	Tags : [${6:AWS::EC2::DHCPOptions.Tag(O)}]
+	NtpServers : [ ${5:String(O)} ]
+	Tags : [ ${6:AWS::EC2::DHCPOptions.Tag(O)} ]
 endsnippet
 
 snippet AWS::EC2::TransitGatewayRoute
@@ -2478,7 +2487,7 @@ endsnippet
 snippet AWS::ApiGateway::UsagePlan
 Type AWS::ApiGateway::UsagePlan
 Properties:
-	ApiStages : [${1:AWS::ApiGateway::UsagePlan.ApiStage(O)}]
+	ApiStages : [ ${1:AWS::ApiGateway::UsagePlan.ApiStage(O)} ]
 	Description : ${2:String(O)}
 	Quota: ${3:AWS::ApiGateway::UsagePlan.QuotaSettings(O)}
 	Throttle: ${4:AWS::ApiGateway::UsagePlan.ThrottleSettings(O)}
@@ -2488,19 +2497,19 @@ endsnippet
 snippet AWS::IAM::User
 Type AWS::IAM::User
 Properties:
-	Groups : [${1:String(O)}]
+	Groups : [ ${1:String(O)} ]
 	LoginProfile: ${2:AWS::IAM::User.LoginProfile(O)}
-	ManagedPolicyArns : [${3:String(O)}]
+	ManagedPolicyArns : [ ${3:String(O)} ]
 	Path : ${4:String(O)}
 	PermissionsBoundary : ${5:String(O)}
-	Policies : [${6:AWS::IAM::User.Policy(O)}]
+	Policies : [ ${6:AWS::IAM::User.Policy(O)} ]
 	UserName : ${7:String(O)}
 endsnippet
 
 snippet AWS::EC2::NetworkAcl
 Type AWS::EC2::NetworkAcl
 Properties:
-	Tags : [${1:AWS::EC2::NetworkAcl.Tag(O)}]
+	Tags : [ ${1:AWS::EC2::NetworkAcl.Tag(O)} ]
 	VpcId : ${2:String(R)}
 endsnippet
 
@@ -2512,13 +2521,13 @@ Properties:
 	Architecture : ${3:String(O)}
 	AutoScalingType : ${4:String(O)}
 	AvailabilityZone : ${5:String(O)}
-	BlockDeviceMappings : [${6:AWS::OpsWorks::Instance.BlockDeviceMapping(O)}]
+	BlockDeviceMappings : [ ${6:AWS::OpsWorks::Instance.BlockDeviceMapping(O)} ]
 	EbsOptimized : ${7:Boolean(O)}
-	ElasticIps : [${8:String(O)}]
+	ElasticIps : [ ${8:String(O)} ]
 	Hostname : ${9:String(O)}
 	InstallUpdatesOnBoot : ${10:Boolean(O)}
 	InstanceType : ${11:String(R)}
-	LayerIds : [${12:String(R)}]
+	LayerIds : [ ${12:String(R)} ]
 	Os : ${13:String(O)}
 	RootDeviceType : ${14:String(O)}
 	SshKeyName : ${15:String(O)}
@@ -2527,7 +2536,7 @@ Properties:
 	Tenancy : ${18:String(O)}
 	TimeBasedAutoScaling: ${19:AWS::OpsWorks::Instance.TimeBasedAutoScaling(O)}
 	VirtualizationType : ${20:String(O)}
-	Volumes : [${21:String(O)}]
+	Volumes : [ ${21:String(O)} ]
 endsnippet
 
 snippet AWS::Config::ConfigRule
@@ -2553,7 +2562,7 @@ endsnippet
 snippet AWS::EC2::VPNGatewayRoutePropagation
 Type AWS::EC2::VPNGatewayRoutePropagation
 Properties:
-	RouteTableIds : [${1:String(R)}]
+	RouteTableIds : [ ${1:String(R)} ]
 	VpnGatewayId : ${2:String(R)}
 endsnippet
 
@@ -2563,7 +2572,7 @@ Properties:
 	DefaultAction: ${1:AWS::WAF::WebACL.WafAction(R)}
 	MetricName : ${2:String(R)}
 	Name : ${3:String(R)}
-	Rules : [${4:AWS::WAF::WebACL.ActivatedRule(O)}]
+	Rules : [ ${4:AWS::WAF::WebACL.ActivatedRule(O)} ]
 endsnippet
 
 snippet AWS::IoTAnalytics::Datastore
@@ -2571,7 +2580,7 @@ Type AWS::IoTAnalytics::Datastore
 Properties:
 	DatastoreName : ${1:String(O)}
 	RetentionPeriod: ${2:AWS::IoTAnalytics::Datastore.RetentionPeriod(O)}
-	Tags : [${3:AWS::IoTAnalytics::Datastore.Tag(O)}]
+	Tags : [ ${3:AWS::IoTAnalytics::Datastore.Tag(O)} ]
 endsnippet
 
 snippet AWS::Glue::Job
@@ -2597,7 +2606,7 @@ Properties:
 	AuthorizerCredentialsArn : ${3:String(O)}
 	AuthorizerType : ${4:String(R)}
 	AuthorizerResultTtlInSeconds : ${5:Integer(O)}
-	IdentitySource : [${6:String(R)}]
+	IdentitySource : [ ${6:String(R)} ]
 	ApiId : ${7:String(R)}
 	Name : ${8:String(R)}
 endsnippet
@@ -2607,18 +2616,18 @@ Type AWS::S3::Bucket
 Properties:
 	AccelerateConfiguration: ${1:AWS::S3::Bucket.AccelerateConfiguration(O)}
 	AccessControl : ${2:String(O)}
-	AnalyticsConfigurations : [${3:AWS::S3::Bucket.AnalyticsConfiguration(O)}]
+	AnalyticsConfigurations : [ ${3:AWS::S3::Bucket.AnalyticsConfiguration(O)} ]
 	BucketEncryption: ${4:AWS::S3::Bucket.BucketEncryption(O)}
 	BucketName : ${5:String(O)}
 	CorsConfiguration: ${6:AWS::S3::Bucket.CorsConfiguration(O)}
-	InventoryConfigurations : [${7:AWS::S3::Bucket.InventoryConfiguration(O)}]
+	InventoryConfigurations : [ ${7:AWS::S3::Bucket.InventoryConfiguration(O)} ]
 	LifecycleConfiguration: ${8:AWS::S3::Bucket.LifecycleConfiguration(O)}
 	LoggingConfiguration: ${9:AWS::S3::Bucket.LoggingConfiguration(O)}
-	MetricsConfigurations : [${10:AWS::S3::Bucket.MetricsConfiguration(O)}]
+	MetricsConfigurations : [ ${10:AWS::S3::Bucket.MetricsConfiguration(O)} ]
 	NotificationConfiguration: ${11:AWS::S3::Bucket.NotificationConfiguration(O)}
 	PublicAccessBlockConfiguration: ${12:AWS::S3::Bucket.PublicAccessBlockConfiguration(O)}
 	ReplicationConfiguration: ${13:AWS::S3::Bucket.ReplicationConfiguration(O)}
-	Tags : [${14:AWS::S3::Bucket.Tag(O)}]
+	Tags : [ ${14:AWS::S3::Bucket.Tag(O)} ]
 	VersioningConfiguration: ${15:AWS::S3::Bucket.VersioningConfiguration(O)}
 	WebsiteConfiguration: ${16:AWS::S3::Bucket.WebsiteConfiguration(O)}
 endsnippet
@@ -2647,9 +2656,9 @@ Properties:
 	NotebookInstanceName : ${6:String(O)}
 	InstanceType : ${7:String(R)}
 	LifecycleConfigName : ${8:String(O)}
-	SecurityGroupIds : [${9:String(O)}]
+	SecurityGroupIds : [ ${9:String(O)} ]
 	RoleArn : ${10:String(R)}
-	Tags : [${11:AWS::SageMaker::NotebookInstance.Tag(O)}]
+	Tags : [ ${11:AWS::SageMaker::NotebookInstance.Tag(O)} ]
 endsnippet
 
 snippet AWS::ApiGateway::BasePathMapping
@@ -2667,18 +2676,18 @@ Properties:
 	UserPoolTags : ${1:Json(O)}
 	Policies: ${2:AWS::Cognito::UserPool.Policies(O)}
 	MfaConfiguration : ${3:String(O)}
-	Schema : [${4:AWS::Cognito::UserPool.SchemaAttribute(O)}]
+	Schema : [ ${4:AWS::Cognito::UserPool.SchemaAttribute(O)} ]
 	AdminCreateUserConfig: ${5:AWS::Cognito::UserPool.AdminCreateUserConfig(O)}
 	SmsAuthenticationMessage : ${6:String(O)}
 	UserPoolName : ${7:String(O)}
 	SmsVerificationMessage : ${8:String(O)}
 	EmailConfiguration: ${9:AWS::Cognito::UserPool.EmailConfiguration(O)}
 	SmsConfiguration: ${10:AWS::Cognito::UserPool.SmsConfiguration(O)}
-	AliasAttributes : [${11:String(O)}]
+	AliasAttributes : [ ${11:String(O)} ]
 	EmailVerificationSubject : ${12:String(O)}
 	LambdaConfig: ${13:AWS::Cognito::UserPool.LambdaConfig(O)}
-	UsernameAttributes : [${14:String(O)}]
-	AutoVerifiedAttributes : [${15:String(O)}]
+	UsernameAttributes : [ ${14:String(O)} ]
+	AutoVerifiedAttributes : [ ${15:String(O)} ]
 	DeviceConfiguration: ${16:AWS::Cognito::UserPool.DeviceConfiguration(O)}
 	EmailVerificationMessage : ${17:String(O)}
 endsnippet
@@ -2693,7 +2702,7 @@ Properties:
 	Schedule : ${5:String(R)}
 	Duration : ${6:Integer(R)}
 	EndDate : ${7:String(O)}
-	Tags : [${8:AWS::SSM::MaintenanceWindow.Tag(O)}]
+	Tags : [ ${8:AWS::SSM::MaintenanceWindow.Tag(O)} ]
 	Name : ${9:String(R)}
 	ScheduleTimezone : ${10:String(O)}
 endsnippet
@@ -2720,7 +2729,7 @@ Properties:
 	Comment : ${1:String(O)}
 	HostedZoneId : ${2:String(O)}
 	HostedZoneName : ${3:String(O)}
-	RecordSets : [${4:AWS::Route53::RecordSetGroup.RecordSet(O)}]
+	RecordSets : [ ${4:AWS::Route53::RecordSetGroup.RecordSet(O)} ]
 endsnippet
 
 snippet AWS::KinesisFirehose::DeliveryStream
@@ -2781,14 +2790,14 @@ Properties:
 	DBInstanceIdentifier : ${10:String(O)}
 	DBName : ${11:String(O)}
 	DBParameterGroupName : ${12:String(O)}
-	DBSecurityGroups : [${13:String(O)}]
+	DBSecurityGroups : [ ${13:String(O)} ]
 	DBSnapshotIdentifier : ${14:String(O)}
 	DBSubnetGroupName : ${15:String(O)}
 	DeleteAutomatedBackups : ${16:Boolean(O)}
 	DeletionProtection : ${17:Boolean(O)}
 	Domain : ${18:String(O)}
 	DomainIAMRoleName : ${19:String(O)}
-	EnableCloudwatchLogsExports : [${20:String(O)}]
+	EnableCloudwatchLogsExports : [ ${20:String(O)} ]
 	EnableIAMDatabaseAuthentication : ${21:Boolean(O)}
 	EnablePerformanceInsights : ${22:Boolean(O)}
 	Engine : ${23:String(O)}
@@ -2807,35 +2816,35 @@ Properties:
 	Port : ${36:String(O)}
 	PreferredBackupWindow : ${37:String(O)}
 	PreferredMaintenanceWindow : ${38:String(O)}
-	ProcessorFeatures : [${39:AWS::RDS::DBInstance.ProcessorFeature(O)}]
+	ProcessorFeatures : [ ${39:AWS::RDS::DBInstance.ProcessorFeature(O)} ]
 	PromotionTier : ${40:Integer(O)}
 	PubliclyAccessible : ${41:Boolean(O)}
 	SourceDBInstanceIdentifier : ${42:String(O)}
 	SourceRegion : ${43:String(O)}
 	StorageEncrypted : ${44:Boolean(O)}
 	StorageType : ${45:String(O)}
-	Tags : [${46:AWS::RDS::DBInstance.Tag(O)}]
+	Tags : [ ${46:AWS::RDS::DBInstance.Tag(O)} ]
 	Timezone : ${47:String(O)}
 	UseDefaultProcessorFeatures : ${48:Boolean(O)}
-	VPCSecurityGroups : [${49:String(O)}]
+	VPCSecurityGroups : [ ${49:String(O)} ]
 endsnippet
 
 snippet AWS::IAM::ManagedPolicy
 Type AWS::IAM::ManagedPolicy
 Properties:
 	Description : ${1:String(O)}
-	Groups : [${2:String(O)}]
+	Groups : [ ${2:String(O)} ]
 	ManagedPolicyName : ${3:String(O)}
 	Path : ${4:String(O)}
 	PolicyDocument : ${5:Json(R)}
-	Roles : [${6:String(O)}]
-	Users : [${7:String(O)}]
+	Roles : [ ${6:String(O)} ]
+	Users : [ ${7:String(O)} ]
 endsnippet
 
 snippet AWS::WAFRegional::IPSet
 Type AWS::WAFRegional::IPSet
 Properties:
-	IPSetDescriptors : [${1:AWS::WAFRegional::IPSet.IPSetDescriptor(O)}]
+	IPSetDescriptors : [ ${1:AWS::WAFRegional::IPSet.IPSetDescriptor(O)} ]
 	Name : ${2:String(R)}
 endsnippet
 
@@ -2843,7 +2852,7 @@ snippet AWS::Greengrass::DeviceDefinitionVersion
 Type AWS::Greengrass::DeviceDefinitionVersion
 Properties:
 	DeviceDefinitionId : ${1:String(R)}
-	Devices : [${2:AWS::Greengrass::DeviceDefinitionVersion.Device(R)}]
+	Devices : [ ${2:AWS::Greengrass::DeviceDefinitionVersion.Device(R)} ]
 endsnippet
 
 snippet AWS::IoT::PolicyPrincipalAttachment
@@ -2861,7 +2870,7 @@ Properties:
 	ResourceId : ${3:String(R)}
 	RoleARN : ${4:String(R)}
 	ScalableDimension : ${5:String(R)}
-	ScheduledActions : [${6:AWS::ApplicationAutoScaling::ScalableTarget.ScheduledAction(O)}]
+	ScheduledActions : [ ${6:AWS::ApplicationAutoScaling::ScalableTarget.ScheduledAction(O)} ]
 	ServiceNamespace : ${7:String(R)}
 endsnippet
 
@@ -2870,7 +2879,7 @@ Type AWS::EC2::CustomerGateway
 Properties:
 	BgpAsn : ${1:Integer(R)}
 	IpAddress : ${2:String(R)}
-	Tags : [${3:AWS::EC2::CustomerGateway.Tag(O)}]
+	Tags : [ ${3:AWS::EC2::CustomerGateway.Tag(O)} ]
 	Type : ${4:String(R)}
 endsnippet
 
@@ -2885,12 +2894,12 @@ Properties:
 	DeploymentId : ${6:String(O)}
 	Description : ${7:String(O)}
 	DocumentationVersion : ${8:String(O)}
-	MethodSettings : [${9:AWS::ApiGateway::Stage.MethodSetting(O)}]
+	MethodSettings : [ ${9:AWS::ApiGateway::Stage.MethodSetting(O)} ]
 	RestApiId : ${10:String(R)}
 	StageName : ${11:String(O)}
-	Tags : [${12:AWS::ApiGateway::Stage.Tag(O)}]
+	Tags : [ ${12:AWS::ApiGateway::Stage.Tag(O)} ]
 	TracingEnabled : ${13:Boolean(O)}
-	Variables : [${14:String(O)}]
+	Variables : [ ${14:String(O)} ]
 endsnippet
 
 snippet AWS::SDB::Domain
@@ -2905,10 +2914,10 @@ Properties:
 	GenerateSecret : ${1:Boolean(O)}
 	ClientName : ${2:String(O)}
 	UserPoolId : ${3:String(R)}
-	ExplicitAuthFlows : [${4:String(O)}]
+	ExplicitAuthFlows : [ ${4:String(O)} ]
 	RefreshTokenValidity : ${5:Double(O)}
-	ReadAttributes : [${6:String(O)}]
-	WriteAttributes : [${7:String(O)}]
+	ReadAttributes : [ ${6:String(O)} ]
+	WriteAttributes : [ ${7:String(O)} ]
 endsnippet
 
 snippet AWS::Route53Resolver::ResolverRuleAssociation
@@ -2930,7 +2939,7 @@ snippet AWS::ApiGateway::VpcLink
 Type AWS::ApiGateway::VpcLink
 Properties:
 	Description : ${1:String(O)}
-	TargetArns : [${2:String(R)}]
+	TargetArns : [ ${2:String(R)} ]
 	Name : ${3:String(R)}
 endsnippet
 
@@ -2954,8 +2963,8 @@ endsnippet
 snippet AWS::ApiGateway::GatewayResponse
 Type AWS::ApiGateway::GatewayResponse
 Properties:
-	ResponseParameters : [${1:String(O)}]
-	ResponseTemplates : [${2:String(O)}]
+	ResponseParameters : [ ${1:String(O)} ]
+	ResponseTemplates : [ ${2:String(O)} ]
 	ResponseType : ${3:String(R)}
 	RestApiId : ${4:String(R)}
 	StatusCode : ${5:String(O)}
@@ -2983,15 +2992,15 @@ snippet AWS::ApiGateway::Method
 Type AWS::ApiGateway::Method
 Properties:
 	ApiKeyRequired : ${1:Boolean(O)}
-	AuthorizationScopes : [${2:String(O)}]
+	AuthorizationScopes : [ ${2:String(O)} ]
 	AuthorizationType : ${3:String(O)}
 	AuthorizerId : ${4:String(O)}
 	HttpMethod : ${5:String(R)}
 	Integration: ${6:AWS::ApiGateway::Method.Integration(O)}
-	MethodResponses : [${7:AWS::ApiGateway::Method.MethodResponse(O)}]
+	MethodResponses : [ ${7:AWS::ApiGateway::Method.MethodResponse(O)} ]
 	OperationName : ${8:String(O)}
-	RequestModels : [${9:String(O)}]
-	RequestParameters : [${10:Boolean(O)}]
+	RequestModels : [ ${9:String(O)} ]
+	RequestParameters : [ ${10:Boolean(O)} ]
 	RequestValidatorId : ${11:String(O)}
 	ResourceId : ${12:String(R)}
 	RestApiId : ${13:String(R)}
@@ -3019,7 +3028,7 @@ Properties:
 	ServerName : ${11:String(O)}
 	ExtraConnectionAttributes : ${12:String(O)}
 	EndpointType : ${13:String(R)}
-	Tags : [${14:AWS::DMS::Endpoint.Tag(O)}]
+	Tags : [ ${14:AWS::DMS::Endpoint.Tag(O)} ]
 	EndpointIdentifier : ${15:String(O)}
 	Password : ${16:String(O)}
 	CertificateArn : ${17:String(O)}
@@ -3030,7 +3039,7 @@ snippet AWS::ServiceCatalog::LaunchNotificationConstraint
 Type AWS::ServiceCatalog::LaunchNotificationConstraint
 Properties:
 	Description : ${1:String(O)}
-	NotificationArns : [${2:String(R)}]
+	NotificationArns : [ ${2:String(R)} ]
 	AcceptLanguage : ${3:String(O)}
 	PortfolioId : ${4:String(R)}
 	ProductId : ${5:String(R)}
@@ -3048,7 +3057,7 @@ endsnippet
 snippet AWS::Greengrass::ResourceDefinitionVersion
 Type AWS::Greengrass::ResourceDefinitionVersion
 Properties:
-	Resources : [${1:AWS::Greengrass::ResourceDefinitionVersion.ResourceInstance(R)}]
+	Resources : [ ${1:AWS::Greengrass::ResourceDefinitionVersion.ResourceInstance(R)} ]
 	ResourceDefinitionId : ${2:String(R)}
 endsnippet
 
@@ -3056,7 +3065,7 @@ snippet AWS::Greengrass::LoggerDefinitionVersion
 Type AWS::Greengrass::LoggerDefinitionVersion
 Properties:
 	LoggerDefinitionId : ${1:String(R)}
-	Loggers : [${2:AWS::Greengrass::LoggerDefinitionVersion.Logger(R)}]
+	Loggers : [ ${2:AWS::Greengrass::LoggerDefinitionVersion.Logger(R)} ]
 endsnippet
 
 snippet AWS::SecretsManager::SecretTargetAttachment
@@ -3099,10 +3108,10 @@ endsnippet
 snippet AWS::RDS::DBSecurityGroup
 Type AWS::RDS::DBSecurityGroup
 Properties:
-	DBSecurityGroupIngress : [${1:AWS::RDS::DBSecurityGroup.Ingress(R)}]
+	DBSecurityGroupIngress : [ ${1:AWS::RDS::DBSecurityGroup.Ingress(R)} ]
 	EC2VpcId : ${2:String(O)}
 	GroupDescription : ${3:String(R)}
-	Tags : [${4:AWS::RDS::DBSecurityGroup.Tag(O)}]
+	Tags : [ ${4:AWS::RDS::DBSecurityGroup.Tag(O)} ]
 endsnippet
 
 snippet AWS::KMS::Alias
@@ -3115,16 +3124,16 @@ endsnippet
 snippet AWS::ECS::TaskDefinition
 Type AWS::ECS::TaskDefinition
 Properties:
-	ContainerDefinitions : [${1:AWS::ECS::TaskDefinition.ContainerDefinition(O)}]
+	ContainerDefinitions : [ ${1:AWS::ECS::TaskDefinition.ContainerDefinition(O)} ]
 	Cpu : ${2:String(O)}
 	ExecutionRoleArn : ${3:String(O)}
 	Family : ${4:String(O)}
 	Memory : ${5:String(O)}
 	NetworkMode : ${6:String(O)}
-	PlacementConstraints : [${7:AWS::ECS::TaskDefinition.TaskDefinitionPlacementConstraint(O)}]
-	RequiresCompatibilities : [${8:String(O)}]
+	PlacementConstraints : [ ${7:AWS::ECS::TaskDefinition.TaskDefinitionPlacementConstraint(O)} ]
+	RequiresCompatibilities : [ ${8:String(O)} ]
 	TaskRoleArn : ${9:String(O)}
-	Volumes : [${10:AWS::ECS::TaskDefinition.Volume(O)}]
+	Volumes : [ ${10:AWS::ECS::TaskDefinition.Volume(O)} ]
 endsnippet
 
 snippet AWS::ApiGatewayV2::IntegrationResponse
@@ -3143,8 +3152,8 @@ snippet AWS::Redshift::ClusterSubnetGroup
 Type AWS::Redshift::ClusterSubnetGroup
 Properties:
 	Description : ${1:String(R)}
-	SubnetIds : [${2:String(R)}]
-	Tags : [${3:AWS::Redshift::ClusterSubnetGroup.Tag(O)}]
+	SubnetIds : [ ${2:String(R)} ]
+	Tags : [ ${3:AWS::Redshift::ClusterSubnetGroup.Tag(O)} ]
 endsnippet
 
 snippet AWS::EC2::EIPAssociation
@@ -3161,7 +3170,7 @@ snippet AWS::EC2::VPNGateway
 Type AWS::EC2::VPNGateway
 Properties:
 	AmazonSideAsn : ${1:Long(O)}
-	Tags : [${2:AWS::EC2::VPNGateway.Tag(O)}]
+	Tags : [ ${2:AWS::EC2::VPNGateway.Tag(O)} ]
 	Type : ${3:String(R)}
 endsnippet
 
@@ -3179,7 +3188,7 @@ Properties:
 	AutoMinorVersionUpgrade : ${2:Boolean(O)}
 	CacheNodeType : ${3:String(R)}
 	CacheParameterGroupName : ${4:String(O)}
-	CacheSecurityGroupNames : [${5:String(O)}]
+	CacheSecurityGroupNames : [ ${5:String(O)} ]
 	CacheSubnetGroupName : ${6:String(O)}
 	ClusterName : ${7:String(O)}
 	Engine : ${8:String(R)}
@@ -3188,14 +3197,14 @@ Properties:
 	NumCacheNodes : ${11:Integer(R)}
 	Port : ${12:Integer(O)}
 	PreferredAvailabilityZone : ${13:String(O)}
-	PreferredAvailabilityZones : [${14:String(O)}]
+	PreferredAvailabilityZones : [ ${14:String(O)} ]
 	PreferredMaintenanceWindow : ${15:String(O)}
-	SnapshotArns : [${16:String(O)}]
+	SnapshotArns : [ ${16:String(O)} ]
 	SnapshotName : ${17:String(O)}
 	SnapshotRetentionLimit : ${18:Integer(O)}
 	SnapshotWindow : ${19:String(O)}
-	Tags : [${20:AWS::ElastiCache::CacheCluster.Tag(O)}]
-	VpcSecurityGroupIds : [${21:String(O)}]
+	Tags : [ ${20:AWS::ElastiCache::CacheCluster.Tag(O)} ]
+	VpcSecurityGroupIds : [ ${21:String(O)} ]
 endsnippet
 
 snippet AWS::GuardDuty::Detector
@@ -3230,7 +3239,7 @@ Properties:
 	NumberOfNodes : ${4:Integer(O)}
 	SubnetId : ${5:String(O)}
 	ExtraPythonLibsS3Path : ${6:String(O)}
-	SecurityGroupIds : [${7:String(O)}]
+	SecurityGroupIds : [ ${7:String(O)} ]
 	RoleArn : ${8:String(R)}
 endsnippet
 
@@ -3239,10 +3248,10 @@ Type AWS::EC2::VPCEndpoint
 Properties:
 	PolicyDocument : ${1:Json(O)}
 	PrivateDnsEnabled : ${2:Boolean(O)}
-	RouteTableIds : [${3:String(O)}]
-	SecurityGroupIds : [${4:String(O)}]
+	RouteTableIds : [ ${3:String(O)} ]
+	SecurityGroupIds : [ ${4:String(O)} ]
 	ServiceName : ${5:String(R)}
-	SubnetIds : [${6:String(O)}]
+	SubnetIds : [ ${6:String(O)} ]
 	VpcEndpointType : ${7:String(O)}
 	VpcId : ${8:String(R)}
 endsnippet
@@ -3270,10 +3279,10 @@ Properties:
 	Name : ${9:String(O)}
 	Port : ${10:Integer(O)}
 	Protocol : ${11:String(O)}
-	Tags : [${12:AWS::ElasticLoadBalancingV2::TargetGroup.Tag(O)}]
-	TargetGroupAttributes : [${13:AWS::ElasticLoadBalancingV2::TargetGroup.TargetGroupAttribute(O)}]
+	Tags : [ ${12:AWS::ElasticLoadBalancingV2::TargetGroup.Tag(O)} ]
+	TargetGroupAttributes : [ ${13:AWS::ElasticLoadBalancingV2::TargetGroup.TargetGroupAttribute(O)} ]
 	TargetType : ${14:String(O)}
-	Targets : [${15:AWS::ElasticLoadBalancingV2::TargetGroup.TargetDescription(O)}]
+	Targets : [ ${15:AWS::ElasticLoadBalancingV2::TargetGroup.TargetDescription(O)} ]
 	UnhealthyThresholdCount : ${16:Integer(O)}
 	VpcId : ${17:String(O)}
 endsnippet
@@ -3301,10 +3310,10 @@ Type AWS::EC2::VPNConnection
 Properties:
 	CustomerGatewayId : ${1:String(R)}
 	StaticRoutesOnly : ${2:Boolean(O)}
-	Tags : [${3:AWS::EC2::VPNConnection.Tag(O)}]
+	Tags : [ ${3:AWS::EC2::VPNConnection.Tag(O)} ]
 	Type : ${4:String(R)}
 	VpnGatewayId : ${5:String(R)}
-	VpnTunnelOptionsSpecifications : [${6:AWS::EC2::VPNConnection.VpnTunnelOptionsSpecification(O)}]
+	VpnTunnelOptionsSpecifications : [ ${6:AWS::EC2::VPNConnection.VpnTunnelOptionsSpecification(O)} ]
 endsnippet
 
 snippet AWS::Glue::Trigger
@@ -3312,7 +3321,7 @@ Type AWS::Glue::Trigger
 Properties:
 	Type : ${1:String(R)}
 	Description : ${2:String(O)}
-	Actions : [${3:AWS::Glue::Trigger.Action(R)}]
+	Actions : [ ${3:AWS::Glue::Trigger.Action(R)} ]
 	Schedule : ${4:String(O)}
 	Name : ${5:String(O)}
 	Predicate: ${6:AWS::Glue::Trigger.Predicate(O)}
@@ -3342,8 +3351,8 @@ Properties:
 	AssessmentTargetArn : ${1:String(R)}
 	DurationInSeconds : ${2:Integer(R)}
 	AssessmentTemplateName : ${3:String(O)}
-	RulesPackageArns : [${4:String(R)}]
-	UserAttributesForFindings : [${5:AWS::Inspector::AssessmentTemplate.Tag(O)}]
+	RulesPackageArns : [ ${4:String(R)} ]
+	UserAttributesForFindings : [ ${5:AWS::Inspector::AssessmentTemplate.Tag(O)} ]
 endsnippet
 
 snippet AWS::AppStream::Fleet
@@ -3361,7 +3370,7 @@ Properties:
 	DisconnectTimeoutInSeconds : ${10:Integer(O)}
 	DisplayName : ${11:String(O)}
 	InstanceType : ${12:String(R)}
-	Tags : [${13:AWS::AppStream::Fleet.Tag(O)}]
+	Tags : [ ${13:AWS::AppStream::Fleet.Tag(O)} ]
 	ImageArn : ${14:String(O)}
 endsnippet
 
@@ -3378,7 +3387,7 @@ snippet AWS::Greengrass::FunctionDefinitionVersion
 Type AWS::Greengrass::FunctionDefinitionVersion
 Properties:
 	DefaultConfig: ${1:AWS::Greengrass::FunctionDefinitionVersion.DefaultConfig(O)}
-	Functions : [${2:AWS::Greengrass::FunctionDefinitionVersion.Function(R)}]
+	Functions : [ ${2:AWS::Greengrass::FunctionDefinitionVersion.Function(R)} ]
 	FunctionDefinitionId : ${3:String(R)}
 endsnippet
 
@@ -3400,24 +3409,24 @@ Properties:
 	Description : ${2:String(O)}
 	EngineType : ${3:String(R)}
 	Data : ${4:String(R)}
-	Tags : [${5:AWS::AmazonMQ::Configuration.TagsEntry(O)}]
+	Tags : [ ${5:AWS::AmazonMQ::Configuration.TagsEntry(O)} ]
 	Name : ${6:String(R)}
 endsnippet
 
 snippet AWS::DynamoDB::Table
 Type AWS::DynamoDB::Table
 Properties:
-	AttributeDefinitions : [${1:AWS::DynamoDB::Table.AttributeDefinition(O)}]
+	AttributeDefinitions : [ ${1:AWS::DynamoDB::Table.AttributeDefinition(O)} ]
 	BillingMode : ${2:String(O)}
-	GlobalSecondaryIndexes : [${3:AWS::DynamoDB::Table.GlobalSecondaryIndex(O)}]
-	KeySchema : [${4:AWS::DynamoDB::Table.KeySchema(R)}]
-	LocalSecondaryIndexes : [${5:AWS::DynamoDB::Table.LocalSecondaryIndex(O)}]
+	GlobalSecondaryIndexes : [ ${3:AWS::DynamoDB::Table.GlobalSecondaryIndex(O)} ]
+	KeySchema : [ ${4:AWS::DynamoDB::Table.KeySchema(R)} ]
+	LocalSecondaryIndexes : [ ${5:AWS::DynamoDB::Table.LocalSecondaryIndex(O)} ]
 	PointInTimeRecoverySpecification: ${6:AWS::DynamoDB::Table.PointInTimeRecoverySpecification(O)}
 	ProvisionedThroughput: ${7:AWS::DynamoDB::Table.ProvisionedThroughput(O)}
 	SSESpecification: ${8:AWS::DynamoDB::Table.SSESpecification(O)}
 	StreamSpecification: ${9:AWS::DynamoDB::Table.StreamSpecification(O)}
 	TableName : ${10:String(O)}
-	Tags : [${11:AWS::DynamoDB::Table.Tag(O)}]
+	Tags : [ ${11:AWS::DynamoDB::Table.Tag(O)} ]
 	TimeToLiveSpecification: ${12:AWS::DynamoDB::Table.TimeToLiveSpecification(O)}
 endsnippet
 
@@ -3434,7 +3443,7 @@ snippet AWS::Redshift::ClusterSecurityGroup
 Type AWS::Redshift::ClusterSecurityGroup
 Properties:
 	Description : ${1:String(R)}
-	Tags : [${2:AWS::Redshift::ClusterSecurityGroup.Tag(O)}]
+	Tags : [ ${2:AWS::Redshift::ClusterSecurityGroup.Tag(O)} ]
 endsnippet
 
 snippet AWS::EC2::EC2Fleet
@@ -3444,11 +3453,11 @@ Properties:
 	OnDemandOptions: ${2:AWS::EC2::EC2Fleet.OnDemandOptionsRequest(O)}
 	Type : ${3:String(O)}
 	ExcessCapacityTerminationPolicy : ${4:String(O)}
-	TagSpecifications : [${5:AWS::EC2::EC2Fleet.TagSpecification(O)}]
+	TagSpecifications : [ ${5:AWS::EC2::EC2Fleet.TagSpecification(O)} ]
 	SpotOptions: ${6:AWS::EC2::EC2Fleet.SpotOptionsRequest(O)}
 	ValidFrom : ${7:String(O)}
 	ReplaceUnhealthyInstances : ${8:Boolean(O)}
-	LaunchTemplateConfigs : [${9:AWS::EC2::EC2Fleet.FleetLaunchTemplateConfigRequest(R)}]
+	LaunchTemplateConfigs : [ ${9:AWS::EC2::EC2Fleet.FleetLaunchTemplateConfigRequest(R)} ]
 	TerminateInstancesWithExpiration : ${10:Boolean(O)}
 	ValidUntil : ${11:String(O)}
 endsnippet
@@ -3457,21 +3466,21 @@ snippet AWS::EC2::TransitGatewayRouteTable
 Type AWS::EC2::TransitGatewayRouteTable
 Properties:
 	TransitGatewayId : ${1:String(R)}
-	Tags : [${2:AWS::EC2::TransitGatewayRouteTable.Tag(O)}]
+	Tags : [ ${2:AWS::EC2::TransitGatewayRouteTable.Tag(O)} ]
 endsnippet
 
 snippet AWS::WAF::XssMatchSet
 Type AWS::WAF::XssMatchSet
 Properties:
 	Name : ${1:String(R)}
-	XssMatchTuples : [${2:AWS::WAF::XssMatchSet.XssMatchTuple(R)}]
+	XssMatchTuples : [ ${2:AWS::WAF::XssMatchSet.XssMatchTuple(R)} ]
 endsnippet
 
 snippet AWS::Route53::HealthCheck
 Type AWS::Route53::HealthCheck
 Properties:
 	HealthCheckConfig: ${1:AWS::Route53::HealthCheck.HealthCheckConfig(R)}
-	HealthCheckTags : [${2:AWS::Route53::HealthCheck.HealthCheckTag(O)}]
+	HealthCheckTags : [ ${2:AWS::Route53::HealthCheck.HealthCheckTag(O)} ]
 endsnippet
 
 snippet AWS::Greengrass::GroupVersion
@@ -3523,9 +3532,9 @@ Properties:
 	InstanceId : ${3:String(O)}
 	Name : ${4:String(R)}
 	OutputLocation: ${5:AWS::SSM::Association.InstanceAssociationOutputLocation(O)}
-	Parameters : [${6:AWS::SSM::Association.ParameterValues(O)}]
+	Parameters : [ ${6:AWS::SSM::Association.ParameterValues(O)} ]
 	ScheduleExpression : ${7:String(O)}
-	Targets : [${8:AWS::SSM::Association.Target(O)}]
+	Targets : [ ${8:AWS::SSM::Association.Target(O)} ]
 endsnippet
 
 snippet AWS::RDS::DBClusterParameterGroup
@@ -3534,7 +3543,7 @@ Properties:
 	Description : ${1:String(R)}
 	Family : ${2:String(R)}
 	Parameters : ${3:Json(R)}
-	Tags : [${4:AWS::RDS::DBClusterParameterGroup.Tag(O)}]
+	Tags : [ ${4:AWS::RDS::DBClusterParameterGroup.Tag(O)} ]
 endsnippet
 
 snippet AWS::Athena::NamedQuery
@@ -3579,7 +3588,7 @@ snippet AWS::AutoScaling::AutoScalingGroup
 Type AWS::AutoScaling::AutoScalingGroup
 Properties:
 	AutoScalingGroupName : ${1:String(O)}
-	AvailabilityZones : [${2:String(O)}]
+	AvailabilityZones : [ ${2:String(O)} ]
 	Cooldown : ${3:String(O)}
 	DesiredCapacity : ${4:String(O)}
 	HealthCheckGracePeriod : ${5:Integer(O)}
@@ -3587,19 +3596,19 @@ Properties:
 	InstanceId : ${7:String(O)}
 	LaunchConfigurationName : ${8:String(O)}
 	LaunchTemplate: ${9:AWS::AutoScaling::AutoScalingGroup.LaunchTemplateSpecification(O)}
-	LifecycleHookSpecificationList : [${10:AWS::AutoScaling::AutoScalingGroup.LifecycleHookSpecification(O)}]
-	LoadBalancerNames : [${11:String(O)}]
+	LifecycleHookSpecificationList : [ ${10:AWS::AutoScaling::AutoScalingGroup.LifecycleHookSpecification(O)} ]
+	LoadBalancerNames : [ ${11:String(O)} ]
 	MaxSize : ${12:String(R)}
-	MetricsCollection : [${13:AWS::AutoScaling::AutoScalingGroup.MetricsCollection(O)}]
+	MetricsCollection : [ ${13:AWS::AutoScaling::AutoScalingGroup.MetricsCollection(O)} ]
 	MinSize : ${14:String(R)}
 	MixedInstancesPolicy: ${15:AWS::AutoScaling::AutoScalingGroup.MixedInstancesPolicy(O)}
-	NotificationConfigurations : [${16:AWS::AutoScaling::AutoScalingGroup.NotificationConfiguration(O)}]
+	NotificationConfigurations : [ ${16:AWS::AutoScaling::AutoScalingGroup.NotificationConfiguration(O)} ]
 	PlacementGroup : ${17:String(O)}
 	ServiceLinkedRoleARN : ${18:String(O)}
-	Tags : [${19:AWS::AutoScaling::AutoScalingGroup.TagProperty(O)}]
-	TargetGroupARNs : [${20:String(O)}]
-	TerminationPolicies : [${21:String(O)}]
-	VPCZoneIdentifier : [${22:String(O)}]
+	Tags : [ ${19:AWS::AutoScaling::AutoScalingGroup.TagProperty(O)} ]
+	TargetGroupARNs : [ ${20:String(O)} ]
+	TerminationPolicies : [ ${21:String(O)} ]
+	VPCZoneIdentifier : [ ${22:String(O)} ]
 endsnippet
 
 snippet AWS::CloudFormation::CustomResource
@@ -3611,10 +3620,10 @@ endsnippet
 snippet AWS::Route53Resolver::ResolverEndpoint
 Type AWS::Route53Resolver::ResolverEndpoint
 Properties:
-	IpAddresses : [${1:AWS::Route53Resolver::ResolverEndpoint.IpAddressRequest(R)}]
+	IpAddresses : [ ${1:AWS::Route53Resolver::ResolverEndpoint.IpAddressRequest(R)} ]
 	Direction : ${2:String(R)}
-	SecurityGroupIds : [${3:String(R)}]
-	Tags : [${4:AWS::Route53Resolver::ResolverEndpoint.Tag(O)}]
+	SecurityGroupIds : [ ${3:String(R)} ]
+	Tags : [ ${4:AWS::Route53Resolver::ResolverEndpoint.Tag(O)} ]
 	Name : ${5:String(O)}
 endsnippet
 
@@ -3622,7 +3631,7 @@ snippet AWS::Glue::Crawler
 Type AWS::Glue::Crawler
 Properties:
 	Role : ${1:String(R)}
-	Classifiers : [${2:String(O)}]
+	Classifiers : [ ${2:String(O)} ]
 	Description : ${3:String(O)}
 	SchemaChangePolicy: ${4:AWS::Glue::Crawler.SchemaChangePolicy(O)}
 	Configuration : ${5:String(O)}
@@ -3656,7 +3665,7 @@ Properties:
 	ServiceRoleArn : ${3:String(R)}
 	Priority : ${4:Integer(R)}
 	MaxConcurrency : ${5:String(R)}
-	Targets : [${6:AWS::SSM::MaintenanceWindowTask.Target(R)}]
+	Targets : [ ${6:AWS::SSM::MaintenanceWindowTask.Target(R)} ]
 	Name : ${7:String(O)}
 	TaskArn : ${8:String(R)}
 	TaskInvocationParameters: ${9:AWS::SSM::MaintenanceWindowTask.TaskInvocationParameters(O)}
@@ -3676,7 +3685,7 @@ Properties:
 	MigrationType : ${5:String(R)}
 	TargetEndpointArn : ${6:String(R)}
 	ReplicationInstanceArn : ${7:String(R)}
-	Tags : [${8:AWS::DMS::ReplicationTask.Tag(O)}]
+	Tags : [ ${8:AWS::DMS::ReplicationTask.Tag(O)} ]
 	CdcStartTime : ${9:Double(O)}
 endsnippet
 
@@ -3721,12 +3730,12 @@ Properties:
 	AutoMinorVersionUpgrade : ${6:Boolean(O)}
 	ReplicationSubnetGroupIdentifier : ${7:String(O)}
 	AllocatedStorage : ${8:Integer(O)}
-	VpcSecurityGroupIds : [${9:String(O)}]
+	VpcSecurityGroupIds : [ ${9:String(O)} ]
 	AllowMajorVersionUpgrade : ${10:Boolean(O)}
 	ReplicationInstanceClass : ${11:String(R)}
 	PubliclyAccessible : ${12:Boolean(O)}
 	MultiAZ : ${13:Boolean(O)}
-	Tags : [${14:AWS::DMS::ReplicationInstance.Tag(O)}]
+	Tags : [ ${14:AWS::DMS::ReplicationInstance.Tag(O)} ]
 endsnippet
 
 snippet AWS::AutoScaling::ScheduledAction
@@ -3798,7 +3807,7 @@ endsnippet
 
 snippet AWS::S3::Bucket.BucketEncryption "" sw
 
-	ServerSideEncryptionConfiguration : [${1:AWS::S3::Bucket.ServerSideEncryptionRule(R)}]
+	ServerSideEncryptionConfiguration : [ ${1:AWS::S3::Bucket.ServerSideEncryptionRule(R)} ]
 endsnippet
 
 snippet AWS::Greengrass::FunctionDefinitionVersion.FunctionConfiguration "" sw
@@ -3820,8 +3829,8 @@ endsnippet
 
 snippet AWS::CodeDeploy::DeploymentGroup.LoadBalancerInfo "" sw
 
-	ElbInfoList : [${1:AWS::CodeDeploy::DeploymentGroup.ELBInfo(O)}]
-	TargetGroupInfoList : [${2:AWS::CodeDeploy::DeploymentGroup.TargetGroupInfo(O)}]
+	ElbInfoList : [ ${1:AWS::CodeDeploy::DeploymentGroup.ELBInfo(O)} ]
+	TargetGroupInfoList : [ ${2:AWS::CodeDeploy::DeploymentGroup.TargetGroupInfo(O)} ]
 endsnippet
 
 snippet AWS::ElasticBeanstalk::Environment.OptionSetting "" sw
@@ -3834,7 +3843,7 @@ endsnippet
 
 snippet AWS::Budgets::Budget.NotificationWithSubscribers "" sw
 
-	Subscribers : [${1:AWS::Budgets::Budget.Subscriber(R)}]
+	Subscribers : [ ${1:AWS::Budgets::Budget.Subscriber(R)} ]
 	Notification : ${2:AWS::Budgets::Budget.Notification(R)}
 endsnippet
 
@@ -3863,7 +3872,7 @@ endsnippet
 
 snippet AWS::Events::Rule.RunCommandParameters "" sw
 
-	RunCommandTargets : [${1:AWS::Events::Rule.RunCommandTarget(R)}]
+	RunCommandTargets : [ ${1:AWS::Events::Rule.RunCommandTarget(R)} ]
 endsnippet
 
 snippet AWS::CertificateManager::Certificate.DomainValidationOption "" sw
@@ -3886,7 +3895,7 @@ endsnippet
 
 snippet AWS::CloudTrail::Trail.EventSelector "" sw
 
-	DataResources : [${1:AWS::CloudTrail::Trail.DataResource(O)}]
+	DataResources : [ ${1:AWS::CloudTrail::Trail.DataResource(O)} ]
 	IncludeManagementEvents : ${2:Boolean(O)}
 	ReadWriteType : ${3:String(O)}
 endsnippet
@@ -3941,7 +3950,7 @@ endsnippet
 
 snippet AWS::S3::Bucket.LifecycleConfiguration "" sw
 
-	Rules : [${1:AWS::S3::Bucket.Rule(R)}]
+	Rules : [ ${1:AWS::S3::Bucket.Rule(R)} ]
 endsnippet
 
 snippet AWS::AutoScaling::LaunchConfiguration.BlockDeviceMapping "" sw
@@ -3965,7 +3974,7 @@ endsnippet
 
 snippet AWS::CloudFront::Distribution.Cookies "" sw
 
-	WhitelistedNames : [${1:String(O)}]
+	WhitelistedNames : [ ${1:String(O)} ]
 	Forward : ${2:String(R)}
 endsnippet
 
@@ -3986,7 +3995,7 @@ endsnippet
 snippet AWS::Batch::JobDefinition.NodeProperties "" sw
 
 	MainNode : ${1:Integer(R)}
-	NodeRangeProperties : [${2:AWS::Batch::JobDefinition.NodeRangeProperty(R)}]
+	NodeRangeProperties : [ ${2:AWS::Batch::JobDefinition.NodeRangeProperty(R)} ]
 	NumNodes : ${3:Integer(R)}
 endsnippet
 
@@ -4000,16 +4009,16 @@ endsnippet
 snippet AWS::ApiGateway::Deployment.DeploymentCanarySettings "" sw
 
 	PercentTraffic : ${1:Double(O)}
-	StageVariableOverrides : [${2:String(O)}]
+	StageVariableOverrides : [ ${2:String(O)} ]
 	UseStageCache : ${3:Boolean(O)}
 endsnippet
 
 snippet AWS::EMR::Step.HadoopJarStepConfig "" sw
 
-	Args : [${1:String(O)}]
+	Args : [ ${1:String(O)} ]
 	Jar : ${2:String(R)}
 	MainClass : ${3:String(O)}
-	StepProperties : [${4:AWS::EMR::Step.KeyValue(O)}]
+	StepProperties : [ ${4:AWS::EMR::Step.KeyValue(O)} ]
 endsnippet
 
 snippet AWS::EMR::InstanceGroupConfig.EbsBlockDeviceConfig "" sw
@@ -4066,25 +4075,25 @@ endsnippet
 
 snippet AWS::EC2::LaunchTemplate.LaunchTemplateData "" sw
 
-	SecurityGroups : [${1:String(O)}]
-	TagSpecifications : [${2:AWS::EC2::LaunchTemplate.TagSpecification(O)}]
+	SecurityGroups : [ ${1:String(O)} ]
+	TagSpecifications : [ ${2:AWS::EC2::LaunchTemplate.TagSpecification(O)} ]
 	UserData : ${3:String(O)}
-	BlockDeviceMappings : [${4:AWS::EC2::LaunchTemplate.BlockDeviceMapping(O)}]
+	BlockDeviceMappings : [ ${4:AWS::EC2::LaunchTemplate.BlockDeviceMapping(O)} ]
 	IamInstanceProfile : ${5:AWS::EC2::LaunchTemplate.IamInstanceProfile(O)}
 	KernelId : ${6:String(O)}
 	EbsOptimized : ${7:Boolean(O)}
-	ElasticGpuSpecifications : [${8:AWS::EC2::LaunchTemplate.ElasticGpuSpecification(O)}]
-	ElasticInferenceAccelerators : [${9:AWS::EC2::LaunchTemplate.LaunchTemplateElasticInferenceAccelerator(O)}]
+	ElasticGpuSpecifications : [ ${8:AWS::EC2::LaunchTemplate.ElasticGpuSpecification(O)} ]
+	ElasticInferenceAccelerators : [ ${9:AWS::EC2::LaunchTemplate.LaunchTemplateElasticInferenceAccelerator(O)} ]
 	Placement : ${10:AWS::EC2::LaunchTemplate.Placement(O)}
-	NetworkInterfaces : [${11:AWS::EC2::LaunchTemplate.NetworkInterface(O)}]
+	NetworkInterfaces : [ ${11:AWS::EC2::LaunchTemplate.NetworkInterface(O)} ]
 	ImageId : ${12:String(O)}
 	InstanceType : ${13:String(O)}
 	Monitoring : ${14:AWS::EC2::LaunchTemplate.Monitoring(O)}
 	HibernationOptions : ${15:AWS::EC2::LaunchTemplate.HibernationOptions(O)}
-	LicenseSpecifications : [${16:AWS::EC2::LaunchTemplate.LicenseSpecification(O)}]
+	LicenseSpecifications : [ ${16:AWS::EC2::LaunchTemplate.LicenseSpecification(O)} ]
 	InstanceInitiatedShutdownBehavior : ${17:String(O)}
 	CpuOptions : ${18:AWS::EC2::LaunchTemplate.CpuOptions(O)}
-	SecurityGroupIds : [${19:String(O)}]
+	SecurityGroupIds : [ ${19:String(O)} ]
 	KeyName : ${20:String(O)}
 	DisableApiTermination : ${21:Boolean(O)}
 	InstanceMarketOptions : ${22:AWS::EC2::LaunchTemplate.InstanceMarketOptions(O)}
@@ -4126,7 +4135,7 @@ endsnippet
 
 snippet AWS::ElasticLoadBalancingV2::Listener.AuthenticateOidcConfig "" sw
 
-	AuthenticationRequestExtraParams : [${1:String(O)}]
+	AuthenticationRequestExtraParams : [ ${1:String(O)} ]
 	AuthorizationEndpoint : ${2:String(R)}
 	ClientId : ${3:String(R)}
 	ClientSecret : ${4:String(R)}
@@ -4141,8 +4150,8 @@ endsnippet
 
 snippet AWS::Elasticsearch::Domain.VPCOptions "" sw
 
-	SecurityGroupIds : [${1:String(O)}]
-	SubnetIds : [${2:String(O)}]
+	SecurityGroupIds : [ ${1:String(O)} ]
+	SubnetIds : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::ElasticLoadBalancing::LoadBalancer.HealthCheck "" sw
@@ -4166,7 +4175,7 @@ endsnippet
 snippet AWS::EC2::SpotFleet.LaunchTemplateConfig "" sw
 
 	LaunchTemplateSpecification : ${1:AWS::EC2::SpotFleet.FleetLaunchTemplateSpecification(O)}
-	Overrides : [${2:AWS::EC2::SpotFleet.LaunchTemplateOverrides(O)}]
+	Overrides : [ ${2:AWS::EC2::SpotFleet.LaunchTemplateOverrides(O)} ]
 endsnippet
 
 snippet AWS::EC2::Instance.ElasticGpuSpecification "" sw
@@ -4176,7 +4185,7 @@ endsnippet
 
 snippet AWS::CodeDeploy::DeploymentGroup.TriggerConfig "" sw
 
-	TriggerEvents : [${1:String(O)}]
+	TriggerEvents : [ ${1:String(O)} ]
 	TriggerName : ${2:String(O)}
 	TriggerTargetArn : ${3:String(O)}
 endsnippet
@@ -4184,7 +4193,7 @@ endsnippet
 snippet AWS::Config::ConfigurationAggregator.OrganizationAggregationSource "" sw
 
 	AllAwsRegions : ${1:Boolean(O)}
-	AwsRegions : [${2:String(O)}]
+	AwsRegions : [ ${2:String(O)} ]
 	RoleArn : ${3:String(R)}
 endsnippet
 
@@ -4212,7 +4221,7 @@ snippet AWS::ApplicationAutoScaling::ScalingPolicy.StepScalingPolicyConfiguratio
 	Cooldown : ${2:Integer(O)}
 	MetricAggregationType : ${3:String(O)}
 	MinAdjustmentMagnitude : ${4:Integer(O)}
-	StepAdjustments : [${5:AWS::ApplicationAutoScaling::ScalingPolicy.StepAdjustment(O)}]
+	StepAdjustments : [ ${5:AWS::ApplicationAutoScaling::ScalingPolicy.StepAdjustment(O)} ]
 endsnippet
 
 snippet AWS::IoTAnalytics::Pipeline.DeviceShadowEnrich "" sw
@@ -4229,17 +4238,17 @@ snippet AWS::CloudFront::Distribution.CustomOriginConfig "" sw
 	OriginReadTimeout : ${1:Integer(O)}
 	HTTPSPort : ${2:Integer(O)}
 	OriginKeepaliveTimeout : ${3:Integer(O)}
-	OriginSSLProtocols : [${4:String(O)}]
+	OriginSSLProtocols : [ ${4:String(O)} ]
 	HTTPPort : ${5:Integer(O)}
 	OriginProtocolPolicy : ${6:String(R)}
 endsnippet
 
 snippet AWS::S3::Bucket.CorsRule "" sw
 
-	AllowedHeaders : [${1:String(O)}]
-	AllowedMethods : [${2:String(R)}]
-	AllowedOrigins : [${3:String(R)}]
-	ExposedHeaders : [${4:String(O)}]
+	AllowedHeaders : [ ${1:String(O)} ]
+	AllowedMethods : [ ${2:String(R)} ]
+	AllowedOrigins : [ ${3:String(R)} ]
+	ExposedHeaders : [ ${4:String(O)} ]
 	Id : ${5:String(O)}
 	MaxAge : ${6:Integer(O)}
 endsnippet
@@ -4337,14 +4346,14 @@ endsnippet
 
 snippet AWS::DirectoryService::MicrosoftAD.VpcSettings "" sw
 
-	SubnetIds : [${1:String(R)}]
+	SubnetIds : [ ${1:String(R)} ]
 	VpcId : ${2:String(R)}
 endsnippet
 
 snippet AWS::Lambda::Function.VpcConfig "" sw
 
-	SecurityGroupIds : [${1:String(R)}]
-	SubnetIds : [${2:String(R)}]
+	SecurityGroupIds : [ ${1:String(R)} ]
+	SubnetIds : [ ${2:String(R)} ]
 endsnippet
 
 snippet AWS::EC2::LaunchTemplate.InstanceMarketOptions "" sw
@@ -4362,9 +4371,9 @@ snippet AWS::CodePipeline::Pipeline.ActionDeclaration "" sw
 
 	ActionTypeId : ${1:AWS::CodePipeline::Pipeline.ActionTypeId(R)}
 	Configuration : ${2:Json(O)}
-	InputArtifacts : [${3:AWS::CodePipeline::Pipeline.InputArtifact(O)}]
+	InputArtifacts : [ ${3:AWS::CodePipeline::Pipeline.InputArtifact(O)} ]
 	Name : ${4:String(R)}
-	OutputArtifacts : [${5:AWS::CodePipeline::Pipeline.OutputArtifact(O)}]
+	OutputArtifacts : [ ${5:AWS::CodePipeline::Pipeline.OutputArtifact(O)} ]
 	Region : ${6:String(O)}
 	RoleArn : ${7:String(O)}
 	RunOrder : ${8:Integer(O)}
@@ -4373,8 +4382,8 @@ endsnippet
 snippet AWS::EMR::InstanceGroupConfig.Configuration "" sw
 
 	Classification : ${1:String(O)}
-	ConfigurationProperties : [${2:String(O)}]
-	Configurations : [${3:AWS::EMR::InstanceGroupConfig.Configuration(O)}]
+	ConfigurationProperties : [ ${2:String(O)} ]
+	Configurations : [ ${3:AWS::EMR::InstanceGroupConfig.Configuration(O)} ]
 endsnippet
 
 snippet AWS::Redshift::ClusterParameterGroup.Parameter "" sw
@@ -4400,7 +4409,7 @@ snippet AWS::EMR::Cluster.InstanceGroupConfig "" sw
 
 	AutoScalingPolicy : ${1:AWS::EMR::Cluster.AutoScalingPolicy(O)}
 	BidPrice : ${2:String(O)}
-	Configurations : [${3:AWS::EMR::Cluster.Configuration(O)}]
+	Configurations : [ ${3:AWS::EMR::Cluster.Configuration(O)} ]
 	EbsConfiguration : ${4:AWS::EMR::Cluster.EbsConfiguration(O)}
 	InstanceCount : ${5:Integer(R)}
 	InstanceType : ${6:String(R)}
@@ -4486,14 +4495,14 @@ snippet AWS::Glue::Partition.StorageDescriptor "" sw
 
 	StoredAsSubDirectories : ${1:Boolean(O)}
 	Parameters : ${2:Json(O)}
-	BucketColumns : [${3:String(O)}]
+	BucketColumns : [ ${3:String(O)} ]
 	SkewedInfo : ${4:AWS::Glue::Partition.SkewedInfo(O)}
 	InputFormat : ${5:String(O)}
 	NumberOfBuckets : ${6:Integer(O)}
 	OutputFormat : ${7:String(O)}
-	Columns : [${8:AWS::Glue::Partition.Column(O)}]
+	Columns : [ ${8:AWS::Glue::Partition.Column(O)} ]
 	SerdeInfo : ${9:AWS::Glue::Partition.SerdeInfo(O)}
-	SortColumns : [${10:AWS::Glue::Partition.Order(O)}]
+	SortColumns : [ ${10:AWS::Glue::Partition.Order(O)} ]
 	Compressed : ${11:Boolean(O)}
 	Location : ${12:String(O)}
 endsnippet
@@ -4510,12 +4519,12 @@ snippet AWS::EC2::Instance.NetworkInterface "" sw
 	DeleteOnTermination : ${2:Boolean(O)}
 	Description : ${3:String(O)}
 	DeviceIndex : ${4:String(R)}
-	GroupSet : [${5:String(O)}]
+	GroupSet : [ ${5:String(O)} ]
 	Ipv6AddressCount : ${6:Integer(O)}
-	Ipv6Addresses : [${7:AWS::EC2::Instance.InstanceIpv6Address(O)}]
+	Ipv6Addresses : [ ${7:AWS::EC2::Instance.InstanceIpv6Address(O)} ]
 	NetworkInterfaceId : ${8:String(O)}
 	PrivateIpAddress : ${9:String(O)}
-	PrivateIpAddresses : [${10:AWS::EC2::Instance.PrivateIpAddressSpecification(O)}]
+	PrivateIpAddresses : [ ${10:AWS::EC2::Instance.PrivateIpAddressSpecification(O)} ]
 	SecondaryPrivateIpAddressCount : ${11:Integer(O)}
 	SubnetId : ${12:String(O)}
 endsnippet
@@ -4542,7 +4551,7 @@ endsnippet
 snippet AWS::AutoScalingPlans::ScalingPlan.ApplicationSource "" sw
 
 	CloudFormationStackARN : ${1:String(O)}
-	TagFilters : [${2:AWS::AutoScalingPlans::ScalingPlan.TagFilter(O)}]
+	TagFilters : [ ${2:AWS::AutoScalingPlans::ScalingPlan.TagFilter(O)} ]
 endsnippet
 
 snippet AWS::EMR::Cluster.SpotProvisioningSpecification "" sw
@@ -4581,11 +4590,11 @@ snippet AWS::EC2::SpotFleet.InstanceNetworkInterfaceSpecification "" sw
 	DeleteOnTermination : ${2:Boolean(O)}
 	Description : ${3:String(O)}
 	DeviceIndex : ${4:Integer(O)}
-	Groups : [${5:String(O)}]
+	Groups : [ ${5:String(O)} ]
 	Ipv6AddressCount : ${6:Integer(O)}
-	Ipv6Addresses : [${7:AWS::EC2::SpotFleet.InstanceIpv6Address(O)}]
+	Ipv6Addresses : [ ${7:AWS::EC2::SpotFleet.InstanceIpv6Address(O)} ]
 	NetworkInterfaceId : ${8:String(O)}
-	PrivateIpAddresses : [${9:AWS::EC2::SpotFleet.PrivateIpAddressSpecification(O)}]
+	PrivateIpAddresses : [ ${9:AWS::EC2::SpotFleet.PrivateIpAddressSpecification(O)} ]
 	SecondaryPrivateIpAddressCount : ${10:Integer(O)}
 	SubnetId : ${11:String(O)}
 endsnippet
@@ -4601,8 +4610,8 @@ snippet AWS::ECS::TaskDefinition.DockerVolumeConfiguration "" sw
 
 	Autoprovision : ${1:Boolean(O)}
 	Driver : ${2:String(O)}
-	DriverOpts : [${3:String(O)}]
-	Labels : [${4:String(O)}]
+	DriverOpts : [ ${3:String(O)} ]
+	Labels : [ ${4:String(O)} ]
 	Scope : ${5:String(O)}
 endsnippet
 
@@ -4628,44 +4637,44 @@ snippet AWS::Batch::JobDefinition.ContainerProperties "" sw
 	ReadonlyRootFilesystem : ${5:Boolean(O)}
 	Vcpus : ${6:Integer(R)}
 	Image : ${7:String(R)}
-	MountPoints : [${8:AWS::Batch::JobDefinition.MountPoints(O)}]
-	Volumes : [${9:AWS::Batch::JobDefinition.Volumes(O)}]
-	Command : [${10:String(O)}]
-	Environment : [${11:AWS::Batch::JobDefinition.Environment(O)}]
-	Ulimits : [${12:AWS::Batch::JobDefinition.Ulimit(O)}]
+	MountPoints : [ ${8:AWS::Batch::JobDefinition.MountPoints(O)} ]
+	Volumes : [ ${9:AWS::Batch::JobDefinition.Volumes(O)} ]
+	Command : [ ${10:String(O)} ]
+	Environment : [ ${11:AWS::Batch::JobDefinition.Environment(O)} ]
+	Ulimits : [ ${12:AWS::Batch::JobDefinition.Ulimit(O)} ]
 	InstanceType : ${13:String(O)}
 endsnippet
 
 snippet AWS::ECS::TaskDefinition.ContainerDefinition "" sw
 
-	Command : [${1:String(O)}]
+	Command : [ ${1:String(O)} ]
 	Cpu : ${2:Integer(O)}
 	DisableNetworking : ${3:Boolean(O)}
-	DnsSearchDomains : [${4:String(O)}]
-	DnsServers : [${5:String(O)}]
-	DockerLabels : [${6:String(O)}]
-	DockerSecurityOptions : [${7:String(O)}]
-	EntryPoint : [${8:String(O)}]
-	Environment : [${9:AWS::ECS::TaskDefinition.KeyValuePair(O)}]
+	DnsSearchDomains : [ ${4:String(O)} ]
+	DnsServers : [ ${5:String(O)} ]
+	DockerLabels : [ ${6:String(O)} ]
+	DockerSecurityOptions : [ ${7:String(O)} ]
+	EntryPoint : [ ${8:String(O)} ]
+	Environment : [ ${9:AWS::ECS::TaskDefinition.KeyValuePair(O)} ]
 	Essential : ${10:Boolean(O)}
-	ExtraHosts : [${11:AWS::ECS::TaskDefinition.HostEntry(O)}]
+	ExtraHosts : [ ${11:AWS::ECS::TaskDefinition.HostEntry(O)} ]
 	HealthCheck : ${12:AWS::ECS::TaskDefinition.HealthCheck(O)}
 	Hostname : ${13:String(O)}
 	Image : ${14:String(O)}
-	Links : [${15:String(O)}]
+	Links : [ ${15:String(O)} ]
 	LinuxParameters : ${16:AWS::ECS::TaskDefinition.LinuxParameters(O)}
 	LogConfiguration : ${17:AWS::ECS::TaskDefinition.LogConfiguration(O)}
 	Memory : ${18:Integer(O)}
 	MemoryReservation : ${19:Integer(O)}
-	MountPoints : [${20:AWS::ECS::TaskDefinition.MountPoint(O)}]
+	MountPoints : [ ${20:AWS::ECS::TaskDefinition.MountPoint(O)} ]
 	Name : ${21:String(O)}
-	PortMappings : [${22:AWS::ECS::TaskDefinition.PortMapping(O)}]
+	PortMappings : [ ${22:AWS::ECS::TaskDefinition.PortMapping(O)} ]
 	Privileged : ${23:Boolean(O)}
 	ReadonlyRootFilesystem : ${24:Boolean(O)}
 	RepositoryCredentials : ${25:AWS::ECS::TaskDefinition.RepositoryCredentials(O)}
-	Ulimits : [${26:AWS::ECS::TaskDefinition.Ulimit(O)}]
+	Ulimits : [ ${26:AWS::ECS::TaskDefinition.Ulimit(O)} ]
 	User : ${27:String(O)}
-	VolumesFrom : [${28:AWS::ECS::TaskDefinition.VolumeFrom(O)}]
+	VolumesFrom : [ ${28:AWS::ECS::TaskDefinition.VolumeFrom(O)} ]
 	WorkingDirectory : ${29:String(O)}
 endsnippet
 
@@ -4697,7 +4706,7 @@ snippet AWS::AutoScalingPlans::ScalingPlan.ScalingInstruction "" sw
 	ScalableDimension : ${4:String(R)}
 	ScalingPolicyUpdateBehavior : ${5:String(O)}
 	MinCapacity : ${6:Integer(R)}
-	TargetTrackingConfigurations : [${7:AWS::AutoScalingPlans::ScalingPlan.TargetTrackingConfiguration(R)}]
+	TargetTrackingConfigurations : [ ${7:AWS::AutoScalingPlans::ScalingPlan.TargetTrackingConfiguration(R)} ]
 	PredictiveScalingMaxCapacityBuffer : ${8:Integer(O)}
 	CustomizedLoadMetricSpecification : ${9:AWS::AutoScalingPlans::ScalingPlan.CustomizedLoadMetricSpecification(O)}
 	PredefinedLoadMetricSpecification : ${10:AWS::AutoScalingPlans::ScalingPlan.PredefinedLoadMetricSpecification(O)}
@@ -4730,7 +4739,7 @@ endsnippet
 
 snippet AWS::AutoScaling::ScalingPolicy.CustomizedMetricSpecification "" sw
 
-	Dimensions : [${1:AWS::AutoScaling::ScalingPolicy.MetricDimension(O)}]
+	Dimensions : [ ${1:AWS::AutoScaling::ScalingPolicy.MetricDimension(O)} ]
 	MetricName : ${2:String(R)}
 	Namespace : ${3:String(R)}
 	Statistic : ${4:String(R)}
@@ -4739,13 +4748,13 @@ endsnippet
 
 snippet AWS::DataPipeline::Pipeline.ParameterObject "" sw
 
-	Attributes : [${1:AWS::DataPipeline::Pipeline.ParameterAttribute(R)}]
+	Attributes : [ ${1:AWS::DataPipeline::Pipeline.ParameterAttribute(R)} ]
 	Id : ${2:String(R)}
 endsnippet
 
 snippet AWS::ElasticLoadBalancingV2::Listener.AuthenticateCognitoConfig "" sw
 
-	AuthenticationRequestExtraParams : [${1:String(O)}]
+	AuthenticationRequestExtraParams : [ ${1:String(O)} ]
 	OnUnauthenticatedRequest : ${2:String(O)}
 	Scope : ${3:String(O)}
 	SessionCookieName : ${4:String(O)}
@@ -4757,8 +4766,8 @@ endsnippet
 
 snippet AWS::CodePipeline::Pipeline.StageDeclaration "" sw
 
-	Actions : [${1:AWS::CodePipeline::Pipeline.ActionDeclaration(R)}]
-	Blockers : [${2:AWS::CodePipeline::Pipeline.BlockerDeclaration(O)}]
+	Actions : [ ${1:AWS::CodePipeline::Pipeline.ActionDeclaration(R)} ]
+	Blockers : [ ${2:AWS::CodePipeline::Pipeline.BlockerDeclaration(O)} ]
 	Name : ${3:String(R)}
 endsnippet
 
@@ -4803,20 +4812,20 @@ endsnippet
 
 snippet AWS::AppStream::ImageBuilder.VpcConfig "" sw
 
-	SecurityGroupIds : [${1:String(O)}]
-	SubnetIds : [${2:String(O)}]
+	SecurityGroupIds : [ ${1:String(O)} ]
+	SubnetIds : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::ECS::TaskDefinition.LogConfiguration "" sw
 
 	LogDriver : ${1:String(R)}
-	Options : [${2:String(O)}]
+	Options : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::ApiGateway::Method.MethodResponse "" sw
 
-	ResponseModels : [${1:String(O)}]
-	ResponseParameters : [${2:Boolean(O)}]
+	ResponseModels : [ ${1:String(O)} ]
+	ResponseParameters : [ ${2:Boolean(O)} ]
 	StatusCode : ${3:String(R)}
 endsnippet
 
@@ -4843,12 +4852,12 @@ endsnippet
 
 snippet AWS::Greengrass::ConnectorDefinition.ConnectorDefinitionVersion "" sw
 
-	Connectors : [${1:AWS::Greengrass::ConnectorDefinition.Connector(R)}]
+	Connectors : [ ${1:AWS::Greengrass::ConnectorDefinition.Connector(R)} ]
 endsnippet
 
 snippet AWS::AutoScaling::AutoScalingGroup.NotificationConfiguration "" sw
 
-	NotificationTypes : [${1:String(O)}]
+	NotificationTypes : [ ${1:String(O)} ]
 	TopicARN : ${2:String(R)}
 endsnippet
 
@@ -4877,7 +4886,7 @@ endsnippet
 snippet AWS::EC2::SpotFleet.SpotFleetTagSpecification "" sw
 
 	ResourceType : ${1:String(O)}
-	Tags : [${2:AWS::EC2::SpotFleet.Tag(O)}]
+	Tags : [ ${2:AWS::EC2::SpotFleet.Tag(O)} ]
 endsnippet
 
 snippet AWS::EC2::SpotFleet.PrivateIpAddressSpecification "" sw
@@ -4895,7 +4904,7 @@ snippet AWS::ECS::TaskDefinition.Device "" sw
 
 	ContainerPath : ${1:String(O)}
 	HostPath : ${2:String(R)}
-	Permissions : [${3:String(O)}]
+	Permissions : [ ${3:String(O)} ]
 endsnippet
 
 snippet AWS::ElasticLoadBalancingV2::Listener.Action "" sw
@@ -4923,24 +4932,24 @@ endsnippet
 
 snippet AWS::ServiceDiscovery::Service.DnsConfig "" sw
 
-	DnsRecords : [${1:AWS::ServiceDiscovery::Service.DnsRecord(R)}]
+	DnsRecords : [ ${1:AWS::ServiceDiscovery::Service.DnsRecord(R)} ]
 	RoutingPolicy : ${2:String(O)}
 	NamespaceId : ${3:String(O)}
 endsnippet
 
 snippet AWS::ApiGateway::Method.Integration "" sw
 
-	CacheKeyParameters : [${1:String(O)}]
+	CacheKeyParameters : [ ${1:String(O)} ]
 	CacheNamespace : ${2:String(O)}
 	ConnectionId : ${3:String(O)}
 	ConnectionType : ${4:String(O)}
 	ContentHandling : ${5:String(O)}
 	Credentials : ${6:String(O)}
 	IntegrationHttpMethod : ${7:String(O)}
-	IntegrationResponses : [${8:AWS::ApiGateway::Method.IntegrationResponse(O)}]
+	IntegrationResponses : [ ${8:AWS::ApiGateway::Method.IntegrationResponse(O)} ]
 	PassthroughBehavior : ${9:String(O)}
-	RequestParameters : [${10:String(O)}]
-	RequestTemplates : [${11:String(O)}]
+	RequestParameters : [ ${10:String(O)} ]
+	RequestTemplates : [ ${11:String(O)} ]
 	TimeoutInMillis : ${12:Integer(O)}
 	Type : ${13:String(O)}
 	Uri : ${14:String(O)}
@@ -4966,7 +4975,7 @@ endsnippet
 
 snippet AWS::EMR::Cluster.InstanceFleetConfig "" sw
 
-	InstanceTypeConfigs : [${1:AWS::EMR::Cluster.InstanceTypeConfig(O)}]
+	InstanceTypeConfigs : [ ${1:AWS::EMR::Cluster.InstanceTypeConfig(O)} ]
 	LaunchSpecifications : ${2:AWS::EMR::Cluster.InstanceFleetProvisioningSpecifications(O)}
 	Name : ${3:String(O)}
 	TargetOnDemandCapacity : ${4:Integer(O)}
@@ -4975,15 +4984,15 @@ endsnippet
 
 snippet AWS::Glue::Table.SkewedInfo "" sw
 
-	SkewedColumnNames : [${1:String(O)}]
-	SkewedColumnValues : [${2:String(O)}]
+	SkewedColumnNames : [ ${1:String(O)} ]
+	SkewedColumnValues : [ ${2:String(O)} ]
 	SkewedColumnValueLocationMaps : ${3:Json(O)}
 endsnippet
 
 snippet AWS::KinesisFirehose::DeliveryStream.ProcessingConfiguration "" sw
 
 	Enabled : ${1:Boolean(O)}
-	Processors : [${2:AWS::KinesisFirehose::DeliveryStream.Processor(O)}]
+	Processors : [ ${2:AWS::KinesisFirehose::DeliveryStream.Processor(O)} ]
 endsnippet
 
 snippet AWS::ServiceDiscovery::Service.DnsRecord "" sw
@@ -4995,7 +5004,7 @@ endsnippet
 snippet AWS::DynamoDB::Table.LocalSecondaryIndex "" sw
 
 	IndexName : ${1:String(R)}
-	KeySchema : [${2:AWS::DynamoDB::Table.KeySchema(R)}]
+	KeySchema : [ ${2:AWS::DynamoDB::Table.KeySchema(R)} ]
 	Projection : ${3:AWS::DynamoDB::Table.Projection(R)}
 endsnippet
 
@@ -5010,15 +5019,15 @@ endsnippet
 snippet AWS::Config::ConfigRule.Scope "" sw
 
 	ComplianceResourceId : ${1:String(O)}
-	ComplianceResourceTypes : [${2:String(O)}]
+	ComplianceResourceTypes : [ ${2:String(O)} ]
 	TagKey : ${3:String(O)}
 	TagValue : ${4:String(O)}
 endsnippet
 
 snippet AWS::EMR::Cluster.JobFlowInstancesConfig "" sw
 
-	AdditionalMasterSecurityGroups : [${1:String(O)}]
-	AdditionalSlaveSecurityGroups : [${2:String(O)}]
+	AdditionalMasterSecurityGroups : [ ${1:String(O)} ]
+	AdditionalSlaveSecurityGroups : [ ${2:String(O)} ]
 	CoreInstanceFleet : ${3:AWS::EMR::Cluster.InstanceFleetConfig(O)}
 	CoreInstanceGroup : ${4:AWS::EMR::Cluster.InstanceGroupConfig(O)}
 	Ec2KeyName : ${5:String(O)}
@@ -5049,16 +5058,16 @@ endsnippet
 snippet AWS::CloudFront::Distribution.ForwardedValues "" sw
 
 	Cookies : ${1:AWS::CloudFront::Distribution.Cookies(O)}
-	Headers : [${2:String(O)}]
+	Headers : [ ${2:String(O)} ]
 	QueryString : ${3:Boolean(R)}
-	QueryStringCacheKeys : [${4:String(O)}]
+	QueryStringCacheKeys : [ ${4:String(O)} ]
 endsnippet
 
 snippet AWS::ApiGateway::Method.IntegrationResponse "" sw
 
 	ContentHandling : ${1:String(O)}
-	ResponseParameters : [${2:String(O)}]
-	ResponseTemplates : [${3:String(O)}]
+	ResponseParameters : [ ${2:String(O)} ]
+	ResponseTemplates : [ ${3:String(O)} ]
 	SelectionPattern : ${4:String(O)}
 	StatusCode : ${5:String(R)}
 endsnippet
@@ -5066,7 +5075,7 @@ endsnippet
 snippet AWS::Route53::HealthCheck.HealthCheckConfig "" sw
 
 	AlarmIdentifier : ${1:AWS::Route53::HealthCheck.AlarmIdentifier(O)}
-	ChildHealthChecks : [${2:String(O)}]
+	ChildHealthChecks : [ ${2:String(O)} ]
 	EnableSNI : ${3:Boolean(O)}
 	FailureThreshold : ${4:Integer(O)}
 	FullyQualifiedDomainName : ${5:String(O)}
@@ -5076,7 +5085,7 @@ snippet AWS::Route53::HealthCheck.HealthCheckConfig "" sw
 	Inverted : ${9:Boolean(O)}
 	MeasureLatency : ${10:Boolean(O)}
 	Port : ${11:Integer(O)}
-	Regions : [${12:String(O)}]
+	Regions : [ ${12:String(O)} ]
 	RequestInterval : ${13:Integer(O)}
 	ResourcePath : ${14:String(O)}
 	SearchString : ${15:String(O)}
@@ -5085,7 +5094,7 @@ endsnippet
 
 snippet AWS::Greengrass::DeviceDefinition.DeviceDefinitionVersion "" sw
 
-	Devices : [${1:AWS::Greengrass::DeviceDefinition.Device(R)}]
+	Devices : [ ${1:AWS::Greengrass::DeviceDefinition.Device(R)} ]
 endsnippet
 
 snippet AWS::EMR::Cluster.ScalingAction "" sw
@@ -5109,7 +5118,7 @@ endsnippet
 
 snippet AWS::EC2::SpotFleet.SpotFleetLaunchSpecification "" sw
 
-	BlockDeviceMappings : [${1:AWS::EC2::SpotFleet.BlockDeviceMapping(O)}]
+	BlockDeviceMappings : [ ${1:AWS::EC2::SpotFleet.BlockDeviceMapping(O)} ]
 	EbsOptimized : ${2:Boolean(O)}
 	IamInstanceProfile : ${3:AWS::EC2::SpotFleet.IamInstanceProfileSpecification(O)}
 	ImageId : ${4:String(R)}
@@ -5117,13 +5126,13 @@ snippet AWS::EC2::SpotFleet.SpotFleetLaunchSpecification "" sw
 	KernelId : ${6:String(O)}
 	KeyName : ${7:String(O)}
 	Monitoring : ${8:AWS::EC2::SpotFleet.SpotFleetMonitoring(O)}
-	NetworkInterfaces : [${9:AWS::EC2::SpotFleet.InstanceNetworkInterfaceSpecification(O)}]
+	NetworkInterfaces : [ ${9:AWS::EC2::SpotFleet.InstanceNetworkInterfaceSpecification(O)} ]
 	Placement : ${10:AWS::EC2::SpotFleet.SpotPlacement(O)}
 	RamdiskId : ${11:String(O)}
-	SecurityGroups : [${12:AWS::EC2::SpotFleet.GroupIdentifier(O)}]
+	SecurityGroups : [ ${12:AWS::EC2::SpotFleet.GroupIdentifier(O)} ]
 	SpotPrice : ${13:String(O)}
 	SubnetId : ${14:String(O)}
-	TagSpecifications : [${15:AWS::EC2::SpotFleet.SpotFleetTagSpecification(O)}]
+	TagSpecifications : [ ${15:AWS::EC2::SpotFleet.SpotFleetTagSpecification(O)} ]
 	UserData : ${16:String(O)}
 	WeightedCapacity : ${17:Double(O)}
 endsnippet
@@ -5137,15 +5146,15 @@ endsnippet
 snippet AWS::CloudFront::Distribution.CacheBehavior "" sw
 
 	Compress : ${1:Boolean(O)}
-	LambdaFunctionAssociations : [${2:AWS::CloudFront::Distribution.LambdaFunctionAssociation(O)}]
+	LambdaFunctionAssociations : [ ${2:AWS::CloudFront::Distribution.LambdaFunctionAssociation(O)} ]
 	TargetOriginId : ${3:String(R)}
 	ViewerProtocolPolicy : ${4:String(R)}
-	TrustedSigners : [${5:String(O)}]
+	TrustedSigners : [ ${5:String(O)} ]
 	DefaultTTL : ${6:Double(O)}
 	FieldLevelEncryptionId : ${7:String(O)}
-	AllowedMethods : [${8:String(O)}]
+	AllowedMethods : [ ${8:String(O)} ]
 	PathPattern : ${9:String(R)}
-	CachedMethods : [${10:String(O)}]
+	CachedMethods : [ ${10:String(O)} ]
 	SmoothStreaming : ${11:Boolean(O)}
 	ForwardedValues : ${12:AWS::CloudFront::Distribution.ForwardedValues(R)}
 	MinTTL : ${13:Double(O)}
@@ -5154,7 +5163,7 @@ endsnippet
 
 snippet AWS::DirectoryService::SimpleAD.VpcSettings "" sw
 
-	SubnetIds : [${1:String(R)}]
+	SubnetIds : [ ${1:String(R)} ]
 	VpcId : ${2:String(R)}
 endsnippet
 
@@ -5218,7 +5227,7 @@ snippet AWS::S3::Bucket.AnalyticsConfiguration "" sw
 	Id : ${1:String(R)}
 	Prefix : ${2:String(O)}
 	StorageClassAnalysis : ${3:AWS::S3::Bucket.StorageClassAnalysis(R)}
-	TagFilters : [${4:AWS::S3::Bucket.TagFilter(O)}]
+	TagFilters : [ ${4:AWS::S3::Bucket.TagFilter(O)} ]
 endsnippet
 
 snippet AWS::StepFunctions::StateMachine.TagsEntry "" sw
@@ -5261,12 +5270,12 @@ endsnippet
 
 snippet AWS::AppSync::Resolver.PipelineConfig "" sw
 
-	Functions : [${1:String(O)}]
+	Functions : [ ${1:String(O)} ]
 endsnippet
 
 snippet AWS::EC2::SpotFleet.ClassicLoadBalancersConfig "" sw
 
-	ClassicLoadBalancers : [${1:AWS::EC2::SpotFleet.ClassicLoadBalancer(R)}]
+	ClassicLoadBalancers : [ ${1:AWS::EC2::SpotFleet.ClassicLoadBalancer(R)} ]
 endsnippet
 
 snippet AWS::ApplicationAutoScaling::ScalingPolicy.MetricDimension "" sw
@@ -5279,14 +5288,14 @@ snippet AWS::SSM::MaintenanceWindowTask.NotificationConfig "" sw
 
 	NotificationArn : ${1:String(R)}
 	NotificationType : ${2:String(O)}
-	NotificationEvents : [${3:String(O)}]
+	NotificationEvents : [ ${3:String(O)} ]
 endsnippet
 
 snippet AWS::EMR::InstanceFleetConfig.Configuration "" sw
 
 	Classification : ${1:String(O)}
-	ConfigurationProperties : [${2:String(O)}]
-	Configurations : [${3:AWS::EMR::InstanceFleetConfig.Configuration(O)}]
+	ConfigurationProperties : [ ${2:String(O)} ]
+	Configurations : [ ${3:AWS::EMR::InstanceFleetConfig.Configuration(O)} ]
 endsnippet
 
 snippet AWS::Cognito::UserPoolUser.AttributeType "" sw
@@ -5299,14 +5308,14 @@ snippet AWS::Glue::Table.StorageDescriptor "" sw
 
 	StoredAsSubDirectories : ${1:Boolean(O)}
 	Parameters : ${2:Json(O)}
-	BucketColumns : [${3:String(O)}]
+	BucketColumns : [ ${3:String(O)} ]
 	SkewedInfo : ${4:AWS::Glue::Table.SkewedInfo(O)}
 	InputFormat : ${5:String(O)}
 	NumberOfBuckets : ${6:Integer(O)}
 	OutputFormat : ${7:String(O)}
-	Columns : [${8:AWS::Glue::Table.Column(O)}]
+	Columns : [ ${8:AWS::Glue::Table.Column(O)} ]
 	SerdeInfo : ${9:AWS::Glue::Table.SerdeInfo(O)}
-	SortColumns : [${10:AWS::Glue::Table.Order(O)}]
+	SortColumns : [ ${10:AWS::Glue::Table.Order(O)} ]
 	Compressed : ${11:Boolean(O)}
 	Location : ${12:String(O)}
 endsnippet
@@ -5363,7 +5372,7 @@ endsnippet
 
 snippet AWS::SSM::PatchBaseline.RuleGroup "" sw
 
-	PatchRules : [${1:AWS::SSM::PatchBaseline.Rule(O)}]
+	PatchRules : [ ${1:AWS::SSM::PatchBaseline.Rule(O)} ]
 endsnippet
 
 snippet AWS::OpsWorks::Stack.Source "" sw
@@ -5405,19 +5414,19 @@ snippet AWS::ApiGateway::UsagePlan.ApiStage "" sw
 
 	ApiId : ${1:String(O)}
 	Stage : ${2:String(O)}
-	Throttle : [${3:AWS::ApiGateway::UsagePlan.ThrottleSettings(O)}]
+	Throttle : [ ${3:AWS::ApiGateway::UsagePlan.ThrottleSettings(O)} ]
 endsnippet
 
 snippet AWS::Config::ConfigurationRecorder.RecordingGroup "" sw
 
 	AllSupported : ${1:Boolean(O)}
 	IncludeGlobalResourceTypes : ${2:Boolean(O)}
-	ResourceTypes : [${3:String(O)}]
+	ResourceTypes : [ ${3:String(O)} ]
 endsnippet
 
 snippet AWS::DLM::LifecyclePolicy.Schedule "" sw
 
-	TagsToAdd : [${1:AWS::DLM::LifecyclePolicy.Tag(O)}]
+	TagsToAdd : [ ${1:AWS::DLM::LifecyclePolicy.Tag(O)} ]
 	CreateRule : ${2:AWS::DLM::LifecyclePolicy.CreateRule(O)}
 	RetainRule : ${3:AWS::DLM::LifecyclePolicy.RetainRule(O)}
 	Name : ${4:String(O)}
@@ -5473,7 +5482,7 @@ endsnippet
 snippet AWS::CloudFront::StreamingDistribution.TrustedSigners "" sw
 
 	Enabled : ${1:Boolean(R)}
-	AwsAccountNumbers : [${2:String(O)}]
+	AwsAccountNumbers : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::EC2::LaunchTemplate.BlockDeviceMapping "" sw
@@ -5554,7 +5563,7 @@ endsnippet
 
 snippet AWS::IoTAnalytics::Dataset.QueryAction "" sw
 
-	Filters : [${1:AWS::IoTAnalytics::Dataset.Filter(O)}]
+	Filters : [ ${1:AWS::IoTAnalytics::Dataset.Filter(O)} ]
 	SqlQuery : ${2:String(R)}
 endsnippet
 
@@ -5567,23 +5576,23 @@ endsnippet
 
 snippet AWS::Glue::Job.ConnectionsList "" sw
 
-	Connections : [${1:String(O)}]
+	Connections : [ ${1:String(O)} ]
 endsnippet
 
 snippet AWS::SSM::Association.Target "" sw
 
 	Key : ${1:String(R)}
-	Values : [${2:String(R)}]
+	Values : [ ${2:String(R)} ]
 endsnippet
 
 snippet AWS::ApiGateway::DomainName.EndpointConfiguration "" sw
 
-	Types : [${1:String(O)}]
+	Types : [ ${1:String(O)} ]
 endsnippet
 
 snippet AWS::ElasticLoadBalancingV2::ListenerRule.AuthenticateOidcConfig "" sw
 
-	AuthenticationRequestExtraParams : [${1:String(O)}]
+	AuthenticationRequestExtraParams : [ ${1:String(O)} ]
 	AuthorizationEndpoint : ${2:String(R)}
 	ClientId : ${3:String(R)}
 	ClientSecret : ${4:String(R)}
@@ -5598,7 +5607,7 @@ endsnippet
 
 snippet AWS::Greengrass::CoreDefinition.CoreDefinitionVersion "" sw
 
-	Cores : [${1:AWS::Greengrass::CoreDefinition.Core(R)}]
+	Cores : [ ${1:AWS::Greengrass::CoreDefinition.Core(R)} ]
 endsnippet
 
 snippet AWS::ApplicationAutoScaling::ScalingPolicy.StepAdjustment "" sw
@@ -5624,14 +5633,14 @@ endsnippet
 snippet AWS::CloudFront::Distribution.DefaultCacheBehavior "" sw
 
 	Compress : ${1:Boolean(O)}
-	LambdaFunctionAssociations : [${2:AWS::CloudFront::Distribution.LambdaFunctionAssociation(O)}]
+	LambdaFunctionAssociations : [ ${2:AWS::CloudFront::Distribution.LambdaFunctionAssociation(O)} ]
 	TargetOriginId : ${3:String(R)}
 	ViewerProtocolPolicy : ${4:String(R)}
-	TrustedSigners : [${5:String(O)}]
+	TrustedSigners : [ ${5:String(O)} ]
 	DefaultTTL : ${6:Double(O)}
 	FieldLevelEncryptionId : ${7:String(O)}
-	AllowedMethods : [${8:String(O)}]
-	CachedMethods : [${9:String(O)}]
+	AllowedMethods : [ ${8:String(O)} ]
+	CachedMethods : [ ${9:String(O)} ]
 	SmoothStreaming : ${10:Boolean(O)}
 	ForwardedValues : ${11:AWS::CloudFront::Distribution.ForwardedValues(R)}
 	MinTTL : ${12:Double(O)}
@@ -5677,8 +5686,8 @@ snippet AWS::EC2::SpotFleet.SpotFleetRequestConfigData "" sw
 	ExcessCapacityTerminationPolicy : ${2:String(O)}
 	IamFleetRole : ${3:String(R)}
 	InstanceInterruptionBehavior : ${4:String(O)}
-	LaunchSpecifications : [${5:AWS::EC2::SpotFleet.SpotFleetLaunchSpecification(O)}]
-	LaunchTemplateConfigs : [${6:AWS::EC2::SpotFleet.LaunchTemplateConfig(O)}]
+	LaunchSpecifications : [ ${5:AWS::EC2::SpotFleet.SpotFleetLaunchSpecification(O)} ]
+	LaunchTemplateConfigs : [ ${6:AWS::EC2::SpotFleet.LaunchTemplateConfig(O)} ]
 	LoadBalancersConfig : ${7:AWS::EC2::SpotFleet.LoadBalancersConfig(O)}
 	ReplaceUnhealthyInstances : ${8:Boolean(O)}
 	SpotPrice : ${9:String(O)}
@@ -5743,7 +5752,7 @@ endsnippet
 snippet AWS::DLM::LifecyclePolicy.CreateRule "" sw
 
 	IntervalUnit : ${1:String(R)}
-	Times : [${2:String(O)}]
+	Times : [ ${2:String(O)} ]
 	Interval : ${3:Integer(R)}
 endsnippet
 
@@ -5815,7 +5824,7 @@ snippet AWS::AutoScalingPlans::ScalingPlan.CustomizedScalingMetricSpecification 
 
 	MetricName : ${1:String(R)}
 	Statistic : ${2:String(R)}
-	Dimensions : [${3:AWS::AutoScalingPlans::ScalingPlan.MetricDimension(O)}]
+	Dimensions : [ ${3:AWS::AutoScalingPlans::ScalingPlan.MetricDimension(O)} ]
 	Unit : ${4:String(O)}
 	Namespace : ${5:String(R)}
 endsnippet
@@ -5868,13 +5877,13 @@ snippet AWS::ApiGateway::Stage.CanarySetting "" sw
 
 	DeploymentId : ${1:String(O)}
 	PercentTraffic : ${2:Double(O)}
-	StageVariableOverrides : [${3:String(O)}]
+	StageVariableOverrides : [ ${3:String(O)} ]
 	UseStageCache : ${4:Boolean(O)}
 endsnippet
 
 snippet AWS::ElasticLoadBalancingV2::ListenerRule.AuthenticateCognitoConfig "" sw
 
-	AuthenticationRequestExtraParams : [${1:String(O)}]
+	AuthenticationRequestExtraParams : [ ${1:String(O)} ]
 	OnUnauthenticatedRequest : ${2:String(O)}
 	Scope : ${3:String(O)}
 	SessionCookieName : ${4:String(O)}
@@ -5902,14 +5911,14 @@ endsnippet
 
 snippet AWS::S3::Bucket.NotificationConfiguration "" sw
 
-	LambdaConfigurations : [${1:AWS::S3::Bucket.LambdaConfiguration(O)}]
-	QueueConfigurations : [${2:AWS::S3::Bucket.QueueConfiguration(O)}]
-	TopicConfigurations : [${3:AWS::S3::Bucket.TopicConfiguration(O)}]
+	LambdaConfigurations : [ ${1:AWS::S3::Bucket.LambdaConfiguration(O)} ]
+	QueueConfigurations : [ ${2:AWS::S3::Bucket.QueueConfiguration(O)} ]
+	TopicConfigurations : [ ${3:AWS::S3::Bucket.TopicConfiguration(O)} ]
 endsnippet
 
 snippet AWS::EMR::InstanceFleetConfig.EbsConfiguration "" sw
 
-	EbsBlockDeviceConfigs : [${1:AWS::EMR::InstanceFleetConfig.EbsBlockDeviceConfig(O)}]
+	EbsBlockDeviceConfigs : [ ${1:AWS::EMR::InstanceFleetConfig.EbsBlockDeviceConfig(O)} ]
 	EbsOptimized : ${2:Boolean(O)}
 endsnippet
 
@@ -5941,7 +5950,7 @@ endsnippet
 snippet AWS::AmazonMQ::Broker.User "" sw
 
 	Username : ${1:String(R)}
-	Groups : [${2:String(O)}]
+	Groups : [ ${2:String(O)} ]
 	ConsoleAccess : ${3:Boolean(O)}
 	Password : ${4:String(R)}
 endsnippet
@@ -5963,8 +5972,8 @@ endsnippet
 
 snippet AWS::Glue::Crawler.Targets "" sw
 
-	S3Targets : [${1:AWS::Glue::Crawler.S3Target(O)}]
-	JdbcTargets : [${2:AWS::Glue::Crawler.JdbcTarget(O)}]
+	S3Targets : [ ${1:AWS::Glue::Crawler.S3Target(O)} ]
+	JdbcTargets : [ ${2:AWS::Glue::Crawler.JdbcTarget(O)} ]
 endsnippet
 
 snippet AWS::AutoScaling::ScalingPolicy.TargetTrackingConfiguration "" sw
@@ -5984,8 +5993,8 @@ endsnippet
 
 snippet AWS::EMR::Cluster.Application "" sw
 
-	AdditionalInfo : [${1:String(O)}]
-	Args : [${2:String(O)}]
+	AdditionalInfo : [ ${1:String(O)} ]
+	Args : [ ${2:String(O)} ]
 	Name : ${3:String(O)}
 	Version : ${4:String(O)}
 endsnippet
@@ -6016,7 +6025,7 @@ snippet AWS::Route53::RecordSetGroup.RecordSet "" sw
 	MultiValueAnswer : ${8:Boolean(O)}
 	Name : ${9:String(R)}
 	Region : ${10:String(O)}
-	ResourceRecords : [${11:String(O)}]
+	ResourceRecords : [ ${11:String(O)} ]
 	SetIdentifier : ${12:String(O)}
 	TTL : ${13:String(O)}
 	Type : ${14:String(R)}
@@ -6033,14 +6042,14 @@ snippet AWS::Batch::ComputeEnvironment.ComputeResources "" sw
 	SpotIamFleetRole : ${1:String(O)}
 	MaxvCpus : ${2:Integer(R)}
 	BidPercentage : ${3:Integer(O)}
-	SecurityGroupIds : [${4:String(R)}]
-	Subnets : [${5:String(R)}]
+	SecurityGroupIds : [ ${4:String(R)} ]
+	Subnets : [ ${5:String(R)} ]
 	Type : ${6:String(R)}
 	MinvCpus : ${7:Integer(R)}
 	LaunchTemplate : ${8:AWS::Batch::ComputeEnvironment.LaunchTemplateSpecification(O)}
 	ImageId : ${9:String(O)}
 	InstanceRole : ${10:String(R)}
-	InstanceTypes : [${11:String(R)}]
+	InstanceTypes : [ ${11:String(R)} ]
 	Ec2KeyPair : ${12:String(O)}
 	PlacementGroup : ${13:String(O)}
 	Tags : ${14:Json(O)}
@@ -6062,7 +6071,7 @@ endsnippet
 snippet AWS::IoTAnalytics::Pipeline.RemoveAttributes "" sw
 
 	Next : ${1:String(O)}
-	Attributes : [${2:String(O)}]
+	Attributes : [ ${2:String(O)} ]
 	Name : ${3:String(O)}
 endsnippet
 
@@ -6111,7 +6120,7 @@ endsnippet
 
 snippet AWS::CodeDeploy::DeploymentGroup.EC2TagSet "" sw
 
-	Ec2TagSetList : [${1:AWS::CodeDeploy::DeploymentGroup.EC2TagSetListObject(O)}]
+	Ec2TagSetList : [ ${1:AWS::CodeDeploy::DeploymentGroup.EC2TagSetListObject(O)} ]
 endsnippet
 
 snippet AWS::ApiGateway::ApiKey.StageKey "" sw
@@ -6145,7 +6154,7 @@ endsnippet
 snippet AWS::DynamoDB::Table.GlobalSecondaryIndex "" sw
 
 	IndexName : ${1:String(R)}
-	KeySchema : [${2:AWS::DynamoDB::Table.KeySchema(R)}]
+	KeySchema : [ ${2:AWS::DynamoDB::Table.KeySchema(R)} ]
 	Projection : ${3:AWS::DynamoDB::Table.Projection(R)}
 	ProvisionedThroughput : ${4:AWS::DynamoDB::Table.ProvisionedThroughput(O)}
 endsnippet
@@ -6159,7 +6168,7 @@ endsnippet
 snippet AWS::Events::Rule.RunCommandTarget "" sw
 
 	Key : ${1:String(R)}
-	Values : [${2:String(R)}]
+	Values : [ ${2:String(R)} ]
 endsnippet
 
 snippet AWS::S3::Bucket.RedirectRule "" sw
@@ -6194,7 +6203,7 @@ endsnippet
 snippet AWS::ElasticLoadBalancingV2::ListenerRule.RuleCondition "" sw
 
 	Field : ${1:String(O)}
-	Values : [${2:String(O)}]
+	Values : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::AppStream::Stack.ApplicationSettings "" sw
@@ -6217,13 +6226,13 @@ snippet AWS::ApiGateway::Deployment.StageDescription "" sw
 	Description : ${10:String(O)}
 	DocumentationVersion : ${11:String(O)}
 	LoggingLevel : ${12:String(O)}
-	MethodSettings : [${13:AWS::ApiGateway::Deployment.MethodSetting(O)}]
+	MethodSettings : [ ${13:AWS::ApiGateway::Deployment.MethodSetting(O)} ]
 	MetricsEnabled : ${14:Boolean(O)}
-	Tags : [${15:AWS::ApiGateway::Deployment.Tag(O)}]
+	Tags : [ ${15:AWS::ApiGateway::Deployment.Tag(O)} ]
 	ThrottlingBurstLimit : ${16:Integer(O)}
 	ThrottlingRateLimit : ${17:Double(O)}
 	TracingEnabled : ${18:Boolean(O)}
-	Variables : [${19:String(O)}]
+	Variables : [ ${19:String(O)} ]
 endsnippet
 
 snippet AWS::EC2::SpotFleet.FleetLaunchTemplateSpecification "" sw
@@ -6253,13 +6262,13 @@ endsnippet
 snippet AWS::IoTAnalytics::Pipeline.SelectAttributes "" sw
 
 	Next : ${1:String(O)}
-	Attributes : [${2:String(O)}]
+	Attributes : [ ${2:String(O)} ]
 	Name : ${3:String(O)}
 endsnippet
 
 snippet AWS::CodeDeploy::DeploymentGroup.AlarmConfiguration "" sw
 
-	Alarms : [${1:AWS::CodeDeploy::DeploymentGroup.Alarm(O)}]
+	Alarms : [ ${1:AWS::CodeDeploy::DeploymentGroup.Alarm(O)} ]
 	Enabled : ${2:Boolean(O)}
 	IgnorePollAlarmFailure : ${3:Boolean(O)}
 endsnippet
@@ -6267,7 +6276,7 @@ endsnippet
 snippet AWS::CodeBuild::Project.Environment "" sw
 
 	Type : ${1:String(R)}
-	EnvironmentVariables : [${2:AWS::CodeBuild::Project.EnvironmentVariable(O)}]
+	EnvironmentVariables : [ ${2:AWS::CodeBuild::Project.EnvironmentVariable(O)} ]
 	PrivilegedMode : ${3:Boolean(O)}
 	ImagePullCredentialsType : ${4:String(O)}
 	Image : ${5:String(R)}
@@ -6278,7 +6287,7 @@ endsnippet
 
 snippet AWS::S3::Bucket.S3KeyFilter "" sw
 
-	Rules : [${1:AWS::S3::Bucket.FilterRule(R)}]
+	Rules : [ ${1:AWS::S3::Bucket.FilterRule(R)} ]
 endsnippet
 
 snippet AWS::IoTAnalytics::Pipeline.Datastore "" sw
@@ -6311,7 +6320,7 @@ endsnippet
 
 snippet AWS::SSM::PatchBaseline.PatchFilter "" sw
 
-	Values : [${1:String(O)}]
+	Values : [ ${1:String(O)} ]
 	Key : ${2:String(O)}
 endsnippet
 
@@ -6352,7 +6361,7 @@ endsnippet
 
 snippet AWS::CloudFront::Distribution.Origin "" sw
 
-	OriginCustomHeaders : [${1:AWS::CloudFront::Distribution.OriginCustomHeader(O)}]
+	OriginCustomHeaders : [ ${1:AWS::CloudFront::Distribution.OriginCustomHeader(O)} ]
 	DomainName : ${2:String(R)}
 	S3OriginConfig : ${3:AWS::CloudFront::Distribution.S3OriginConfig(O)}
 	OriginPath : ${4:String(O)}
@@ -6364,7 +6373,7 @@ snippet AWS::Glue::Connection.ConnectionInput "" sw
 
 	Description : ${1:String(O)}
 	ConnectionType : ${2:String(R)}
-	MatchCriteria : [${3:String(O)}]
+	MatchCriteria : [ ${3:String(O)} ]
 	PhysicalConnectionRequirements : ${4:AWS::Glue::Connection.PhysicalConnectionRequirements(O)}
 	ConnectionProperties : ${5:Json(R)}
 	Name : ${6:String(O)}
@@ -6372,7 +6381,7 @@ endsnippet
 
 snippet AWS::Events::Rule.InputTransformer "" sw
 
-	InputPathsMap : [${1:String(O)}]
+	InputPathsMap : [ ${1:String(O)} ]
 	InputTemplate : ${2:String(R)}
 endsnippet
 
@@ -6392,7 +6401,7 @@ endsnippet
 
 snippet AWS::IoT::TopicRule.TopicRulePayload "" sw
 
-	Actions : [${1:AWS::IoT::TopicRule.Action(R)}]
+	Actions : [ ${1:AWS::IoT::TopicRule.Action(R)} ]
 	AwsIotSqlVersion : ${2:String(O)}
 	Description : ${3:String(O)}
 	ErrorAction : ${4:AWS::IoT::TopicRule.Action(O)}
@@ -6403,12 +6412,12 @@ endsnippet
 snippet AWS::EC2::Instance.AssociationParameter "" sw
 
 	Key : ${1:String(R)}
-	Value : [${2:String(R)}]
+	Value : [ ${2:String(R)} ]
 endsnippet
 
 snippet AWS::Cognito::IdentityPool.PushSync "" sw
 
-	ApplicationArns : [${1:String(O)}]
+	ApplicationArns : [ ${1:String(O)} ]
 	RoleArn : ${2:String(O)}
 endsnippet
 
@@ -6418,7 +6427,7 @@ snippet AWS::S3::Bucket.InventoryConfiguration "" sw
 	Enabled : ${2:Boolean(R)}
 	Id : ${3:String(R)}
 	IncludedObjectVersions : ${4:String(R)}
-	OptionalFields : [${5:String(O)}]
+	OptionalFields : [ ${5:String(O)} ]
 	Prefix : ${6:String(O)}
 	ScheduleFrequency : ${7:String(R)}
 endsnippet
@@ -6448,7 +6457,7 @@ snippet AWS::Greengrass::FunctionDefinition.Environment "" sw
 
 	Variables : ${1:Json(O)}
 	Execution : ${2:AWS::Greengrass::FunctionDefinition.Execution(O)}
-	ResourceAccessPolicies : [${3:AWS::Greengrass::FunctionDefinition.ResourceAccessPolicy(O)}]
+	ResourceAccessPolicies : [ ${3:AWS::Greengrass::FunctionDefinition.ResourceAccessPolicy(O)} ]
 	AccessSysfs : ${4:Boolean(O)}
 endsnippet
 
@@ -6465,7 +6474,7 @@ snippet AWS::S3::Bucket.WebsiteConfiguration "" sw
 	ErrorDocument : ${1:String(O)}
 	IndexDocument : ${2:String(O)}
 	RedirectAllRequestsTo : ${3:AWS::S3::Bucket.RedirectAllRequestsTo(O)}
-	RoutingRules : [${4:AWS::S3::Bucket.RoutingRule(O)}]
+	RoutingRules : [ ${4:AWS::S3::Bucket.RoutingRule(O)} ]
 endsnippet
 
 snippet AWS::Cognito::IdentityPool.CognitoIdentityProvider "" sw
@@ -6477,7 +6486,7 @@ endsnippet
 
 snippet AWS::CloudFront::Distribution.GeoRestriction "" sw
 
-	Locations : [${1:String(O)}]
+	Locations : [ ${1:String(O)} ]
 	RestrictionType : ${2:String(R)}
 endsnippet
 
@@ -6490,7 +6499,7 @@ endsnippet
 snippet AWS::EC2::EC2Fleet.FleetLaunchTemplateConfigRequest "" sw
 
 	LaunchTemplateSpecification : ${1:AWS::EC2::EC2Fleet.FleetLaunchTemplateSpecificationRequest(O)}
-	Overrides : [${2:AWS::EC2::EC2Fleet.FleetLaunchTemplateOverridesRequest(O)}]
+	Overrides : [ ${2:AWS::EC2::EC2Fleet.FleetLaunchTemplateOverridesRequest(O)} ]
 endsnippet
 
 snippet AWS::IoTAnalytics::Dataset.ResourceConfiguration "" sw
@@ -6524,7 +6533,7 @@ endsnippet
 
 snippet AWS::SSM::MaintenanceWindowTask.Target "" sw
 
-	Values : [${1:String(O)}]
+	Values : [ ${1:String(O)} ]
 	Key : ${2:String(R)}
 endsnippet
 
@@ -6564,7 +6573,7 @@ endsnippet
 
 snippet AWS::CodeDeploy::DeploymentGroup.OnPremisesTagSetListObject "" sw
 
-	OnPremisesTagGroup : [${1:AWS::CodeDeploy::DeploymentGroup.TagFilter(O)}]
+	OnPremisesTagGroup : [ ${1:AWS::CodeDeploy::DeploymentGroup.TagFilter(O)} ]
 endsnippet
 
 snippet AWS::EC2::Instance.LaunchTemplateSpecification "" sw
@@ -6577,7 +6586,7 @@ endsnippet
 snippet AWS::AutoScaling::AutoScalingGroup.MetricsCollection "" sw
 
 	Granularity : ${1:String(R)}
-	Metrics : [${2:String(O)}]
+	Metrics : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::CodePipeline::Pipeline.ArtifactStore "" sw
@@ -6603,7 +6612,7 @@ endsnippet
 snippet AWS::S3::Bucket.ReplicationConfiguration "" sw
 
 	Role : ${1:String(R)}
-	Rules : [${2:AWS::S3::Bucket.ReplicationRule(R)}]
+	Rules : [ ${2:AWS::S3::Bucket.ReplicationRule(R)} ]
 endsnippet
 
 snippet AWS::Greengrass::ResourceDefinitionVersion.LocalVolumeResourceData "" sw
@@ -6650,15 +6659,15 @@ endsnippet
 snippet AWS::EMR::Cluster.Configuration "" sw
 
 	Classification : ${1:String(O)}
-	ConfigurationProperties : [${2:String(O)}]
-	Configurations : [${3:AWS::EMR::Cluster.Configuration(O)}]
+	ConfigurationProperties : [ ${2:String(O)} ]
+	Configurations : [ ${3:AWS::EMR::Cluster.Configuration(O)} ]
 endsnippet
 
 snippet AWS::EMR::InstanceFleetConfig.InstanceTypeConfig "" sw
 
 	BidPrice : ${1:String(O)}
 	BidPriceAsPercentageOfOnDemandPrice : ${2:Double(O)}
-	Configurations : [${3:AWS::EMR::InstanceFleetConfig.Configuration(O)}]
+	Configurations : [ ${3:AWS::EMR::InstanceFleetConfig.Configuration(O)} ]
 	EbsConfiguration : ${4:AWS::EMR::InstanceFleetConfig.EbsConfiguration(O)}
 	InstanceType : ${5:String(R)}
 	WeightedCapacity : ${6:Integer(O)}
@@ -6696,12 +6705,12 @@ snippet AWS::S3::Bucket.Rule "" sw
 	Id : ${4:String(O)}
 	NoncurrentVersionExpirationInDays : ${5:Integer(O)}
 	NoncurrentVersionTransition : ${6:AWS::S3::Bucket.NoncurrentVersionTransition(O)}
-	NoncurrentVersionTransitions : [${7:AWS::S3::Bucket.NoncurrentVersionTransition(O)}]
+	NoncurrentVersionTransitions : [ ${7:AWS::S3::Bucket.NoncurrentVersionTransition(O)} ]
 	Prefix : ${8:String(O)}
 	Status : ${9:String(R)}
-	TagFilters : [${10:AWS::S3::Bucket.TagFilter(O)}]
+	TagFilters : [ ${10:AWS::S3::Bucket.TagFilter(O)} ]
 	Transition : ${11:AWS::S3::Bucket.Transition(O)}
-	Transitions : [${12:AWS::S3::Bucket.Transition(O)}]
+	Transitions : [ ${12:AWS::S3::Bucket.Transition(O)} ]
 endsnippet
 
 snippet AWS::DLM::LifecyclePolicy.RetainRule "" sw
@@ -6711,8 +6720,8 @@ endsnippet
 
 snippet AWS::ECS::TaskDefinition.KernelCapabilities "" sw
 
-	Add : [${1:String(O)}]
-	Drop : [${2:String(O)}]
+	Add : [ ${1:String(O)} ]
+	Drop : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::S3::Bucket.QueueConfiguration "" sw
@@ -6738,7 +6747,7 @@ snippet AWS::ElasticLoadBalancing::LoadBalancer.Listeners "" sw
 	InstancePort : ${1:String(R)}
 	InstanceProtocol : ${2:String(O)}
 	LoadBalancerPort : ${3:String(R)}
-	PolicyNames : [${4:String(O)}]
+	PolicyNames : [ ${4:String(O)} ]
 	Protocol : ${5:String(R)}
 	SSLCertificateId : ${6:String(O)}
 endsnippet
@@ -6782,7 +6791,7 @@ endsnippet
 snippet AWS::Glue::Connection.PhysicalConnectionRequirements "" sw
 
 	AvailabilityZone : ${1:String(O)}
-	SecurityGroupIdList : [${2:String(O)}]
+	SecurityGroupIdList : [ ${2:String(O)} ]
 	SubnetId : ${3:String(O)}
 endsnippet
 
@@ -6809,7 +6818,7 @@ endsnippet
 
 snippet AWS::SSM::Association.ParameterValues "" sw
 
-	ParameterValues : [${1:String(R)}]
+	ParameterValues : [ ${1:String(R)} ]
 endsnippet
 
 snippet AWS::Cognito::UserPool.LambdaConfig "" sw
@@ -6826,21 +6835,21 @@ endsnippet
 
 snippet AWS::SSM::PatchBaseline.PatchFilterGroup "" sw
 
-	PatchFilters : [${1:AWS::SSM::PatchBaseline.PatchFilter(O)}]
+	PatchFilters : [ ${1:AWS::SSM::PatchBaseline.PatchFilter(O)} ]
 endsnippet
 
 snippet AWS::DLM::LifecyclePolicy.PolicyDetails "" sw
 
-	ResourceTypes : [${1:String(O)}]
-	Schedules : [${2:AWS::DLM::LifecyclePolicy.Schedule(O)}]
-	TargetTags : [${3:AWS::DLM::LifecyclePolicy.Tag(O)}]
+	ResourceTypes : [ ${1:String(O)} ]
+	Schedules : [ ${2:AWS::DLM::LifecyclePolicy.Schedule(O)} ]
+	TargetTags : [ ${3:AWS::DLM::LifecyclePolicy.Tag(O)} ]
 endsnippet
 
 snippet AWS::Glue::Crawler.JdbcTarget "" sw
 
 	ConnectionName : ${1:String(O)}
 	Path : ${2:String(O)}
-	Exclusions : [${3:String(O)}]
+	Exclusions : [ ${3:String(O)} ]
 endsnippet
 
 snippet AWS::AmazonMQ::Configuration.TagsEntry "" sw
@@ -6864,14 +6873,14 @@ snippet AWS::Glue::Table.TableInput "" sw
 	Parameters : ${5:Json(O)}
 	ViewExpandedText : ${6:String(O)}
 	StorageDescriptor : ${7:AWS::Glue::Table.StorageDescriptor(O)}
-	PartitionKeys : [${8:AWS::Glue::Table.Column(O)}]
+	PartitionKeys : [ ${8:AWS::Glue::Table.Column(O)} ]
 	Retention : ${9:Integer(O)}
 	Name : ${10:String(O)}
 endsnippet
 
 snippet AWS::CodeBuild::Project.ProjectCache "" sw
 
-	Modes : [${1:String(O)}]
+	Modes : [ ${1:String(O)} ]
 	Type : ${2:String(R)}
 	Location : ${3:String(O)}
 endsnippet
@@ -6895,7 +6904,7 @@ endsnippet
 snippet AWS::Greengrass::FunctionDefinition.FunctionDefinitionVersion "" sw
 
 	DefaultConfig : ${1:AWS::Greengrass::FunctionDefinition.DefaultConfig(O)}
-	Functions : [${2:AWS::Greengrass::FunctionDefinition.Function(R)}]
+	Functions : [ ${2:AWS::Greengrass::FunctionDefinition.Function(R)} ]
 endsnippet
 
 snippet AWS::IoTAnalytics::Pipeline.AddAttributes "" sw
@@ -6912,7 +6921,7 @@ endsnippet
 
 snippet AWS::EMR::Cluster.ScriptBootstrapActionConfig "" sw
 
-	Args : [${1:String(O)}]
+	Args : [ ${1:String(O)} ]
 	Path : ${2:String(R)}
 endsnippet
 
@@ -6930,7 +6939,7 @@ snippet AWS::S3::Bucket.MetricsConfiguration "" sw
 
 	Id : ${1:String(R)}
 	Prefix : ${2:String(O)}
-	TagFilters : [${3:AWS::S3::Bucket.TagFilter(O)}]
+	TagFilters : [ ${3:AWS::S3::Bucket.TagFilter(O)} ]
 endsnippet
 
 snippet AWS::ECS::Service.DeploymentConfiguration "" sw
@@ -6982,7 +6991,7 @@ endsnippet
 snippet AWS::ApiGateway::Deployment.CanarySetting "" sw
 
 	PercentTraffic : ${1:Double(O)}
-	StageVariableOverrides : [${2:String(O)}]
+	StageVariableOverrides : [ ${2:String(O)} ]
 	UseStageCache : ${3:Boolean(O)}
 endsnippet
 
@@ -7009,7 +7018,7 @@ endsnippet
 
 snippet AWS::ApplicationAutoScaling::ScalingPolicy.CustomizedMetricSpecification "" sw
 
-	Dimensions : [${1:AWS::ApplicationAutoScaling::ScalingPolicy.MetricDimension(O)}]
+	Dimensions : [ ${1:AWS::ApplicationAutoScaling::ScalingPolicy.MetricDimension(O)} ]
 	MetricName : ${2:String(R)}
 	Namespace : ${3:String(R)}
 	Statistic : ${4:String(R)}
@@ -7027,7 +7036,7 @@ endsnippet
 snippet AWS::EC2::LaunchTemplate.TagSpecification "" sw
 
 	ResourceType : ${1:String(O)}
-	Tags : [${2:AWS::EC2::LaunchTemplate.Tag(O)}]
+	Tags : [ ${2:AWS::EC2::LaunchTemplate.Tag(O)} ]
 endsnippet
 
 snippet AWS::AppSync::DataSource.HttpConfig "" sw
@@ -7038,8 +7047,8 @@ endsnippet
 
 snippet AWS::SageMaker::Model.VpcConfig "" sw
 
-	Subnets : [${1:String(R)}]
-	SecurityGroupIds : [${2:String(R)}]
+	Subnets : [ ${1:String(R)} ]
+	SecurityGroupIds : [ ${2:String(R)} ]
 endsnippet
 
 snippet AWS::S3::Bucket.TagFilter "" sw
@@ -7073,8 +7082,8 @@ snippet AWS::GuardDuty::Filter.Condition "" sw
 
 	Lt : ${1:Integer(O)}
 	Gte : ${2:Integer(O)}
-	Neq : [${3:String(O)}]
-	Eq : [${4:String(O)}]
+	Neq : [ ${3:String(O)} ]
+	Eq : [ ${4:String(O)} ]
 	Lte : ${5:Integer(O)}
 endsnippet
 
@@ -7123,7 +7132,7 @@ endsnippet
 snippet AWS::CloudTrail::Trail.DataResource "" sw
 
 	Type : ${1:String(R)}
-	Values : [${2:String(O)}]
+	Values : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::AppStream::ImageBuilder.DomainJoinInfo "" sw
@@ -7170,7 +7179,7 @@ endsnippet
 
 snippet AWS::DataPipeline::Pipeline.PipelineObject "" sw
 
-	Fields : [${1:AWS::DataPipeline::Pipeline.Field(R)}]
+	Fields : [ ${1:AWS::DataPipeline::Pipeline.Field(R)} ]
 	Id : ${2:String(R)}
 	Name : ${3:String(R)}
 endsnippet
@@ -7219,14 +7228,14 @@ endsnippet
 
 snippet AWS::EC2::Instance.SsmAssociation "" sw
 
-	AssociationParameters : [${1:AWS::EC2::Instance.AssociationParameter(O)}]
+	AssociationParameters : [ ${1:AWS::EC2::Instance.AssociationParameter(O)} ]
 	DocumentName : ${2:String(R)}
 endsnippet
 
 snippet AWS::EMR::Cluster.CloudWatchAlarmDefinition "" sw
 
 	ComparisonOperator : ${1:String(R)}
-	Dimensions : [${2:AWS::EMR::Cluster.MetricDimension(O)}]
+	Dimensions : [ ${2:AWS::EMR::Cluster.MetricDimension(O)} ]
 	EvaluationPeriods : ${3:Integer(O)}
 	MetricName : ${4:String(R)}
 	Namespace : ${5:String(O)}
@@ -7243,7 +7252,7 @@ endsnippet
 
 snippet AWS::SSM::PatchBaseline.PatchSource "" sw
 
-	Products : [${1:String(O)}]
+	Products : [ ${1:String(O)} ]
 	Configuration : ${2:String(O)}
 	Name : ${3:String(O)}
 endsnippet
@@ -7267,9 +7276,9 @@ endsnippet
 
 snippet AWS::CodeBuild::Project.VpcConfig "" sw
 
-	Subnets : [${1:String(O)}]
+	Subnets : [ ${1:String(O)} ]
 	VpcId : ${2:String(O)}
-	SecurityGroupIds : [${3:String(O)}]
+	SecurityGroupIds : [ ${3:String(O)} ]
 endsnippet
 
 snippet AWS::OpsWorksCM::Server.EngineAttribute "" sw
@@ -7296,8 +7305,8 @@ endsnippet
 
 snippet AWS::Glue::Partition.SkewedInfo "" sw
 
-	SkewedColumnNames : [${1:String(O)}]
-	SkewedColumnValues : [${2:String(O)}]
+	SkewedColumnNames : [ ${1:String(O)} ]
+	SkewedColumnValues : [ ${2:String(O)} ]
 	SkewedColumnValueLocationMaps : ${3:Json(O)}
 endsnippet
 
@@ -7316,7 +7325,7 @@ endsnippet
 snippet AWS::Config::ConfigRule.Source "" sw
 
 	Owner : ${1:String(R)}
-	SourceDetails : [${2:AWS::Config::ConfigRule.SourceDetail(O)}]
+	SourceDetails : [ ${2:AWS::Config::ConfigRule.SourceDetail(O)} ]
 	SourceIdentifier : ${3:String(R)}
 endsnippet
 
@@ -7330,7 +7339,7 @@ endsnippet
 
 snippet AWS::DynamoDB::Table.Projection "" sw
 
-	NonKeyAttributes : [${1:String(O)}]
+	NonKeyAttributes : [ ${1:String(O)} ]
 	ProjectionType : ${2:String(O)}
 endsnippet
 
@@ -7338,13 +7347,13 @@ snippet AWS::EC2::LaunchTemplate.NetworkInterface "" sw
 
 	Description : ${1:String(O)}
 	PrivateIpAddress : ${2:String(O)}
-	PrivateIpAddresses : [${3:AWS::EC2::LaunchTemplate.PrivateIpAdd(O)}]
+	PrivateIpAddresses : [ ${3:AWS::EC2::LaunchTemplate.PrivateIpAdd(O)} ]
 	SecondaryPrivateIpAddressCount : ${4:Integer(O)}
 	Ipv6AddressCount : ${5:Integer(O)}
-	Groups : [${6:String(O)}]
+	Groups : [ ${6:String(O)} ]
 	DeviceIndex : ${7:Integer(O)}
 	SubnetId : ${8:String(O)}
-	Ipv6Addresses : [${9:AWS::EC2::LaunchTemplate.Ipv6Add(O)}]
+	Ipv6Addresses : [ ${9:AWS::EC2::LaunchTemplate.Ipv6Add(O)} ]
 	AssociatePublicIpAddress : ${10:Boolean(O)}
 	NetworkInterfaceId : ${11:String(O)}
 	DeleteOnTermination : ${12:Boolean(O)}
@@ -7357,7 +7366,7 @@ endsnippet
 
 snippet AWS::AppStream::Stack.StorageConnector "" sw
 
-	Domains : [${1:String(O)}]
+	Domains : [ ${1:String(O)} ]
 	ResourceIdentifier : ${2:String(O)}
 	ConnectorType : ${3:String(R)}
 endsnippet
@@ -7398,8 +7407,8 @@ endsnippet
 snippet AWS::Config::ConfigurationAggregator.AccountAggregationSource "" sw
 
 	AllAwsRegions : ${1:Boolean(O)}
-	AwsRegions : [${2:String(O)}]
-	AccountIds : [${3:String(R)}]
+	AwsRegions : [ ${2:String(O)} ]
+	AccountIds : [ ${3:String(R)} ]
 endsnippet
 
 snippet AWS::IoT::TopicRule.DynamoDBAction "" sw
@@ -7448,7 +7457,7 @@ endsnippet
 
 snippet AWS::AutoScalingPlans::ScalingPlan.TagFilter "" sw
 
-	Values : [${1:String(O)}]
+	Values : [ ${1:String(O)} ]
 	Key : ${2:String(R)}
 endsnippet
 
@@ -7461,7 +7470,7 @@ endsnippet
 
 snippet AWS::ApiGateway::RestApi.EndpointConfiguration "" sw
 
-	Types : [${1:String(O)}]
+	Types : [ ${1:String(O)} ]
 endsnippet
 
 snippet AWS::EC2::Instance.CreditSpecification "" sw
@@ -7485,17 +7494,17 @@ endsnippet
 
 snippet AWS::OpsWorks::Layer.Recipes "" sw
 
-	Configure : [${1:String(O)}]
-	Deploy : [${2:String(O)}]
-	Setup : [${3:String(O)}]
-	Shutdown : [${4:String(O)}]
-	Undeploy : [${5:String(O)}]
+	Configure : [ ${1:String(O)} ]
+	Deploy : [ ${2:String(O)} ]
+	Setup : [ ${3:String(O)} ]
+	Shutdown : [ ${4:String(O)} ]
+	Undeploy : [ ${5:String(O)} ]
 endsnippet
 
 snippet AWS::Glue::Crawler.S3Target "" sw
 
 	Path : ${1:String(O)}
-	Exclusions : [${2:String(O)}]
+	Exclusions : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::Greengrass::ResourceDefinitionVersion.ResourceDataContainer "" sw
@@ -7515,8 +7524,8 @@ endsnippet
 
 snippet AWS::AppStream::Fleet.VpcConfig "" sw
 
-	SubnetIds : [${1:String(O)}]
-	SecurityGroupIds : [${2:String(O)}]
+	SubnetIds : [ ${1:String(O)} ]
+	SecurityGroupIds : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::Greengrass::DeviceDefinitionVersion.Device "" sw
@@ -7555,7 +7564,7 @@ endsnippet
 snippet AWS::EMR::InstanceGroupConfig.CloudWatchAlarmDefinition "" sw
 
 	ComparisonOperator : ${1:String(R)}
-	Dimensions : [${2:AWS::EMR::InstanceGroupConfig.MetricDimension(O)}]
+	Dimensions : [ ${2:AWS::EMR::InstanceGroupConfig.MetricDimension(O)} ]
 	EvaluationPeriods : ${3:Integer(O)}
 	MetricName : ${4:String(R)}
 	Namespace : ${5:String(O)}
@@ -7589,7 +7598,7 @@ endsnippet
 
 snippet AWS::EMR::Cluster.EbsConfiguration "" sw
 
-	EbsBlockDeviceConfigs : [${1:AWS::EMR::Cluster.EbsBlockDeviceConfig(O)}]
+	EbsBlockDeviceConfigs : [ ${1:AWS::EMR::Cluster.EbsBlockDeviceConfig(O)} ]
 	EbsOptimized : ${2:Boolean(O)}
 endsnippet
 
@@ -7642,13 +7651,13 @@ endsnippet
 
 snippet AWS::KinesisFirehose::DeliveryStream.Processor "" sw
 
-	Parameters : [${1:AWS::KinesisFirehose::DeliveryStream.ProcessorParameter(R)}]
+	Parameters : [ ${1:AWS::KinesisFirehose::DeliveryStream.ProcessorParameter(R)} ]
 	Type : ${2:String(R)}
 endsnippet
 
 snippet AWS::ECS::TaskDefinition.HealthCheck "" sw
 
-	Command : [${1:String(R)}]
+	Command : [ ${1:String(R)} ]
 	Interval : ${2:Integer(O)}
 	Retries : ${3:Integer(O)}
 	StartPeriod : ${4:Integer(O)}
@@ -7667,7 +7676,7 @@ endsnippet
 
 snippet AWS::EC2::SpotFleet.TargetGroupsConfig "" sw
 
-	TargetGroups : [${1:AWS::EC2::SpotFleet.TargetGroup(R)}]
+	TargetGroups : [ ${1:AWS::EC2::SpotFleet.TargetGroup(R)} ]
 endsnippet
 
 snippet AWS::EC2::LaunchTemplate.LicenseSpecification "" sw
@@ -7690,7 +7699,7 @@ endsnippet
 
 snippet AWS::S3::Bucket.CorsConfiguration "" sw
 
-	CorsRules : [${1:AWS::S3::Bucket.CorsRule(R)}]
+	CorsRules : [ ${1:AWS::S3::Bucket.CorsRule(R)} ]
 endsnippet
 
 snippet AWS::S3::Bucket.ReplicationDestination "" sw
@@ -7796,7 +7805,7 @@ endsnippet
 
 snippet AWS::Lambda::Function.Environment "" sw
 
-	Variables : [${1:String(O)}]
+	Variables : [ ${1:String(O)} ]
 endsnippet
 
 snippet AWS::OpsWorks::Layer.LifecycleEventConfiguration "" sw
@@ -7910,7 +7919,7 @@ endsnippet
 
 snippet AWS::CodeBuild::Project.ProjectTriggers "" sw
 
-	FilterGroups : [${1:AWS::CodeBuild::Project.FilterGroup(O)}]
+	FilterGroups : [ ${1:AWS::CodeBuild::Project.FilterGroup(O)} ]
 	Webhook : ${2:Boolean(O)}
 endsnippet
 
@@ -7926,23 +7935,23 @@ snippet AWS::CloudFront::Distribution.DistributionConfig "" sw
 	Logging : ${1:AWS::CloudFront::Distribution.Logging(O)}
 	Comment : ${2:String(O)}
 	DefaultRootObject : ${3:String(O)}
-	Origins : [${4:AWS::CloudFront::Distribution.Origin(O)}]
+	Origins : [ ${4:AWS::CloudFront::Distribution.Origin(O)} ]
 	ViewerCertificate : ${5:AWS::CloudFront::Distribution.ViewerCertificate(O)}
 	PriceClass : ${6:String(O)}
 	DefaultCacheBehavior : ${7:AWS::CloudFront::Distribution.DefaultCacheBehavior(O)}
-	CustomErrorResponses : [${8:AWS::CloudFront::Distribution.CustomErrorResponse(O)}]
+	CustomErrorResponses : [ ${8:AWS::CloudFront::Distribution.CustomErrorResponse(O)} ]
 	Enabled : ${9:Boolean(R)}
-	Aliases : [${10:String(O)}]
+	Aliases : [ ${10:String(O)} ]
 	IPV6Enabled : ${11:Boolean(O)}
 	WebACLId : ${12:String(O)}
 	HttpVersion : ${13:String(O)}
 	Restrictions : ${14:AWS::CloudFront::Distribution.Restrictions(O)}
-	CacheBehaviors : [${15:AWS::CloudFront::Distribution.CacheBehavior(O)}]
+	CacheBehaviors : [ ${15:AWS::CloudFront::Distribution.CacheBehavior(O)} ]
 endsnippet
 
 snippet AWS::Cognito::IdentityPoolRoleAttachment.RulesConfigurationType "" sw
 
-	Rules : [${1:AWS::Cognito::IdentityPoolRoleAttachment.MappingRule(R)}]
+	Rules : [ ${1:AWS::Cognito::IdentityPoolRoleAttachment.MappingRule(R)} ]
 endsnippet
 
 snippet AWS::S3::Bucket.NoncurrentVersionTransition "" sw
@@ -7954,10 +7963,10 @@ endsnippet
 snippet AWS::ECS::TaskDefinition.LinuxParameters "" sw
 
 	Capabilities : ${1:AWS::ECS::TaskDefinition.KernelCapabilities(O)}
-	Devices : [${2:AWS::ECS::TaskDefinition.Device(O)}]
+	Devices : [ ${2:AWS::ECS::TaskDefinition.Device(O)} ]
 	InitProcessEnabled : ${3:Boolean(O)}
 	SharedMemorySize : ${4:Integer(O)}
-	Tmpfs : [${5:AWS::ECS::TaskDefinition.Tmpfs(O)}]
+	Tmpfs : [ ${5:AWS::ECS::TaskDefinition.Tmpfs(O)} ]
 endsnippet
 
 snippet AWS::Glue::Job.ExecutionProperty "" sw
@@ -8021,7 +8030,7 @@ endsnippet
 
 snippet AWS::Greengrass::SubscriptionDefinition.SubscriptionDefinitionVersion "" sw
 
-	Subscriptions : [${1:AWS::Greengrass::SubscriptionDefinition.Subscription(R)}]
+	Subscriptions : [ ${1:AWS::Greengrass::SubscriptionDefinition.Subscription(R)} ]
 endsnippet
 
 snippet AWS::Cognito::UserPool.DeviceConfiguration "" sw
@@ -8083,14 +8092,14 @@ snippet AWS::CloudFront::StreamingDistribution.StreamingDistributionConfig "" sw
 	PriceClass : ${3:String(O)}
 	S3Origin : ${4:AWS::CloudFront::StreamingDistribution.S3Origin(R)}
 	Enabled : ${5:Boolean(R)}
-	Aliases : [${6:String(O)}]
+	Aliases : [ ${6:String(O)} ]
 	TrustedSigners : ${7:AWS::CloudFront::StreamingDistribution.TrustedSigners(R)}
 endsnippet
 
 snippet AWS::Glue::Trigger.Predicate "" sw
 
 	Logical : ${1:String(O)}
-	Conditions : [${2:AWS::Glue::Trigger.Condition(O)}]
+	Conditions : [ ${2:AWS::Glue::Trigger.Condition(O)} ]
 endsnippet
 
 snippet AWS::IAM::Group.Policy "" sw
@@ -8103,7 +8112,7 @@ snippet AWS::EMR::Cluster.InstanceTypeConfig "" sw
 
 	BidPrice : ${1:String(O)}
 	BidPriceAsPercentageOfOnDemandPrice : ${2:Double(O)}
-	Configurations : [${3:AWS::EMR::Cluster.Configuration(O)}]
+	Configurations : [ ${3:AWS::EMR::Cluster.Configuration(O)} ]
 	EbsConfiguration : ${4:AWS::EMR::Cluster.EbsConfiguration(O)}
 	InstanceType : ${5:String(R)}
 	WeightedCapacity : ${6:Integer(O)}
@@ -8126,7 +8135,7 @@ endsnippet
 snippet AWS::AutoScaling::AutoScalingGroup.LaunchTemplate "" sw
 
 	LaunchTemplateSpecification : ${1:AWS::AutoScaling::AutoScalingGroup.LaunchTemplateSpecification(R)}
-	Overrides : [${2:AWS::AutoScaling::AutoScalingGroup.LaunchTemplateOverrides(O)}]
+	Overrides : [ ${2:AWS::AutoScaling::AutoScalingGroup.LaunchTemplateOverrides(O)} ]
 endsnippet
 
 snippet AWS::SageMaker::Model.ContainerDefinition "" sw
@@ -8211,7 +8220,7 @@ endsnippet
 
 snippet AWS::Lambda::Alias.AliasRoutingConfiguration "" sw
 
-	AdditionalVersionWeights : [${1:AWS::Lambda::Alias.VersionWeight(R)}]
+	AdditionalVersionWeights : [ ${1:AWS::Lambda::Alias.VersionWeight(R)} ]
 endsnippet
 
 snippet AWS::EC2::EC2Fleet.FleetLaunchTemplateOverridesRequest "" sw
@@ -8279,7 +8288,7 @@ endsnippet
 
 snippet AWS::IoTAnalytics::Dataset.ContainerAction "" sw
 
-	Variables : [${1:AWS::IoTAnalytics::Dataset.Variable(O)}]
+	Variables : [ ${1:AWS::IoTAnalytics::Dataset.Variable(O)} ]
 	ExecutionRoleArn : ${2:String(R)}
 	Image : ${3:String(R)}
 	ResourceConfiguration : ${4:AWS::IoTAnalytics::Dataset.ResourceConfiguration(R)}
@@ -8311,8 +8320,8 @@ endsnippet
 snippet AWS::ECS::Service.AwsVpcConfiguration "" sw
 
 	AssignPublicIp : ${1:String(O)}
-	SecurityGroups : [${2:String(O)}]
-	Subnets : [${3:String(R)}]
+	SecurityGroups : [ ${2:String(O)} ]
+	Subnets : [ ${3:String(R)} ]
 endsnippet
 
 snippet AWS::Glue::Partition.Column "" sw
@@ -8325,12 +8334,12 @@ endsnippet
 snippet AWS::Greengrass::ResourceDefinitionVersion.SecretsManagerSecretResourceData "" sw
 
 	ARN : ${1:String(R)}
-	AdditionalStagingLabelsToDownload : [${2:String(O)}]
+	AdditionalStagingLabelsToDownload : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::IoT::Thing.AttributePayload "" sw
 
-	Attributes : [${1:String(O)}]
+	Attributes : [ ${1:String(O)} ]
 endsnippet
 
 snippet AWS::Cognito::IdentityPoolRoleAttachment.RoleMapping "" sw
@@ -8361,7 +8370,7 @@ endsnippet
 
 snippet AWS::CodeDeploy::DeploymentGroup.OnPremisesTagSet "" sw
 
-	OnPremisesTagSetList : [${1:AWS::CodeDeploy::DeploymentGroup.OnPremisesTagSetListObject(O)}]
+	OnPremisesTagSetList : [ ${1:AWS::CodeDeploy::DeploymentGroup.OnPremisesTagSetListObject(O)} ]
 endsnippet
 
 snippet AWS::Route53::HealthCheck.AlarmIdentifier "" sw
@@ -8379,7 +8388,7 @@ endsnippet
 
 snippet AWS::Greengrass::LoggerDefinition.LoggerDefinitionVersion "" sw
 
-	Loggers : [${1:AWS::Greengrass::LoggerDefinition.Logger(R)}]
+	Loggers : [ ${1:AWS::Greengrass::LoggerDefinition.Logger(R)} ]
 endsnippet
 
 snippet AWS::Greengrass::ResourceDefinitionVersion.LocalDeviceResourceData "" sw
@@ -8506,7 +8515,7 @@ endsnippet
 snippet AWS::CodeDeploy::DeploymentGroup.AutoRollbackConfiguration "" sw
 
 	Enabled : ${1:Boolean(O)}
-	Events : [${2:String(O)}]
+	Events : [ ${2:String(O)} ]
 endsnippet
 
 snippet AWS::EC2::LaunchTemplate.HibernationOptions "" sw
@@ -8524,7 +8533,7 @@ endsnippet
 
 snippet AWS::CloudWatch::Alarm.Metric "" sw
 
-	Dimensions : [${1:AWS::CloudWatch::Alarm.Dimension(O)}]
+	Dimensions : [ ${1:AWS::CloudWatch::Alarm.Dimension(O)} ]
 	MetricName : ${2:String(O)}
 	Namespace : ${3:String(O)}
 endsnippet
@@ -8549,9 +8558,9 @@ endsnippet
 
 snippet AWS::ElasticLoadBalancing::LoadBalancer.Policies "" sw
 
-	Attributes : [${1:Json(R)}]
-	InstancePorts : [${2:String(O)}]
-	LoadBalancerPorts : [${3:String(O)}]
+	Attributes : [ ${1:Json(R)} ]
+	InstancePorts : [ ${2:String(O)} ]
+	LoadBalancerPorts : [ ${3:String(O)} ]
 	PolicyName : ${4:String(R)}
 	PolicyType : ${5:String(R)}
 endsnippet
@@ -8586,7 +8595,7 @@ endsnippet
 snippet AWS::EMR::Cluster.AutoScalingPolicy "" sw
 
 	Constraints : ${1:AWS::EMR::Cluster.ScalingConstraints(R)}
-	Rules : [${2:AWS::EMR::Cluster.ScalingRule(R)}]
+	Rules : [ ${2:AWS::EMR::Cluster.ScalingRule(R)} ]
 endsnippet
 
 snippet AWS::DynamoDB::Table.StreamSpecification "" sw
@@ -8652,7 +8661,7 @@ endsnippet
 snippet AWS::EC2::EC2Fleet.TagSpecification "" sw
 
 	ResourceType : ${1:String(O)}
-	Tags : [${2:AWS::EC2::EC2Fleet.TagRequest(O)}]
+	Tags : [ ${2:AWS::EC2::EC2Fleet.TagRequest(O)} ]
 endsnippet
 
 snippet AWS::AppSync::DataSource.ElasticsearchConfig "" sw
@@ -8676,7 +8685,7 @@ snippet AWS::Glue::Partition.PartitionInput "" sw
 
 	Parameters : ${1:Json(O)}
 	StorageDescriptor : ${2:AWS::Glue::Partition.StorageDescriptor(O)}
-	Values : [${3:String(R)}]
+	Values : [ ${3:String(R)} ]
 endsnippet
 
 snippet AWS::KinesisFirehose::DeliveryStream.RedshiftDestinationConfiguration "" sw
@@ -8717,13 +8726,13 @@ endsnippet
 
 snippet AWS::OpsWorks::Instance.TimeBasedAutoScaling "" sw
 
-	Friday : [${1:String(O)}]
-	Monday : [${2:String(O)}]
-	Saturday : [${3:String(O)}]
-	Sunday : [${4:String(O)}]
-	Thursday : [${5:String(O)}]
-	Tuesday : [${6:String(O)}]
-	Wednesday : [${7:String(O)}]
+	Friday : [ ${1:String(O)} ]
+	Monday : [ ${2:String(O)} ]
+	Saturday : [ ${3:String(O)} ]
+	Sunday : [ ${4:String(O)} ]
+	Thursday : [ ${5:String(O)} ]
+	Tuesday : [ ${6:String(O)} ]
+	Wednesday : [ ${7:String(O)} ]
 endsnippet
 
 snippet AWS::Config::ConfigRule.SourceDetail "" sw
@@ -8774,7 +8783,7 @@ snippet AWS::ElastiCache::ReplicationGroup.NodeGroupConfiguration "" sw
 
 	NodeGroupId : ${1:String(O)}
 	PrimaryAvailabilityZone : ${2:String(O)}
-	ReplicaAvailabilityZones : [${3:String(O)}]
+	ReplicaAvailabilityZones : [ ${3:String(O)} ]
 	ReplicaCount : ${4:Integer(O)}
 	Slots : ${5:String(O)}
 endsnippet
@@ -8788,10 +8797,10 @@ endsnippet
 
 snippet AWS::EMR::Cluster.HadoopJarStepConfig "" sw
 
-	Args : [${1:String(O)}]
+	Args : [ ${1:String(O)} ]
 	Jar : ${2:String(R)}
 	MainClass : ${3:String(O)}
-	StepProperties : [${4:AWS::EMR::Cluster.KeyValue(O)}]
+	StepProperties : [ ${4:AWS::EMR::Cluster.KeyValue(O)} ]
 endsnippet
 
 snippet AWS::Greengrass::ConnectorDefinitionVersion.Connector "" sw
@@ -8803,12 +8812,12 @@ endsnippet
 
 snippet AWS::RDS::OptionGroup.OptionConfiguration "" sw
 
-	DBSecurityGroupMemberships : [${1:String(O)}]
+	DBSecurityGroupMemberships : [ ${1:String(O)} ]
 	OptionName : ${2:String(R)}
-	OptionSettings : [${3:AWS::RDS::OptionGroup.OptionSetting(O)}]
+	OptionSettings : [ ${3:AWS::RDS::OptionGroup.OptionSetting(O)} ]
 	OptionVersion : ${4:String(O)}
 	Port : ${5:Integer(O)}
-	VpcSecurityGroupMemberships : [${6:String(O)}]
+	VpcSecurityGroupMemberships : [ ${6:String(O)} ]
 endsnippet
 
 snippet AWS::DMS::Endpoint.DynamoDbSettings "" sw
@@ -8860,7 +8869,7 @@ snippet AWS::AutoScalingPlans::ScalingPlan.CustomizedLoadMetricSpecification "" 
 
 	MetricName : ${1:String(R)}
 	Statistic : ${2:String(R)}
-	Dimensions : [${3:AWS::AutoScalingPlans::ScalingPlan.MetricDimension(O)}]
+	Dimensions : [ ${3:AWS::AutoScalingPlans::ScalingPlan.MetricDimension(O)} ]
 	Unit : ${4:String(O)}
 	Namespace : ${5:String(R)}
 endsnippet
@@ -8881,19 +8890,19 @@ endsnippet
 snippet AWS::ECS::TaskDefinition.Tmpfs "" sw
 
 	ContainerPath : ${1:String(O)}
-	MountOptions : [${2:String(O)}]
+	MountOptions : [ ${2:String(O)} ]
 	Size : ${3:Integer(O)}
 endsnippet
 
 snippet AWS::EMR::InstanceGroupConfig.AutoScalingPolicy "" sw
 
 	Constraints : ${1:AWS::EMR::InstanceGroupConfig.ScalingConstraints(R)}
-	Rules : [${2:AWS::EMR::InstanceGroupConfig.ScalingRule(R)}]
+	Rules : [ ${2:AWS::EMR::InstanceGroupConfig.ScalingRule(R)} ]
 endsnippet
 
 snippet AWS::EMR::InstanceGroupConfig.EbsConfiguration "" sw
 
-	EbsBlockDeviceConfigs : [${1:AWS::EMR::InstanceGroupConfig.EbsBlockDeviceConfig(O)}]
+	EbsBlockDeviceConfigs : [ ${1:AWS::EMR::InstanceGroupConfig.EbsBlockDeviceConfig(O)} ]
 	EbsOptimized : ${2:Boolean(O)}
 endsnippet
 
@@ -8943,7 +8952,7 @@ snippet AWS::Greengrass::FunctionDefinitionVersion.Environment "" sw
 
 	Variables : ${1:Json(O)}
 	Execution : ${2:AWS::Greengrass::FunctionDefinitionVersion.Execution(O)}
-	ResourceAccessPolicies : [${3:AWS::Greengrass::FunctionDefinitionVersion.ResourceAccessPolicy(O)}]
+	ResourceAccessPolicies : [ ${3:AWS::Greengrass::FunctionDefinitionVersion.ResourceAccessPolicy(O)} ]
 	AccessSysfs : ${4:Boolean(O)}
 endsnippet
 
@@ -8960,7 +8969,7 @@ endsnippet
 
 snippet AWS::CodeDeploy::DeploymentGroup.EC2TagSetListObject "" sw
 
-	Ec2TagGroup : [${1:AWS::CodeDeploy::DeploymentGroup.EC2TagFilter(O)}]
+	Ec2TagGroup : [ ${1:AWS::CodeDeploy::DeploymentGroup.EC2TagFilter(O)} ]
 endsnippet
 
 snippet AWS::ApplicationAutoScaling::ScalableTarget.ScalableTargetAction "" sw
